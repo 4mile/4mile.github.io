@@ -22,7 +22,7 @@ function calendarHeatmap() {
   var locale = {
     months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     days: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-    No: 'No',
+    No: 'Null',
     on: 'on',
     Less: 'Less',
     More: 'More'
@@ -113,6 +113,7 @@ function calendarHeatmap() {
     } else if (max === null) {
       max = d3.max(chart.data(), function (d) { return d.count; }); // max data value
       min = d3.min(chart.data(), function (d) { return d.count; }); // max data value
+      // console.log(min,max)
     }
 
     // color range
@@ -268,7 +269,7 @@ function calendarHeatmap() {
 
     function countForDate(d) {
         var key= moment(d).format( 'YYYY-MM-DD' );
-        return counterMap[key] || 0;
+        return counterMap[key] // || 0;
     }
 
     function formatWeekday(weekDay) {
@@ -422,7 +423,6 @@ looker.plugins.visualizations.add({
       };
     });
     
-      console.log(queryResponse)
     
     var dimension_name = queryResponse.fields.dimensions[0].name
     var tablecalc_name = queryResponse.fields.table_calculations[0].name
@@ -443,6 +443,7 @@ looker.plugins.visualizations.add({
     data_m = _.sortBy(data_m, 'date');
     
     var data_min_max = _.sortBy(data, function(o){ return o[tablecalc_name].value});
+    // console.log('data_min_max',data_min_max)
     var data_minimum = data_min_max[0][tablecalc_name].rendered;
     var data_maximum = data_min_max.slice(-1)[0][tablecalc_name].rendered;
 
@@ -458,7 +459,6 @@ looker.plugins.visualizations.add({
       if (value == "Text") {
         return config.moreText;
       } else if (value == "Min/Max Values") {
-        console.log(data_maximum)
         return data_maximum;
       }
     };
@@ -473,7 +473,7 @@ looker.plugins.visualizations.add({
       .locale({
         months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         days: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-        No: 'No',
+        No: 'Null',
         on: 'on',
         Less: less_min(config.textMinMaxToggle),
         More: more_max(config.textMinMaxToggle)
