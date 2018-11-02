@@ -402,6 +402,7 @@ looker.plugins.visualizations.add({
         }
         .calendar-heatmap {
           box-sizing: initial;
+          overflow: inherit;
         }
       </style>
     `;
@@ -434,7 +435,7 @@ looker.plugins.visualizations.add({
         if (objectKey == dimension_name) {
           obj["date"] = moment(objectValue.value,'YYYY-MM-DD').toDate();
         } else if (objectKey == tablecalc_name) {
-          obj["count"] = objectValue.value && Math.floor(objectValue.value * 100) / 100;
+          obj["count"] = objectValue.value.toString()  && Math.floor(objectValue.value * 100) / 100;
         }
       });
       return obj;
