@@ -66,6 +66,18 @@ class GlobalConfig {
   setQueryResponse(qr) {
     this.queryResponse = qr;
   }
+
+  setAgData(agData) {
+    this.agData = agData;
+  }
+
+  setRanges(ranges) {
+    this.ranges = ranges;
+  }
+
+  setConfig(config) {
+    this.config = config;
+  }
 }
 
 const globalConfig = new GlobalConfig();
@@ -188,6 +200,8 @@ const countAggFn = values => {
 // Aggregation helper functions
 //
 
+// XXX The presence of data in globalConfig could be helpful here.
+
 const truncFloat = (float, values) => {
   const digits = values[0].toString().split('.').pop().length;
   return float.toFixed(digits);
@@ -303,6 +317,55 @@ const headerName = (dimension, config) => {
   return label;
 };
 
+const cellStyle = cell => {
+  const { config, ranges } = globalConfig;
+  if (config.enableConditionalFormatting === undefined ||
+      !config.enableConditionalFormatting ||
+      (!config.includeTotals && cell.node.group === true)) { return; }
+  const field = cell.colDef.field.replace(/ {1,}/g,' ');
+  if (!(field in ranges)) { return; }
+  const scale = chroma.scale(['green', 'yellow', 'red']); // Get this from config
+  // Normalize number between 0 and 1
+  let normalizedValue = normalize(Number(cell.value), ranges[field]);
+  if (isNaN(normalizedValue)) {
+    if (!config.includeNullValuesAsZero) { return; }
+    normalizedValue = 0;
+  }
+  return { 'background-color': scale(normalizedValue).hex() };
+};
+
+const normalize = (value, range) => {
+  if (range.max === range.min && value === range.max) { return 1; }
+  return (value - range.min) / (range.max - range.min);
+};
+
+const calculateRanges = (data) => {
+  const keys = _.map(Object.keys(data[0]), key => key.replace(/ {1,}/g,' '));
+  const ranges = {};
+  data.forEach(datum => {
+    keys.forEach(key => {
+      const val = _.isUndefined(datum[key]) ? 0 : datum[key];
+      if (!isNaN(val)) {
+        const num = Number(val);
+        if (!(key in ranges)) {
+          // First occurrence, set both min and max to first value.
+          ranges[key] = { min: num, max: num };
+        } else {
+          // Key already exists, only update if +/-
+          if (num < ranges[key].min) {
+            ranges[key].min = num;
+          }
+          if (num > ranges[key].max) {
+            ranges[key].max = num;
+          }
+        }
+      }
+    });
+  });
+
+  return ranges;
+};
+
 const addRowNumbers = basics => {
   basics.unshift({
     cellRenderer: rowIndexRenderer,
@@ -321,7 +384,6 @@ const addRowNumbers = basics => {
 const basicDimensions = (dimensions, config) => {
   const finalDimension = dimensions[dimensions.length - 1];
   const basics = _.map(dimensions, dimension => {
-    console.log(dimension.name)
     const rowGroup = !(dimension.name === finalDimension.name);
     return {
       cellRenderer: baseCellRenderer,
@@ -332,6 +394,7 @@ const basicDimensions = (dimensions, config) => {
       lookup: dimension.name,
       rowGroup: rowGroup,
       suppressMenu: true,
+      cellStyle: cellStyle,
     };
   });
 
@@ -354,6 +417,7 @@ const addTableCalculations = (dimensions, tableCalcs) => {
       lookup: calc.name,
       rowGroup: false,
       suppressMenu: true,
+      cellStyle: cellStyle,
     };
     dimensions.push(dimension);
   });
@@ -371,6 +435,7 @@ const addMeasures = (dimensions, measures, config) => {
       measure: name,
       rowGroup: false,
       suppressMenu: true,
+      cellStyle: cellStyle,
     };
     dimensions.push(dimension);
   });
@@ -407,6 +472,7 @@ const addPivots = (dimensions, config) => {
         pivotKey: key,
         rowGroup: false,
         suppressMenu: true,
+        cellStyle: cellStyle,
       };
       outerDimension.children.push(dimension);
     });
@@ -463,6 +529,27 @@ const gridOptions = {
 
 looker.plugins.visualizations.add({
   options: {
+    enableConditionalFormatting: {
+      default: false,
+      label: 'Enable Conditional Formatting',
+      order: 1,
+      section: 'Formatting',
+      type: 'boolean',
+    },
+    includeTotals: {
+      default: false,
+      label: 'Include Totals',
+      order: 2,
+      section: 'Formatting',
+      type: 'boolean',
+    },
+    includeNullValuesAsZero: {
+      default: false,
+      label: 'Include Null Values as Zero',
+      order: 3,
+      section: 'Formatting',
+      type: 'boolean',
+    },
     showFullFieldName: {
       default: false,
       label: 'Show Full Field Name',
@@ -550,6 +637,11 @@ looker.plugins.visualizations.add({
 
     // Manipulates Looker's data response into a format suitable for ag-grid.
     this.agData = new AgData(data, formattedColumns);
+    globalConfig.setAgData(this.agData);
+    // TODO May need to see if config.includeTotals is set here, and calculate ranges appropriately using them too...
+    const ranges = calculateRanges(this.agData.formattedData);
+    globalConfig.setRanges(ranges);
+    globalConfig.setConfig(config);
     gridOptions.api.setRowData(this.agData.formattedData);
 
     autoSize();
