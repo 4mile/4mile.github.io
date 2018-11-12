@@ -303,7 +303,10 @@ class PivotHeader {
 // Take into account config prefs for truncation and brevity.
 const headerName = (dimension, config) => {
   let label;
-  if (config.showFullFieldName) {
+  const customLabel = config[`customLabel_${dimension.name}`];
+  if (customLabel !== undefined && customLabel !== '') {
+    label = config[`customLabel_${dimension.name}`];
+  } else if (config.showFullFieldName) {
     label = dimension.label; // eslint-disable-line
   } else {
     label = dimension.label_short || dimension.label;
@@ -317,6 +320,7 @@ const headerName = (dimension, config) => {
   return label;
 };
 
+// Used to apply conditional formatting to cells, if enabled.
 const cellStyle = cell => {
   const { config, ranges } = globalConfig;
   if (config.enableConditionalFormatting === undefined ||
@@ -324,7 +328,14 @@ const cellStyle = cell => {
       (!config.includeTotals && cell.node.group === true)) { return; }
   const field = cell.colDef.field.replace(/ {1,}/g,' ');
   if (!(field in ranges)) { return; }
-  const scale = chroma.scale(['green', 'yellow', 'red']); // Get this from config
+  if (config.applyTo === 'select_fields' &&
+     (!(`selectedField_${field}` in config) || config[`selectedField_${field}`] === false)) { return; }
+  const { lowColor, midColor, highColor } = config;
+  let colorScheme = [lowColor, midColor, highColor];
+  if (config.formattingStyle === 'high_to_low') {
+    colorScheme = [highColor, midColor, lowColor];
+  }
+  const scale = chroma.scale(colorScheme.filter(color => !!color));
   // Normalize number between 0 and 1
   let normalizedValue = normalize(Number(cell.value), ranges[field]);
   if (isNaN(normalizedValue)) {
@@ -335,10 +346,13 @@ const cellStyle = cell => {
 };
 
 const normalize = (value, range) => {
+  // Edge case when there is only one value to avoid NaN response.
   if (range.max === range.min && value === range.max) { return 1; }
   return (value - range.min) / (range.max - range.min);
 };
 
+// For each column, calculate and store the min/max values for optional
+// conditional formatting.
 const calculateRanges = (data) => {
   const keys = _.map(Object.keys(data[0]), key => key.replace(/ {1,}/g,' '));
   const ranges = {};
@@ -527,60 +541,223 @@ const gridOptions = {
   suppressMovableColumns: true,
 };
 
-looker.plugins.visualizations.add({
-  options: {
-    enableConditionalFormatting: {
-      default: false,
-      label: 'Enable Conditional Formatting',
-      order: 1,
-      section: 'Formatting',
-      type: 'boolean',
-    },
-    includeTotals: {
-      default: false,
-      label: 'Include Totals',
-      order: 2,
-      section: 'Formatting',
-      type: 'boolean',
-    },
-    includeNullValuesAsZero: {
-      default: false,
-      label: 'Include Null Values as Zero',
-      order: 3,
-      section: 'Formatting',
-      type: 'boolean',
-    },
-    showFullFieldName: {
-      default: false,
-      label: 'Show Full Field Name',
-      order: 2,
-      section: 'Series',
-      type: 'boolean',
-    },
-    showRowNumbers: {
-      default: true,
-      label: 'Show Row Numbers',
-      order: 2,
-      section: 'Plot',
-      type: 'boolean',
-    },
-    theme: {
-      default: defaultTheme,
-      display: 'select',
-      label: 'Table Theme',
-      order: 1,
-      section: 'Plot',
-      type: 'string',
-      values: themes,
-    },
-    truncateColumnNames: {
-      default: false,
-      label: 'Truncate Column Names',
-      order: 1,
-      section: 'Series',
-      type: 'boolean',
-    },
+const options = {
+  // FORMATTING
+  enableConditionalFormatting: {
+    default: false,
+    label: 'Enable Conditional Formatting',
+    order: 1,
+    section: 'Formatting',
+    type: 'boolean',
   },
+  includeTotals: {
+    default: false,
+    label: 'Include Totals',
+    order: 2,
+    section: 'Formatting',
+    type: 'boolean',
+  },
+  includeNullValuesAsZero: {
+    default: false,
+    label: 'Include Null Values as Zero',
+    order: 3,
+    section: 'Formatting',
+    type: 'boolean',
+  },
+  formattingStyle: {
+    default: 'low_to_high',
+    display: 'select',
+    label: 'Format',
+    order: 4,
+    section: 'Formatting',
+    type: 'string',
+    values: [
+      { 'From low to high': 'low_to_high' },
+      { 'From high to low': 'high_to_low' },
+    ],
+  },
+  // Detect change to just one config setting? Maybe have another, invisible if possible, set to custom?
+  formattingPalette: {
+    default: 'red_yellow_green',
+    display: 'select',
+    label: 'Palette',
+    order: 5,
+    section: 'Formatting',
+    type: 'string',
+    values: [
+      { 'Red to Yellow to Green': 'red_yellow_green' },
+      { 'Red to White to Green': 'red_white_green' },
+      { 'Red to White': 'red_white' },
+      { 'White to Green': 'white_green' },
+      { 'Custom...': 'custom' },
+    ],
+  },
+  lowColor: {
+    display: 'color',
+    display_size: 'third',
+    label: 'Low', // These values updated in updateAsync
+    order: 6,
+    section: 'Formatting',
+    type: 'string',
+  },
+  midColor: {
+    display: 'color',
+    display_size: 'third',
+    label: 'Middle',
+    order: 7,
+    section: 'Formatting',
+    type: 'string',
+  },
+  highColor: {
+    display: 'color',
+    display_size: 'third',
+    label: 'High',
+    order: 8,
+    section: 'Formatting',
+    type: 'string',
+  },
+  applyTo: {
+    default: 'all_numeric_fields',
+    display: 'select',
+    label: 'Apply to',
+    order: 9,
+    section: 'Formatting',
+    type: 'string',
+    values: [
+      { 'All numeric fields': 'all_numeric_fields' },
+      { 'Select fields...': 'select_fields' },
+    ],
+  },
+  // SERIES
+  truncateColumnNames: {
+    default: false,
+    label: 'Truncate Column Names',
+    order: 1,
+    section: 'Series',
+    type: 'boolean',
+  },
+  showFullFieldName: {
+    default: false,
+    label: 'Show Full Field Name',
+    order: 2,
+    section: 'Series',
+    type: 'boolean',
+  },
+  // CUSTOMIZATIONS
+
+  // PLOT
+  theme: {
+    default: defaultTheme,
+    display: 'select',
+    label: 'Table Theme',
+    order: 1,
+    section: 'Plot',
+    type: 'string',
+    values: themes,
+  },
+  showRowNumbers: {
+    default: true,
+    label: 'Show Row Numbers',
+    order: 2,
+    section: 'Plot',
+    type: 'boolean',
+  },
+};
+
+const defaultColors = {
+  red: '#F36254',
+  green: '#4FBC89',
+  yellow: '#FCF758',
+  white: '#FFFFFF',
+};
+
+// TODO: Probably have another fn that all it does is spit out the appropriate # and type of color boxes.
+const modifyOptions = (vis, config) => {
+  const { measure_like: measures, dimension_like: dimensions } = globalConfig.queryResponse.fields;
+  const fields = measures.concat(dimensions);
+  fields.forEach(field => {
+    const { label, name } = field;
+    const id = `customLabel_${name}`
+    options[id] = {
+      display: 'text',
+      placeholder: label,
+      label,
+      section: 'Series',
+      type: 'string',
+    };
+  });
+
+  const originalMidColor = {
+    display: 'color',
+    display_size: 'third',
+    label: 'Middle',
+    order: 7,
+    section: 'Formatting',
+    type: 'string',
+  };
+  // Automatically set the colors to defaults when selected.
+  if (config.formattingPalette === 'red_yellow_green') {
+    if (!('midColor' in options)) { options.midColor = originalMidColor; }
+    vis.trigger('registerOptions', options);
+    vis.trigger('updateConfig', [{ lowColor: defaultColors.red }]);
+    vis.trigger('updateConfig', [{ midColor: defaultColors.yellow }]);
+    vis.trigger('updateConfig', [{ highColor: defaultColors.green }]);
+  } else if (config.formattingPalette === 'red_white_green') {
+    if (!('midColor' in options)) { options.midColor = originalMidColor; }
+    vis.trigger('registerOptions', options);
+    vis.trigger('updateConfig', [{ lowColor: defaultColors.red }]);
+    vis.trigger('updateConfig', [{ midColor: defaultColors.white }]);
+    vis.trigger('updateConfig', [{ highColor: defaultColors.green }]);
+  } else if (config.formattingPalette === 'red_white') {
+    if ('midColor' in options) { delete(options.midColor); }
+    vis.trigger('updateConfig', [{ lowColor: defaultColors.red }]);
+    vis.trigger('updateConfig', [{ highColor: defaultColors.white }]);
+  } else if (config.formattingPalette === 'white_green') {
+    if ('midColor' in options) { delete(options.midColor); }
+    vis.trigger('updateConfig', [{ lowColor: defaultColors.white }]);
+    vis.trigger('updateConfig', [{ highColor: defaultColors.green }]);
+  }
+
+  if (config.applyTo === 'select_fields') {
+    // if (!('selectedFields' in options)) {
+      // measures defined above.
+      // XXX If there are a lot of these, might make sense to have a class for them and/or options,
+      // so you can just do something like `addSelectedFields` `removeSelectedFields`.
+    measures.forEach(measure => {
+      const { label, name } = measure;
+      const id = `selectedField_${name}`
+      options[id] = {
+        label,
+        default: 'false',
+        section: 'Formatting',
+        type: 'boolean',
+      };
+    });
+    vis.trigger('registerOptions', options);
+  } else if (config.applyTo === 'all_numeric_fields') {
+    measures.forEach(measure => {
+      const { label, name } = measure;
+      const id = `selectedField_${name}`
+      if (id in options) {
+        delete(options[id]);
+      }
+    });
+    vis.trigger('registerOptions', options);
+  }
+
+  // Flip the labels accordingly.
+  if (config.formattingStyle === 'high_to_low') {
+    options.lowColor.label = 'High';
+    options.highColor.label = 'Low';
+  } else {
+    options.lowColor.label = 'Low';
+    options.highColor.label = 'High';
+  }
+  vis.trigger('registerOptions', options);
+};
+
+looker.plugins.visualizations.add({
+  options: options,
 
   create(element) {
     loadStylesheets();
@@ -605,6 +782,28 @@ looker.plugins.visualizations.add({
 
   updateAsync(data, _element, config, queryResponse, _details, done) {
     this.clearErrors();
+    // WIP:
+    // if ('formattingPalette' in config &&
+    //     config.formattingPalette !== 'custom' &&
+    //     !Object.values(defaultColors).includes(config.lowColor)) {
+    //   const lowColor = config.lowColor;
+    //   this.trigger('updateConfig', [{ formattingPalette: 'custom' }]);
+    //   this.trigger('updateConfig', [{ lowColor }]);
+    // }
+
+    // XXX Going to want to call this whenever the colors are manually changed, or maybe you can check if
+    // lowColor midColor high whatever if any of those aren't in a selected list of defaults, then trigger
+    // updateConfig on formattingPalette
+    // I think there needs to be a special onclick handler, rather than the config shit. see which gets
+    // invoked first.
+    // const defaultColors = ['#F36254', '#FCF758', '#4FBC89', '#FFFFFF']
+    // const { lowColor, midColor, highColor } = options;
+    // Strategy for setting 'custom' automatically when colors are played with.
+    // const currentColors = [lowColor, midColor, highColor].filter(color => !!color);
+    // const uniqColors = currentColors.filter(x => !defaultColors.includes(x));
+    // if (!_.isEmpty(uniqColors)) {
+    //   vis.trigger('updateConfig', [{ formattingPalette: 'custom' }]);
+    // }
 
     globalConfig.setQueryResponse(queryResponse);
 
@@ -644,6 +843,7 @@ looker.plugins.visualizations.add({
     globalConfig.setConfig(config);
     gridOptions.api.setRowData(this.agData.formattedData);
 
+    modifyOptions(this, config);
     autoSize();
     done();
   },
