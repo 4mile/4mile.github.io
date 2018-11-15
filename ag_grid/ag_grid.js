@@ -361,7 +361,8 @@ const cellStyle = cell => {
   }
   const scale = chroma.scale(colorScheme.filter(color => !!color));
   // Normalize number between 0 and 1
-  let normalizedValue = normalize(Number(cell.value), range);
+  // if (cell.value !== undefined) { debugger }
+  let normalizedValue = normalize(numeral(cell.value).value(), range);
   if (isNaN(normalizedValue)) {
     if (!config.includeNullValuesAsZero) { return styling; }
     normalizedValue = 0;
@@ -388,7 +389,7 @@ const calculateRange = (data, queryResponse, config) => {
 
   data.forEach(datum => {
     keys.forEach(key => {
-      const val = _.isUndefined(datum[key]) ? 0 : datum[key];
+      const val = _.isUndefined(datum[key].value) ? 0 : datum[key].value;
       if (!isNaN(val)) {
         const num = Number(val);
         if (!('min' in range) || num < range.min) {
@@ -429,6 +430,7 @@ const basicDimensions = (dimensions, config) => {
     const rowGroup = !(dimension.name === finalDimension.name);
     return {
       cellRenderer: baseCellRenderer,
+      cellStyle,
       colType: 'default',
       field: dimension.name,
       headerName: headerName(dimension, config),
@@ -436,7 +438,6 @@ const basicDimensions = (dimensions, config) => {
       lookup: dimension.name,
       rowGroup: rowGroup,
       suppressMenu: true,
-      cellStyle: cellStyle,
     };
   });
 
@@ -453,13 +454,13 @@ const addTableCalculations = (dimensions, tableCalcs) => {
   let dimension;
   tableCalcs.forEach(calc => {
     dimension = {
+      cellStyle,
       colType: 'table_calculation',
       field: calc.name,
       headerName: calc.label,
       lookup: calc.name,
       rowGroup: false,
       suppressMenu: true,
-      cellStyle: cellStyle,
     };
     dimensions.push(dimension);
   });
@@ -470,6 +471,7 @@ const addMeasures = (dimensions, measures, config) => {
   measures.forEach(measure => {
     const { name } = measure;
     dimension = {
+      cellStyle,
       colType: 'measure',
       field: name,
       headerName: headerName(measure, config),
@@ -477,7 +479,6 @@ const addMeasures = (dimensions, measures, config) => {
       measure: name,
       rowGroup: false,
       suppressMenu: true,
-      cellStyle: cellStyle,
     };
     dimensions.push(dimension);
   });
@@ -506,6 +507,7 @@ const addPivots = (dimensions, config) => {
     measureLike.forEach(measure => {
       const { name } = measure;
       dimension = {
+        cellStyle,
         colType: 'pivotChild',
         columnGroupShow: 'open',
         field: `${key}_${name}`,
@@ -514,7 +516,6 @@ const addPivots = (dimensions, config) => {
         pivotKey: key,
         rowGroup: false,
         suppressMenu: true,
-        cellStyle: cellStyle,
       };
       outerDimension.children.push(dimension);
     });
@@ -960,7 +961,7 @@ looker.plugins.visualizations.add({
     this.agData = new AgData(data, formattedColumns);
     globalConfig.agData = this.agData;
     // Gets a range for use by conditional formatting.
-    const range = calculateRange(this.agData.formattedData, queryResponse, config);
+    const range = calculateRange(data, queryResponse, config);
     globalConfig.range = range;
     globalConfig.config = config;
     gridOptions.api.setRowData(this.agData.formattedData);
