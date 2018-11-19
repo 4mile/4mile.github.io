@@ -1054,7 +1054,7 @@ const setupConditionalFormatting = (vis, config, measureLike) => {
   if ('formattingPalette' in config) {
     const showColors = config.formattingPalette === 'custom';
     options.lowColor.hidden = !showColors;
-    options.midColor.hidden = !showColors;
+    if ('midColor' in options) { options.midColor.hidden = !showColors; }
     options.highColor.hidden = !showColors;
   }
 };
