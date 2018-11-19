@@ -497,8 +497,9 @@ const updateRange = (range, key, num) => {
 
 const setNonPivotRange = (datum, key, range) => {
   const { config } = globalConfig;
+  if (config === undefined || 'includeNullValuesAsZero' in config) { return; }
   const val = datum[key].value;
-  if ('includeNullValuesAsZero' in config && !config.includeNullValuesAsZero && _.isNull(val)) { return; }
+  if (!config.includeNullValuesAsZero && _.isNull(val)) { return; }
   if (!isNaN(val)) {
     const num = Number(val);
     updateRange(range, key, num);
@@ -509,6 +510,7 @@ const setNonPivotRange = (datum, key, range) => {
 // Global can possibly be shared somehow, if we can extract the value and pass into a fn.
 const setPivotRange = (datum, key, range) => {
   const { config } = globalConfig;
+  if (config === undefined || 'includeNullValuesAsZero' in config) { return; }
   range['pivotKeys'] = [];
   _.forEach(datum[key], (v, pivot) => {
     // XXX I'd prefer this to be ':', can it be standardized like this elsewhere?
@@ -516,7 +518,7 @@ const setPivotRange = (datum, key, range) => {
     range['pivotKeys'].push(pivotKey);
 
     const val = v.value;
-    if ('includeNullValuesAsZero' in config && !config.includeNullValuesAsZero && _.isNull(val)) { return; }
+    if (!config.includeNullValuesAsZero && _.isNull(val)) { return; }
     if (!isNaN(val)) {
       const num = Number(val);
       updateRange(range, pivotKey, num);
