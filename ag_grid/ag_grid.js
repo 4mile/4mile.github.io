@@ -1095,6 +1095,7 @@ const refreshColumns = changed => {
       const agColumn = new AgColumn(gridOptions.context.globalConfig.config);
       gridOptions.api.setColumnDefs(agColumn.formattedColumns);
       addPivotHeader();
+      adjustFonts();
       autoSize();
       gridOptions.context.refreshed = true;
     }
