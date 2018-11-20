@@ -1,8 +1,24 @@
 /* eslint-disable arrow-body-style, no-undef, no-use-before-define */
 
-const setColumns = () => {
-  gridOptions.api.setColumnDefs(globalConfig.formattedColumns);
-};
+class GlobalConfig {
+  constructor() {
+    this.selectedFields = [];
+  }
+
+  addSelectedField(field) {
+    if (this.selectedFields.indexOf(field) === -1) {
+      this.selectedFields.push(field);
+    }
+  }
+
+  removeSelectedField(field) {
+    this.selectedFields = this.selectedFields.filter(selectedField => {
+      return selectedField !== field;
+    });
+  }
+}
+
+const globalConfig = new GlobalConfig();
 
 const adjustFonts = () => {
   const { config } = globalConfig;
@@ -101,26 +117,6 @@ class AgData {
     });
   }
 }
-
-class GlobalConfig {
-  constructor() {
-    this.selectedFields = [];
-  }
-
-  addSelectedField(field) {
-    if (this.selectedFields.indexOf(field) === -1) {
-      this.selectedFields.push(field);
-    }
-  }
-
-  removeSelectedField(field) {
-    this.selectedFields = this.selectedFields.filter(selectedField => {
-      return selectedField !== field;
-    });
-  }
-}
-
-const globalConfig = new GlobalConfig();
 
 //
 // Display-related constants and functions
@@ -324,21 +320,55 @@ const groupRowAggNodes = nodes => {
     // We want to add subtotal values to the ranges. Note: This isn't ideal/finalized behavior;
     // final behavior would have these values exist within their own range, which will require
     // cellStyle to understand if the cell is a subtotal (I think possible), and then draw from a diff. range.
-    if (!_.isEmpty(queryResponse.fields.pivots)) {
-      range['pivotKeys'] = [];
-    }
     _.forEach(result, (value, key) => {
-      let val = numeral(value).value();
-      if (_.isNull(val) && config.includeNullValuesAsZero) {
-        val = 0;
-      }
-      if (!_.isEmpty(queryResponse.fields.pivots)) {
-        range['pivotKeys'].push(key);
-      }
-      updateRange(range, key, val);
+      const val = numeral(value).value();
+      updateRange(key, value, range);
+      // updateRange(key, value, nodes[0].level, range);
     });
   }
   return result;
+};
+
+// const updateRange = (key, value, level, range) => {
+const updateRange = (key, value, range) => {
+  if (!('min' in range)) { range.min = value; }
+  if (!('max' in range)) { range.max = value; }
+  if (value < range.min) {
+    range.min = value;
+  }
+  if (value > range.max) {
+    range.max = value;
+  }
+  // Per column:
+  if (!(key in range)) {
+    range[key] = { min: value, max: value };
+  }
+  if (value < range[key].min) {
+    range[key].min = value;
+  }
+  if (value > range[key].max) {
+    range[key].max = value;
+  }
+  // Per level:
+  // const lvl = String(level);
+  // if (!(lvl in range)) {
+  //   range[lvl] = { min: value, max: value };
+  // }
+  // if (value < range[lvl]) {
+  //   range[lvl].min = value;
+  // }
+  // if (value > range[lvl]) {
+  //   range[lvl].max = value;
+  // }
+  // if (!(key in range[lvl])) {
+  //   range[lvl][key] = { min: value, max: value };
+  // }
+  // if (value < range[lvl][key].min) {
+  //   range[lvl][key].min = value;
+  // }
+  // if (value > range[lvl][key].max) {
+  //   range[lvl][key].max = value;
+  // }
 };
 
 //
@@ -381,7 +411,7 @@ const headerName = (dimension, config) => {
   return label;
 };
 
-const alignText = (styling, cell, config) => {
+const alignText = (styling, config, cell) => {
   const { measure } = cell.colDef;
   const alignment = `align_${measure}`;
   if (alignment in config) {
@@ -389,7 +419,7 @@ const alignText = (styling, cell, config) => {
   }
 };
 
-const formatText = (styling, cell, config) => {
+const formatText = (styling, config, cell) => {
   const { measure } = cell.colDef;
   const fontFormat = `fontFormat_${measure}`;
   if (fontFormat in config && config[fontFormat] !== 'none') {
@@ -410,16 +440,14 @@ const formatText = (styling, cell, config) => {
   }
 };
 
-const applyConditionalFormatting = (styling, cell, config) => {
+const conditionallyFormat = (styling, config, cell) => {
   const { range } = globalConfig;
   const { field, measure } = cell.colDef;
-  // for pivots, it'll be const { field } = cell.colDef;, can we use for both?
+  if (config.enableConditionalFormatting === undefined || !config.enableConditionalFormatting) { return styling; }
+  if (config.conditionalFormattingType === 'non_subtotals_only' && cell.node.group === true) { return styling; }
+  if (config.conditionalFormattingType === 'subtotals_only' && cell.node.group === false) { return styling; }
 
-  if (config.enableConditionalFormatting === undefined || !config.enableConditionalFormatting) { return; }
-  if (config.conditionalFormattingType === 'non_subtotals_only' && cell.node.group === true) { return; }
-  if (config.conditionalFormattingType === 'subtotals_only' && cell.node.group === false) { return; }
-
-  if (!(range.keys.includes(measure))) { return; }
+  if (!(range.keys.includes(measure))) { return styling; }
   const { lowColor, midColor, highColor } = config;
   let colorScheme = [lowColor, midColor, highColor];
   if (config.formattingStyle === 'high_to_low') {
@@ -427,13 +455,8 @@ const applyConditionalFormatting = (styling, cell, config) => {
   }
   const scale = chroma.scale(colorScheme.filter(color => !!color));
   let supportedRange = range;
-  // Here's where it changes for pivots.
   if (config.perColumnRange) {
-    if ('pivotKeys' in range) {
-      supportedRange = range[field];
-    } else {
-      supportedRange = range[measure];
-    }
+    supportedRange = range[field];
   }
   // Normalize number between 0 and 1
   const v = numeral(cell.value).value();
@@ -447,16 +470,19 @@ const applyConditionalFormatting = (styling, cell, config) => {
   }
 
   styling['background-color'] = scale(normalizedValue).hex();
-};
+}
 
 // Used to apply conditional formatting to cells, if enabled.
 const cellStyle = cell => {
-  const { config, range } = globalConfig;
+  const { config } = globalConfig;
+  const { measure } = cell.colDef;
 
   const styling = {};
-  alignText(styling, cell, config);
-  formatText(styling, cell, config);
-  applyConditionalFormatting(styling, cell, config);
+
+  alignText(styling, config, cell);
+  formatText(styling, config, cell);
+  conditionallyFormat(styling, config, cell);
+
   return styling;
 };
 
@@ -466,64 +492,30 @@ const normalize = (value, range) => {
   return (value - range.min) / (range.max - range.min);
 };
 
-const updateRange = (range, key, num) => {
-  const { config } = globalConfig;
-  if (_.isNull(num)) {
-    if (config.includeNullValuesAsZero) {
-      num = 0;
-    } else {
-      return;
-    }
-  }
-  // Global
-  if (!('min' in range) || num < range.min) {
-    range.min = num;
-  }
-  if (!('max' in range) || num > range.max) {
-    range.max = num;
-  }
-  // Per field
-  if (!(key in range)) {
-    range[key] = { min: num, max: num };
-  } else {
-    if (num < range[key].min) {
-      range[key].min = num;
-    }
-    if (num > range[key].max) {
-      range[key].max = num;
-    }
-  }
-};
-
 const setNonPivotRange = (datum, key, range) => {
-  const { config } = globalConfig;
-  if (config === undefined || 'includeNullValuesAsZero' in config) { return; }
-  const val = datum[key].value;
-  if (!config.includeNullValuesAsZero && _.isNull(val)) { return; }
-  if (!isNaN(val)) {
-    const num = Number(val);
-    updateRange(range, key, num);
-  }
+  const val = getValue(datum[key].value);
+  if (!_.isNull(val)) { updateRange(key, val, range); }
+  // if (!_.isNull(val)) { updateRange(key, val, -1, range); }
 };
 
-// We are going to need to have a separate key for each pivot:field combo.
-// Global can possibly be shared somehow, if we can extract the value and pass into a fn.
 const setPivotRange = (datum, key, range) => {
-  const { config } = globalConfig;
-  if (config === undefined || 'includeNullValuesAsZero' in config) { return; }
-  range['pivotKeys'] = [];
-  _.forEach(datum[key], (v, pivot) => {
-    // XXX I'd prefer this to be ':', can it be standardized like this elsewhere?
-    const pivotKey = `${pivot}_${key}`;
-    range['pivotKeys'].push(pivotKey);
-
-    const val = v.value;
-    if (!config.includeNullValuesAsZero && _.isNull(val)) { return; }
-    if (!isNaN(val)) {
-      const num = Number(val);
-      updateRange(range, pivotKey, num);
-    }
+  // datum[key] is a hash with all the pivot keys.
+  const pivotKeys = Object.keys(datum[key]);
+  _.forEach(pivotKeys, pk => {
+    const val = getValue(datum[key][pk].value);
+    if (!_.isNull(val)) { updateRange(`${pk}_${key}`, val, range); }
+    // if (!_.isNull(val)) { updateRange(`${pk}_${key}`, val, -1, range); }
   });
+};
+
+const getValue = val => {
+  const { config } = gridOptions.context.globalConfig;
+  if (!('includeNullValuesAsZero' in config)) { return; }
+  let value = numeral(val).value();
+  if (_.isNull(value) && config.includeNullValuesAsZero) {
+    value = 0;
+  }
+  return value;
 };
 
 // For each column, calculate and store the min/max values for optional conditional formatting.
@@ -702,28 +694,6 @@ const columnResized = e => {
 
 };
 
-const gridOptions = {
-  animateRows: true,
-  autoGroupColumnDef,
-  columnDefs: [],
-  enableFilter: false,
-  enableSorting: false,
-  groupDefaultExpanded: -1, // for dev purposes. 0,
-  groupRowAggNodes,
-  onFirstDataRendered: setColumns,
-  onRowGroupOpened: adjustFonts,
-  rowSelection: 'multiple',
-  suppressAggFuncInHeader: true,
-  suppressFieldDotNotation: true,
-  suppressMovableColumns: true,
-  enableColResize: true,
-  onColumnResized: columnResized,
-  colResizeDefault: 'shift',
-};
-
-// const hideRange = (config, queryResponse) => {
-//   return true;//config.enableConditionalFormatting === false;
-// };
 
 const options = {
   // FORMATTING
@@ -742,6 +712,14 @@ const options = {
     section: 'Formatting',
     type: 'boolean',
   },
+  // rangesByLevel: {
+  //   default: false,
+  //   hidden: true,
+  //   label: 'Ranges by level',
+  //   order: 3,
+  //   section: 'Formatting',
+  //   type: 'boolean',
+  // },
   conditionalFormattingType: {
     default: 'all',
     display: 'select',
@@ -793,7 +771,6 @@ const options = {
   lowColor: {
     display: 'color',
     display_size: 'third',
-    hidden: true,
     label: 'Low', // These values updated in updateAsync
     order: 7,
     section: 'Formatting',
@@ -802,7 +779,6 @@ const options = {
   midColor: {
     display: 'color',
     display_size: 'third',
-    hidden: true,
     label: 'Middle',
     order: 8,
     section: 'Formatting',
@@ -811,7 +787,6 @@ const options = {
   highColor: {
     display: 'color',
     display_size: 'third',
-    hidden: true,
     label: 'High',
     order: 9,
     section: 'Formatting',
@@ -913,7 +888,6 @@ const addOptionCustomLabels = fields => {
       section: 'Series',
       type: 'string',
     };
-    if (validChanges.indexOf(cl) === -1) { validChanges.push(cl); }
   });
 };
 
@@ -1051,6 +1025,7 @@ const setupConditionalFormatting = (vis, config, measureLike) => {
 
   if ('enableConditionalFormatting' in config) {
     options.perColumnRange.hidden = !config.enableConditionalFormatting;
+    // options.rangesByLevel.hidden = !config.enableConditionalFormatting;
   }
 
   if ('formattingPalette' in config) {
@@ -1081,37 +1056,74 @@ const modifyOptions = (vis, config) => {
 
 
 // TODO: Hack that only works for 1 pivot.
-const addPivotHeader = (queryResponse, config) => {
+const addPivotHeader = () => {
+  const { globalConfig } = gridOptions.context;
+  if (!globalConfig.hasPivot) { return; }
+  const { config, queryResponse } = globalConfig;
+  if (!('showRowNumbers' in config)) { return; }
   const name = headerName(queryResponse.fields.pivots[0], config);
-  const titleDiv = document.getElementsByClassName('ag-header-group-cell-no-group')[0];
-  if (titleDiv !== undefined) {
-    titleDiv.innerHTML = `${name}:`;
-    titleDiv.style.textAlign = 'right';
+  const labelDivs = document.getElementsByClassName('ag-header-group-cell-label');
+  let titleDiv;
+  if (config.showRowNumbers) {
+    titleDiv = labelDivs[1];
+  } else {
+    titleDiv = labelDivs[0];
   }
+  titleDiv.innerText = `${name}:`;
+  titleDiv.style.float = 'right';
 };
 
-const validChanges = ['showRowNumbers', 'showFullFieldName', 'truncateColumnNames'];
+const setColumns = () => {
+  gridOptions.api.setColumnDefs(globalConfig.formattedColumns);
+};
+
 // Certain config changes require a refresh of the column headers - we only
 // will refresh them if needed.
 // There is a bug here where we actually need to call this twice to get subtotals
 // displaying properly. I assume there is a specific event I can plug into to do
 // away with this timeout, but haven't found it yet. Anything less than 300 doesn't work.
+// TODO: In the future, to avoid this gross rerender unless totally necessary, we could
+// revert to the 'only do this if details.changed is appropriate', or also if we notice
+// that a column has either been added or removed.
+// Note: Still broken if add column and just hit run.
 const refreshColumns = changed => {
-  const { config } = changed;
-  if (config === undefined) { return }
-  let needsChange = false;
-  _.forEach(validChanges, change => {
-    if (config.indexOf(change) !== -1) {
-      needsChange = true;
-    }
-  });
-  if (needsChange) {
-    setColumns();
-    setTimeout(function() {
-      setColumns();
+  gridOptions.api.setColumnDefs(globalConfig.formattedColumns);
+  gridOptions.context.refreshed = !gridOptions.context.refreshed;
+  // I hate this so much, but it seems to work. Should be enough to get through the demo.
+  setTimeout(() => {
+    if (gridOptions.context.refreshed === false) {
+      const agColumn = new AgColumn(gridOptions.context.globalConfig.config);
+      gridOptions.api.setColumnDefs(agColumn.formattedColumns);
+      addPivotHeader();
       autoSize();
-    }, 500);
-  }
+      gridOptions.context.refreshed = true;
+    }
+  }, 1);
+};
+
+const gridOptions = {
+  context: {
+    globalConfig,
+    refreshed: false,
+  },
+  debug: true, // for dev purposes.
+  refreshed: false,
+  animateRows: true,
+  autoGroupColumnDef,
+  columnDefs: [],
+  enableFilter: false,
+  enableSorting: false,
+  groupDefaultExpanded: -1, // for dev purposes. 0,
+  groupRowAggNodes,
+  onFirstDataRendered: setColumns,
+  onRowGroupOpened: adjustFonts,
+  rowSelection: 'multiple',
+  suppressAggFuncInHeader: true,
+  suppressFieldDotNotation: true,
+  suppressMovableColumns: true,
+  enableColResize: true,
+  onColumnResized: columnResized,
+  colResizeDefault: 'shift',
 };
 
 looker.plugins.visualizations.add({
@@ -1185,7 +1197,7 @@ looker.plugins.visualizations.add({
 
     adjustFonts();
 
-    if (globalConfig.hasPivot) { addPivotHeader(queryResponse, config); }
+    addPivotHeader();
 
     autoSize();
     // Not sure why this is here, doesn't seem to have an effect.
