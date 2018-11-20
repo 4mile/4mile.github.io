@@ -322,8 +322,8 @@ const groupRowAggNodes = nodes => {
     // cellStyle to understand if the cell is a subtotal (I think possible), and then draw from a diff. range.
     _.forEach(result, (value, key) => {
       const val = numeral(value).value();
-      updateRange(key, value, range);
-      // updateRange(key, value, nodes[0].level, range);
+      updateRange(key, val, range);
+      // updateRange(key, val, nodes[0].level, range);
     });
   }
   return result;
@@ -510,6 +510,7 @@ const setPivotRange = (datum, key, range) => {
 
 const getValue = val => {
   const { config } = gridOptions.context.globalConfig;
+  if (_.isUndefined(config)) { return; }
   if (!('includeNullValuesAsZero' in config)) { return; }
   let value = numeral(val).value();
   if (_.isNull(value) && config.includeNullValuesAsZero) {
@@ -1069,8 +1070,10 @@ const addPivotHeader = () => {
   } else {
     titleDiv = labelDivs[0];
   }
-  titleDiv.innerText = `${name}:`;
-  titleDiv.style.float = 'right';
+  if (!_.isUndefined(titleDiv)) {
+    titleDiv.innerText = `${name}:`;
+    titleDiv.style.float = 'right';
+  }
 };
 
 const setColumns = () => {
