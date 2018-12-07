@@ -201,7 +201,9 @@ const addCSS = link => {
 // Load all ag-grid default style themes.
 const loadStylesheets = () => {
   addCSS('https://unpkg.com/ag-grid-community/dist/styles/ag-grid.css');
-  addCSS('https://4mile.github.io/ag_grid/ag-theme-looker.css');
+  // addCSS('https://4mile.github.io/ag_grid/ag-theme-looker.css');
+  // XXX For development only:
+  addCSS('https://localhost:4443/ag-theme-looker.css');
   themes.forEach(theme => {
     if (theme !== 'ag-theme-looker') {
       addCSS(`https://unpkg.com/ag-grid-community/dist/styles/${theme[Object.keys(theme)]}.css`);
@@ -596,7 +598,8 @@ const addRowNumbers = basics => {
     colType: 'row',
     headerName: '',
     lockPosition: true,
-    maxWidth: '*',
+    // Arbitrary
+    width: 50,
     rowGroup: false,
     suppressMenu: true,
     suppressResize: true,
@@ -881,7 +884,7 @@ const options = {
     type: 'number',
   },
   fontFamily: {
-    default: 'Helvetica',
+    default: 'Looker',
     display: 'select',
     display_size: 'two-thirds',
     label: 'Font Family',
@@ -889,6 +892,7 @@ const options = {
     section: 'Config',
     type: 'string',
     values: [
+      { 'Looker': 'Open Sans, Helvetica, Arial, sans-serif' },
       { 'Helvetica': 'BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif' },
       { 'Times New Roman': 'Times, "Times New Roman", serif' },
     ],
@@ -1149,24 +1153,37 @@ const setColumns = () => {
 // Certain config changes require a refresh of the column headers - we only
 // will refresh them if needed.
 const refreshColumns = details => {
-  const values = document.getElementsByClassName('ag-cell-value');
   // If something on the grid has changed, we want to refresh it.
   if (details.changed) {
     const agColumn = new AgColumn(globalConfig.config);
     gridOptions.api.setColumnDefs(agColumn.formattedColumns);
-    refreshed = !refreshed;
   }
   // However, if we determine that the subtotaling isn't showing, we also want to redraw.
-  if (values[1] && values[1].childElementCount === 0) {
+  const values = document.getElementsByClassName('ag-cell-value');
+  if (values && _.some(values, value => value.childElementCount === 0)) {
     const agColumn = new AgColumn(globalConfig.config);
     gridOptions.api.setColumnDefs(agColumn.formattedColumns);
-    refreshed = !refreshed;
   }
+};
+
+const setLookerClasses = () => {
+  // Adding a special color to [odd] row numbers and group cells.
+  const groupCells = document.querySelectorAll(".ag-cell[col-id='ag-Grid-AutoColumn']");
+  _.forEach(groupCells, gc => gc.classList.add('groupCell'));
+  // For some reason the id here changes whether or not the config pane is open.
+  // It's '0' when it's closed, '1' when open. Adding a class to each here.
+  let rowNumCells = document.querySelectorAll(".ag-cell[col-id='1']");
+  _.forEach(rowNumCells, rnc => rnc.classList.add('groupCell'));
+  rowNumCells = document.querySelectorAll(".ag-cell[col-id='0']");
+  _.forEach(rowNumCells, rnc => rnc.classList.add('groupCell'));
+  // Also adding a color to said headers.
+  const firstHeader = document.getElementsByClassName('ag-header-cell')[0];
+  const { config } = gridOptions.context.globalConfig;
+  config.showRowNumbers ? firstHeader.classList.add('rowNumber') : firstHeader.classList.remove('rowNumber');
 };
 
 const gridOptions = {
   context: {
-    refreshed: false,
     globalConfig: new GlobalConfig,
     widths: {},
   },
@@ -1190,7 +1207,6 @@ const gridOptions = {
 };
 
 const { globalConfig } = gridOptions.context;
-let { refreshed } = gridOptions.context;
 
 looker.plugins.visualizations.add({
   options: options,
@@ -1275,6 +1291,7 @@ looker.plugins.visualizations.add({
     if (details.changed) {
       autoSize();
     }
+    setLookerClasses();
     done();
   },
 });
