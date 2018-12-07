@@ -883,12 +883,12 @@
   font-weight: 700;
 }
 
-.ag-theme-looker .ag-header-row {
+/* .ag-theme-looker .ag-header-row {
   border-style: solid;
   border-color: #BDC3C7;
   box-sizing: border-box;
   border-width: 0 0 1px;
-}
+} */
 
 .ag-theme-looker .ag-row {
   border-style: solid;
@@ -2754,7 +2754,7 @@
 }
 
 .ag-theme-looker .ag-row {
-  border-color: #d9dcde;
+  border-color: transparent;
 }
 
 .ag-theme-looker .ag-row-selected {
@@ -2972,4 +2972,12 @@
 /* Overrides background color for all measures (after grouping) */
 .ag-theme-looker .ag-header-cell:not(.rowNumber) + .ag-header-cell {
   background-color: #e4d0bd;
+}
+
+.ag-theme-looker .ag-cell {
+  border-left: 1px solid rgba(0,0,0,.1);
+}
+
+.ag-theme-looker .ag-cell:first-child {
+  border-left: 0px;
 }
