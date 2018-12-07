@@ -133,7 +133,6 @@ const adjustFonts = () => {
 //
 
 const autoSize = () => {
-  debugger
   gridOptions.columnApi.autoSizeAllColumns();
   const { gridPanel } = gridOptions.api;
   if (gridPanel.eBodyContainer.scrollWidth < gridPanel.eBody.scrollWidth) {
