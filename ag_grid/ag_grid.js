@@ -201,9 +201,9 @@ const addCSS = link => {
 // Load all ag-grid default style themes.
 const loadStylesheets = () => {
   addCSS('https://unpkg.com/ag-grid-community/dist/styles/ag-grid.css');
-  // addCSS('https://4mile.github.io/ag_grid/ag-theme-looker.css');
+  addCSS('https://4mile.github.io/ag_grid/ag-theme-looker.css');
   // XXX For development only:
-  addCSS('https://localhost:4443/ag-theme-looker.css');
+  // addCSS('https://localhost:4443/ag-theme-looker.css');
   themes.forEach(theme => {
     const themeName = theme[Object.keys(theme)];
     if (themeName !== 'ag-theme-looker') {
