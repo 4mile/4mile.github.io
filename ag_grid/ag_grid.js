@@ -44,9 +44,26 @@ class AgColumn {
         addTableCalculations(dimensions, tableCalcs);
       }
     }
+    const { config } = gridOptions.context.globalConfig;
+    if (!config.autoSizeEnabled) {
+      addWidths(dimensions);
+    }
     this.formattedColumns = dimensions;
   }
 }
+
+const addWidths = dimensions => {
+  const { widths } = gridOptions.context;
+  _.forEach(dimensions, dim => {
+    const width = widths[dim.field];
+    if (!_.isUndefined(width)) {
+      dim.width = width;
+    }
+    if (widths['Group']) {
+      autoGroupColumnDef.width = widths['Group'];
+    }
+  });
+};
 
 class AgData {
   constructor(data, formattedColumns) {
@@ -104,7 +121,7 @@ class PivotHeader {
 }
 
 const adjustFonts = () => {
-  const { config } = globalConfig;
+  const { config } = gridOptions.context.globalConfig;
 
   if ('fontFamily' in config) {
     const mainDiv = document.getElementById('ag-grid-vis');
@@ -133,10 +150,13 @@ const adjustFonts = () => {
 //
 
 const autoSize = () => {
-  gridOptions.columnApi.autoSizeAllColumns();
-  const { gridPanel } = gridOptions.api;
-  if (gridPanel.eBodyContainer.scrollWidth < gridPanel.eBody.scrollWidth) {
-    gridOptions.api.sizeColumnsToFit();
+  const { config } = gridOptions.context.globalConfig;
+  if (config.autoSizeEnabled) {
+    gridOptions.columnApi.autoSizeAllColumns();
+    const { gridPanel } = gridOptions.api;
+    if (gridPanel.eBodyContainer.scrollWidth < gridPanel.eBody.scrollWidth) {
+      gridOptions.api.sizeColumnsToFit();
+    }
   }
 };
 
@@ -504,7 +524,7 @@ const conditionallyFormat = (styling, config, cell) => {
 
 // Used to apply conditional formatting to cells, if enabled.
 const cellStyle = cell => {
-  const { config } = globalConfig;
+  const { config } = gridOptions.context.globalConfig;
   const styling = {};
 
   alignText(styling, config, cell);
@@ -739,7 +759,13 @@ const autoGroupColumnDef = new AutoGroupColumnDef();
 
 // TODO: Persist column movement across refresh.
 const columnResized = e => {
-
+  _.forEach(e.columns, col => {
+    let { field } = col.colDef;
+    if (col.colDef.headerName === 'Group') {
+      field = 'Group';
+    }
+    gridOptions.context.widths[field] = col.actualWidth;
+  });
 };
 
 
@@ -906,6 +932,13 @@ const options = {
     default: false,
     label: 'Show Row Numbers',
     order: 2,
+    section: 'Plot',
+    type: 'boolean',
+  },
+  autoSizeEnabled: {
+    default: true,
+    label: 'Enable Auto Sizing',
+    order: 3,
     section: 'Plot',
     type: 'boolean',
   },
@@ -1098,7 +1131,7 @@ const modifyOptions = (vis, config) => {
 // TODO: Hack that only works for 1 pivot.
 const addPivotHeader = () => {
   if (!globalConfig.hasPivot) { return; }
-  const { config, queryResponse } = globalConfig;
+  const { config, queryResponse } = gridOptions.context.globalConfig;
   if (!('showRowNumbers' in config)) { return; }
   const name = headerName(queryResponse.fields.pivots[0], config);
   const labelDivs = document.getElementsByClassName('ag-header-group-cell-label');
@@ -1135,7 +1168,7 @@ const gridOptions = {
   context: {
     refreshed: false,
     globalConfig: new GlobalConfig,
-    needsAutoSize: true,
+    widths: {},
   },
   // debug: true, // for dev purposes.
   animateRows: true,
@@ -1162,7 +1195,7 @@ let { refreshed } = gridOptions.context;
 looker.plugins.visualizations.add({
   options: options,
 
-  create(element) {
+  create(element, _config) {
     loadStylesheets();
 
     element.innerHTML = `
@@ -1239,11 +1272,9 @@ looker.plugins.visualizations.add({
 
     addPivotHeader();
 
-    if (details.changed || gridOptions.context.needsAutoSize) {
+    if (details.changed) {
       autoSize();
-      gridOptions.context.needsAutoSize = false;
     }
-    // Not sure why this is here, doesn't seem to have an effect.
     done();
   },
 });
