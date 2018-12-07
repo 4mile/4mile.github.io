@@ -201,12 +201,13 @@ const addCSS = link => {
 // Load all ag-grid default style themes.
 const loadStylesheets = () => {
   addCSS('https://unpkg.com/ag-grid-community/dist/styles/ag-grid.css');
-  addCSS('https://4mile.github.io/ag_grid/ag-theme-looker.css');
+  // addCSS('https://4mile.github.io/ag_grid/ag-theme-looker.css');
   // XXX For development only:
-  // addCSS('https://localhost:4443/ag-theme-looker.css');
+  addCSS('https://localhost:4443/ag-theme-looker.css');
   themes.forEach(theme => {
-    if (theme !== 'ag-theme-looker') {
-      addCSS(`https://unpkg.com/ag-grid-community/dist/styles/${theme[Object.keys(theme)]}.css`);
+    const themeName = theme[Object.keys(theme)];
+    if (themeName !== 'ag-theme-looker') {
+      addCSS(`https://unpkg.com/ag-grid-community/dist/styles/${themeName}.css`);
     }
   });
 };
@@ -1182,6 +1183,15 @@ const setLookerClasses = () => {
   config.showRowNumbers ? firstHeader.classList.add('rowNumber') : firstHeader.classList.remove('rowNumber');
 };
 
+const hideOverlay = (vis, element, config) => {
+  if (config.theme) {
+    const style = _.find(document.head.children, c => c.href && c.href.includes(config.theme));
+    if (style.sheet && vis.loadingGrid.parentNode === element) {
+      element.removeChild(vis.loadingGrid);
+    }
+  }
+};
+
 const gridOptions = {
   context: {
     globalConfig: new GlobalConfig,
@@ -1228,8 +1238,19 @@ looker.plugins.visualizations.add({
         .drillable-link:hover {
           text-decoration: underline;
         }
+        .loading {
+          background-color: #FFF;
+          height: 100%;
+          position: absolute;
+          width: 100%;
+          z-index: 1;
+        }
       </style>
     `;
+
+    this.loadingGrid = element.appendChild(document.createElement('div'));
+    this.loadingGrid.id = 'loading';
+    this.loadingGrid.className = 'loading';
 
     // Create an element to contain the grid.
     this.grid = element.appendChild(document.createElement('div'));
@@ -1240,7 +1261,8 @@ looker.plugins.visualizations.add({
     new agGrid.Grid(this.grid, gridOptions); // eslint-disable-line
   },
 
-  updateAsync(data, _element, config, queryResponse, details, done) {
+  updateAsync(data, element, config, queryResponse, details, done) {
+    hideOverlay(this, element, config);
     this.clearErrors();
 
     globalConfig.queryResponse = queryResponse;
