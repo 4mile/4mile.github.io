@@ -1174,9 +1174,9 @@ const setLookerClasses = () => {
   // For some reason the id here changes whether or not the config pane is open.
   // It's '0' when it's closed, '1' when open. Adding a class to each here.
   let rowNumCells = document.querySelectorAll(".ag-cell[col-id='1']");
-  _.forEach(rowNumCells, rnc => rnc.classList.add('groupCell'));
+  _.forEach(rowNumCells, rnc => rnc.classList.add('rowNumber', 'groupCell'));
   rowNumCells = document.querySelectorAll(".ag-cell[col-id='0']");
-  _.forEach(rowNumCells, rnc => rnc.classList.add('groupCell'));
+  _.forEach(rowNumCells, rnc => rnc.classList.add('rowNumber', 'groupCell'));
   // Also adding a color to said headers.
   const firstHeader = document.getElementsByClassName('ag-header-cell')[0];
   const { config } = gridOptions.context.globalConfig;

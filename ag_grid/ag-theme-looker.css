@@ -2,6 +2,7 @@
 /* th.measure background-color: #e4d0bd */
 /* on hover: background-color: #e6e8ec */
 /* odd measure rows (.ag-row-odd) background-color: #f7f2ee */
+/* row number color #c2c2c2 */
 
 .ag-theme-looker {
   background-color: white;
@@ -2736,11 +2737,9 @@
 .ag-theme-looker .ag-header-group-cell::after {
   border-right: 1px solid rgba(189, 195, 199, 0.5);
   content: " ";
-  height: 16px;
-  margin-top: 8px;
+  height: 100%;
   position: absolute;
   right: 0;
-  text-indent: -2000px;
   top: 0;
 }
 
@@ -2974,8 +2973,13 @@
   background-color: #e4d0bd;
 }
 
+.ag-theme-looker .ag-cell.rowNumber {
+  color: #c2c2c2;
+}
+
 .ag-theme-looker .ag-cell {
   border-left: 1px solid rgba(0,0,0,.1);
+  color: dimgray;
 }
 
 .ag-theme-looker .ag-cell:first-child {
