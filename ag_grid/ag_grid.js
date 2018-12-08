@@ -107,8 +107,16 @@ class AgData {
 class PivotHeader {
   init(agParams) {
     this.agParams = agParams;
+    const pivots = this.agParams.displayName.split(', ');
     this.eGui = document.createElement('div');
-    this.eGui.innerHTML = this.agParams.displayName;
+    this.eGui.classList.add('outerPivotHeader');
+    _.forEach(pivots, pivot => {
+      const pivotDiv = document.createElement('div');
+      pivotDiv.classList.add('pivotHeader');
+      pivotDiv.innerHTML = pivot;
+      this.eGui.appendChild(pivotDiv);
+    });
+    // this.eGui.innerHTML = this.agParams.displayName;
   }
 
   getGui() {
@@ -379,14 +387,12 @@ const groupRowAggNodes = nodes => {
     _.forEach(result, (value, key) => {
       const val = numeral(value).value();
       updateRange(key, val, range);
-      // updateRange(key, val, nodes[0].level, range);
     });
   }
 
   return result;
 };
 
-// const updateRange = (key, value, level, range) => {
 const updateRange = (key, value, range) => {
   if (!range) { return; }
   // Global:
@@ -408,26 +414,6 @@ const updateRange = (key, value, range) => {
   if (value > range[key].max) {
     range[key].max = value;
   }
-  // Per level:
-  // const lvl = String(level);
-  // if (!(lvl in range)) {
-  //   range[lvl] = { min: value, max: value };
-  // }
-  // if (value < range[lvl].min) {
-  //   range[lvl].min = value;
-  // }
-  // if (value > range[lvl].min) {
-  //   range[lvl].max = value;
-  // }
-  // if (!(key in range[lvl])) {
-  //   range[lvl][key] = { min: value, max: value };
-  // }
-  // if (value < range[lvl][key].min) {
-  //   range[lvl][key].min = value;
-  // }
-  // if (value > range[lvl][key].max) {
-  //   range[lvl][key].max = value;
-  // }
 };
 
 // Take into account config prefs for truncation and brevity.
@@ -546,7 +532,6 @@ const normalize = (value, range) => {
 const setNonPivotRange = (datum, key, range) => {
   const val = getValue(datum[key].value);
   if (!_.isNull(val)) { updateRange(key, val, range); }
-  // if (!_.isNull(val)) { updateRange(key, val, -1, range); }
 };
 
 const setPivotRange = (datum, key, range) => {
@@ -555,7 +540,6 @@ const setPivotRange = (datum, key, range) => {
   _.forEach(pivotKeys, pk => {
     const val = getValue(datum[key][pk].value);
     if (!_.isNull(val)) { updateRange(`${pk}_${key}`, val, range); }
-    // if (!_.isNull(val)) { updateRange(`${pk}_${key}`, val, -1, range); }
   });
 };
 
@@ -599,7 +583,7 @@ const addRowNumbers = basics => {
     colType: 'row',
     headerName: '',
     lockPosition: true,
-    // Arbitrary
+    // Arbitrary width, doesn't always seem to be respected.
     width: 50,
     rowGroup: false,
     suppressMenu: true,
@@ -689,7 +673,7 @@ const addPivots = (dimensions, config) => {
   let dimension;
   pivots.forEach(pivot => {
     const { key } = pivot;
-    const keys = key.split('|FIELD|').join();
+    const keys = key.split('|FIELD|').join(', ');
 
     const outerDimension = {
       children: [],
@@ -707,6 +691,7 @@ const addPivots = (dimensions, config) => {
         cellStyle,
         cellRenderer: baseCellRenderer,
         colType: 'pivotChild',
+        // colId: measure.category,
         columnGroupShow: 'open',
         field: `${key}_${name}`,
         headerName: headerName(measure, config),
@@ -737,7 +722,7 @@ const displayData = cell => {
     formattedCell = `<a class='drillable-link' href="#" onclick="drillingCallback(event); return false;" ${dataset}>${cell.value}</a>`;
   } else if (cell.html) {
     // TODO: This seems to be a diff func than table. OK?
-    formattedCell = LookerCharts.Utils.htmlForCell(cell);
+    formattedCell = LookerCharts.Utils.htmlForCell(cell).replace('<a ', '<a class="drillable-link" ');
   } else {
     formattedCell = LookerCharts.Utils.textForCell(cell);
   }
@@ -801,8 +786,6 @@ const options = {
       { 'All': 'all' },
       { 'Subtotals only': 'subtotals_only' },
       { 'Non-subtotals only': 'non_subtotals_only' },
-      // TODO
-      // { 'Individual aggregation': 'indv_aggregation' },
     ],
   },
   includeNullValuesAsZero: {
@@ -885,7 +868,7 @@ const options = {
     type: 'number',
   },
   fontFamily: {
-    default: 'Looker',
+    default: 'Open Sans, Helvetica, Arial, sans-serif',
     display: 'select',
     display_size: 'two-thirds',
     label: 'Font Family',
@@ -978,7 +961,7 @@ const addOptionAlignments = fields => {
     options[alignment] = {
       default: 'left',
       display: 'select',
-      label: `text-align: ${label}`,
+      label: `Text-align: ${label}`,
       section: 'Config',
       type: 'string',
       values: [
@@ -1138,12 +1121,20 @@ const addPivotHeader = () => {
   if (!globalConfig.hasPivot) { return; }
   const { config, queryResponse } = gridOptions.context.globalConfig;
   if (!('showRowNumbers' in config)) { return; }
-  const name = headerName(queryResponse.fields.pivots[0], config);
+  const pivots = _.map(queryResponse.fields.pivots, pivot => headerName(pivot, config));
   const labelDivs = document.getElementsByClassName('ag-header-group-cell-label');
   const titleDiv = labelDivs[labelDivs.length - 1];
+  titleDiv.classList.add('pivotHeaderNameContainer');
   if (!_.isUndefined(titleDiv)) {
-    titleDiv.innerText = `${name}:`;
-    titleDiv.style.float = 'right';
+    _.forEach(pivots, pivot => {
+      const pivotDiv = document.createElement('div');
+      pivotDiv.innerHTML = `${pivot}:`;
+      pivotDiv.classList.add('pivotHeaderName');
+      pivotDiv.style.float = 'right';
+      titleDiv.appendChild(pivotDiv);
+    });
+    // titleDiv.innerText = `${name}:`;
+    // titleDiv.style.float = 'right';
   }
 };
 
@@ -1180,7 +1171,24 @@ const setLookerClasses = () => {
   // Also adding a color to said headers.
   const firstHeader = document.getElementsByClassName('ag-header-cell')[0];
   const { config } = gridOptions.context.globalConfig;
-  config.showRowNumbers ? firstHeader.classList.add('rowNumber') : firstHeader.classList.remove('rowNumber');
+  if (firstHeader) {
+    config.showRowNumbers ? firstHeader.classList.add('rowNumber') : firstHeader.classList.remove('rowNumber');
+  }
+
+  // Pivot stuff
+  const pivotHeaders = document.getElementsByClassName('pivotHeader');
+  if (pivotHeaders) {
+    const parentRow = pivotHeaders[0].parentNode.parentNode.parentNode;
+    parentRow.classList.add('pivotHeaderRow');
+
+    // Set height according to how many pivots are present:
+    const numPivots = globalConfig.queryResponse.fields.pivots.length;
+    // XXX Magic number corresponding to .ag-header-group-cell
+    gridOptions.api.setGroupHeaderHeight(26 * numPivots);
+  }
+
+  // const headers = document.getElementsByClassName('ag-header-cell');
+  // console.log(_.map(headers, h=>h.innerText))
 };
 
 const hideOverlay = (vis, element, config) => {
