@@ -234,7 +234,7 @@ const drillingCallback = event => { // eslint-disable-line
 const baseCellRenderer = obj => obj.value;
 
 // Looker's table is 1-indexed.
-const rowIndexRenderer = obj => obj.rowIndex + 1;
+// const rowIndexRenderer = obj => obj.rowIndex + 1;
 
 //
 // User-defined aggregation functions
@@ -583,20 +583,23 @@ const calculateRange = (data, queryResponse, config) => {
   return range;
 };
 
+// https://next.plnkr.co/edit/7WDkMHBUMsvTXGmGnhmG?p=preview&preview
 const addRowNumbers = basics => {
   basics.unshift({
     cellClass: ['rowNumber', 'groupCell'],
-    cellRenderer: rowIndexRenderer,
     colType: 'row',
-    headerName: '',
     headerClass: 'rowNumberHeader',
+    headerName: '',
     lockPosition: true,
-    // Arbitrary width, doesn't always seem to be respected.
-    width: 50,
     rowGroup: false,
     suppressMenu: true,
+    suppressNavigable: true,
     suppressResize: true,
     suppressSizeToFit: true,
+    suppressSorting: true,
+    valueGetter: 'node.rowIndex + 1',
+    // Arbitrary width, doesn't always seem to be respected.
+    width: 50,
   });
 };
 
@@ -1257,17 +1260,18 @@ const setSorts = config => {
 // XXX Maybe I have some dummy value in the options so that if it _really_ is a sortChanged to clear all,
 // it somehow still has that one and isn't empty?
 const sortChanged = e => {
-  const { vis, config } = gridOptions.context.globalConfig;
-  const sortModel = gridOptions.api.getSortModel();
-  if (_.isEmpty(sortModel)) { return; }
-  if (config && `sort_${sortModel[0].colId}` in config) {
-    _.forEach(sortModel, sm => {
-      const key = `sort_${sm.colId}`;
-      const updatedConfig = {};
-      updatedConfig[key] = sm.sort;
-      vis.trigger('updateConfig', [updatedConfig]);
-    });
-  }
+  gridOptions.api.refreshCells();
+  // const { vis, config } = gridOptions.context.globalConfig;
+  // const sortModel = gridOptions.api.getSortModel();
+  // if (_.isEmpty(sortModel)) { return; }
+  // if (config && `sort_${sortModel[0].colId}` in config) {
+  //   _.forEach(sortModel, sm => {
+  //     const key = `sort_${sm.colId}`;
+  //     const updatedConfig = {};
+  //     updatedConfig[key] = sm.sort;
+  //     vis.trigger('updateConfig', [updatedConfig]);
+  //   });
+  // }
 };
 
 const gridOptions = {
