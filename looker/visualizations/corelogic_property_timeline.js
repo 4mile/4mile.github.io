@@ -21,17 +21,25 @@
         return a[columns.event_date] - b[columns.event_date]
     }
 
+    // shim for html hovers, don't ship with this
+    function DEVconvertToHtml(s) {
+        if (! s) return ''
+        const lines = s.split('\n')
+        lines.push('<a href="https://example.com" target="_blank">https://example.com</a>')        return `<p>${lines.join('</p><p>')}</p>`
+    }
+
     // looker massager
     function massageData(input_data) {
         log('input_data', input_data)
         const events = (
             input_data
-                .map(row => {
+                .map((row, i) => {
                     const mapped = {}
                     Object.keys(row).forEach(key => {
                         mapped[key] = row[key].value
                     })
                     mapped[columns.event_date] = convertDateStringToDate(mapped[columns.event_date])
+                    if (i > 0) mapped[columns.event_hover] = DEVconvertToHtml(mapped[columns.event_hover])
                     return mapped
                 })
         )
@@ -86,6 +94,7 @@
         return `${n}%`
     }
 
+    // eslint-disable-next-line no-unused-vars
     function prettyDate(date) {
         const year = date.getFullYear()
         const month = doubleDigit(date.getMonth() + 1)
@@ -93,12 +102,9 @@
         return `${year}-${month}-${day}`
     }
 
+    // eslint-disable-next-line no-unused-vars
     function getTooltip(d) {
-        return (
-            [prettyDate(d[columns.event_date]), d[columns.event_hover]]
-                .filter(n => !! n)
-                .join('\n')
-        )
+        return d[columns.event_hover]
     }
 
     const chart_types = [
@@ -172,12 +178,14 @@
                     font-size: 12px;
                     color: #ccc;
                     background-color: #252827;
-                    display: flex;
-                    flex-direction: row;
-                    flex-wrap: nowrap;
                     width: 100%;
                     overflow: hidden;
+                }
+
+                .pane {
+                    overflow-x: scroll;
                     position: relative;
+                    padding-left: 150px;
                 }
 
                 .chart-nav {
@@ -242,16 +250,18 @@
                 }
 
                 .labels {
+                    position: fixed;
+                    left: 0;
+                    top: 0;
+                    width: 150px;
                     box-sizing: border-box;
                     padding-top: ${header_height}px;
-                    width: 150px;
-                    flex-shrink: 0;
 
                     display: flex;
                     flex-direction: column;
                     text-align: right;
                     padding-right: 20px;
-                    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+                    background-color: #252827;
                 }
                 .labels .label {
                     font-size: 16px;
@@ -260,8 +270,9 @@
                     display: flex;
                     flex-direction: column;
                     justify-content: flex-end;
-                    padding-bottom: 5px;
+                    padding-bottom: 0px;
                 }
+
                 .labels .loan {
                     height: ${loan_height}px;
                 }
@@ -273,19 +284,16 @@
                 }
 
                 .legend {
+                    position: fixed;
+                    right: 0;
+                    top: 0;
                     width: 50px;
-                    flex-shrink: 0;
-                    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+                    box-sizing: border-box;
                 }
 
                 svg.legend-labels {
                     fill: #ccc;
                     padding-top: ${header_height + loan_height}px;
-                }
-
-                .pane {
-                    flex-shrink: 1;
-                    overflow-x: scroll;
                 }
 
                 svg.canvas {
@@ -359,6 +367,24 @@
                 .owner-start-marker {
                     fill: rgba(255, 255, 255, 0.02);
                 }
+                .tip {
+                    position: absolute;
+                    box-sizing: border-box;
+                    padding: 5px 15px;
+                    background-color: white;
+                    opacity: 0;
+                    z-index: -1;
+                    color: #333;
+                    border-radius: 5px;
+                    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+                }
+                .tip.active {
+                    opacity: 1;
+                    z-index: 1;
+                }
+                .tip p {
+                    margin: 10px 0;
+                }
 
             `
         },
@@ -371,15 +397,22 @@
             document.head.appendChild(style)
             vis.updateStyles(style, settings)
 
+            const pane = document.createElement('div')
+            pane.classList.add('pane')
+            element.appendChild(pane)
+
             const labels = document.createElement('div')
             labels.classList.add('labels')
-            element.appendChild(labels)
+            pane.appendChild(labels)
 
             function addLabel(label, className) {
                 const node = document.createElement('div')
-                node.innerText = label
+                const text = document.createElement('span')
+                text.innerText = label
+                text.classList.add('label-text')
                 node.classList.add('label')
                 node.classList.add(className)
+                node.appendChild(text)
                 labels.appendChild(node)
             }
 
@@ -387,13 +420,9 @@
             addLabel('Property', 'property')
             addLabel('Ownership', 'owner')
 
-            const pane = document.createElement('div')
-            pane.classList.add('pane')
-            element.appendChild(pane)
-
             const legend = document.createElement('div')
             legend.classList.add('legend')
-            element.appendChild(legend)
+            pane.appendChild(legend)
 
             const canvas = d3
                 .select(pane)
@@ -482,6 +511,16 @@
 
             element.appendChild(nav)
 
+            const tip = document.createElement('div')
+            tip.classList.add('tip')
+            element.appendChild(tip)
+
+            element.addEventListener('click', e => {
+                if (! tip.classList.contains('active')) return
+                if (tip.contains(e.target)) return
+                tip.classList.remove('active')
+            })
+
             vis.ui = {
                 style,
                 pane,
@@ -494,6 +533,7 @@
                 owner_events,
                 footer,
                 legend_labels,
+                tip,
             }
 
             window.vis = vis
@@ -614,8 +654,16 @@
                 })
                 .attr('y', eventScale)
                 .text(d => d[columns.event_value])
-                .append('svg:title')
-                .text(d => getTooltip(d))
+                .on('mouseover', d => {
+                    if (d[columns.event_hover]) {
+                        vis.ui.tip.innerHTML = d[columns.event_hover]
+                        const bounds = vis.ui.tip.getBoundingClientRect()
+                        vis.ui.tip.style.left = `${d3.event.pageX + 10}px`
+                        vis.ui.tip.style.top = `${d3.event.pageY - 10 - bounds.height}px`
+                        vis.ui.tip.classList.add('active')
+                        d3.event.stopPropagation()
+                    }
+                })
         },
 
         getChartDomainEnd(chart_type, n) {
