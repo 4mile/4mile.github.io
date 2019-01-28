@@ -658,9 +658,18 @@
                 .on('mouseover', d => {
                     if (d[columns.event_hover]) {
                         vis.ui.tip.innerHTML = d[columns.event_hover]
-                        const bounds = vis.ui.tip.getBoundingClientRect()
-                        vis.ui.tip.style.left = `${d3.event.pageX + 10}px`
-                        vis.ui.tip.style.top = `${d3.event.pageY - 10 - bounds.height}px`
+                        const tip = vis.ui.tip.getBoundingClientRect()
+                        const pane = vis.ui.pane.getBoundingClientRect()
+                        let left = d3.event.pageX + 10
+                        let top = d3.event.pageY - 10 - tip.height
+                        if (left + tip.width > pane.right - 10) {
+                            left = pane.right - tip.width - 10
+                        }
+                        if (top < 10) {
+                            top = 10
+                        }
+                        vis.ui.tip.style.left = `${left}px`
+                        vis.ui.tip.style.top = `${top}px`
                         vis.ui.tip.classList.add('active')
                         d3.event.stopPropagation()
                     }
