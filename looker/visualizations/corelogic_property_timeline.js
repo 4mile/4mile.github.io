@@ -25,7 +25,8 @@
     function DEVconvertToHtml(s) {
         if (! s) return ''
         const lines = s.split('\n')
-        lines.push('<a href="https://example.com" target="_blank">https://example.com</a>')        return `<p>${lines.join('</p><p>')}</p>`
+        lines.push('<a href="https://example.com" target="_blank">https://example.com</a>')
+        return `<p>${lines.join('</p><p>')}</p>`
     }
 
     // looker massager
