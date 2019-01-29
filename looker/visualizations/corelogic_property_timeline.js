@@ -254,7 +254,7 @@
                     position: fixed;
                     left: 0;
                     top: 0;
-                    width: 150px;
+                    width: 120px;
                     box-sizing: border-box;
                     padding-top: ${header_height}px;
 
@@ -265,13 +265,13 @@
                     background-color: #252827;
                 }
                 .labels .label {
-                    font-size: 16px;
+                    font-size: 14px;
                     font-weight: bold;
                     box-sizing: border-box;
                     display: flex;
                     flex-direction: column;
                     justify-content: flex-end;
-                    padding-bottom: 0px;
+                    padding-bottom: 3px;
                 }
 
                 .labels .loan {
@@ -290,11 +290,13 @@
                     top: 0;
                     width: 50px;
                     box-sizing: border-box;
+                    background-color: #252827;
+                    height: ${header_height + loan_height + property_height + owner_height + footer_height}px;
                 }
 
                 svg.legend-labels {
                     fill: #ccc;
-                    padding-top: ${header_height + loan_height}px;
+                    margin-top: ${header_height + loan_height}px;
                 }
 
                 svg.canvas {
@@ -521,6 +523,9 @@
                 if (tip.contains(e.target)) return
                 tip.classList.remove('active')
             })
+            pane.addEventListener('scroll', vis.hideTip)
+            tip.addEventListener('mouseenter', vis.cancelHideTip)
+            tip.addEventListener('mouseexit', vis.delayHideTip)
 
             vis.ui = {
                 style,
@@ -657,6 +662,7 @@
                 .text(d => d[columns.event_value])
                 .on('mouseover', d => {
                     if (d[columns.event_hover]) {
+                        vis.cancelHideTip()
                         vis.ui.tip.innerHTML = d[columns.event_hover]
                         const tip = vis.ui.tip.getBoundingClientRect()
                         const pane = vis.ui.pane.getBoundingClientRect()
@@ -674,6 +680,18 @@
                         d3.event.stopPropagation()
                     }
                 })
+                .on('mouseout', vis.delayHideTip)
+        },
+
+        hideTip() {
+            clearTimeout(vis.tip_timer)
+            vis.ui.tip.classList.remove('active')
+        },
+        cancelHideTip() {
+            clearTimeout(vis.tip_timer)
+        },
+        delayHideTip() {
+            vis.tip_timer = setTimeout(vis.hideTip, 3000)
         },
 
         getChartDomainEnd(chart_type, n) {
@@ -917,8 +935,7 @@
         },
 
         scrollToEnd(width) {
-            const pane_width = vis.ui.pane.offsetWidth
-            vis.ui.pane.scrollBy(width - pane_width, 0)
+            vis.ui.pane.scrollBy(width, 0)
         },
 
         handleErrors(data, resp) {},
