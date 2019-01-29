@@ -225,7 +225,7 @@ const aggregate = (values, mType, valueFormat) => {
   // https://docs.looker.com/reference/field-reference/measure-type-reference
   if (mType === 'count' || mType === 'count_distinct') {
     agg = countAggFn(values);
-  } else if (mType === 'average' || mType === 'average_distinct') {
+  } else if (mType === 'average' || mType === 'average_distinct' || mType === 'percent_of_total') {
     agg = avgAggFn(values);
   } else if (mType === 'max') {
     agg = maxAggFn(values);
@@ -239,10 +239,24 @@ const aggregate = (values, mType, valueFormat) => {
   if (_.isEmpty(valueFormat)) {
     value = isFloat(agg) ? truncFloat(agg, values) : numeral(agg).format(',');
   } else {
-    // EUR and GBP symbols don't play nice. It fails gracefully though.
-    value = numeral(agg).format(valueFormat);
+    value = formatNumeral(numeral(agg), valueFormat);
   }
   return value;
+};
+
+const formatNumeral = (num, valueFormat) => {
+  let formatted = num.format(valueFormat);
+  // EUR and GBP symbols don't play nice with this JS formatting library.
+  // Below are shims to replace the foreign currency.
+  if (valueFormat.includes('€')) {
+    valueFormat = valueFormat.replace('€', '$').replace('"', '');
+    formatted = num.format(valueFormat).replace('$', '€');
+  }
+  if (valueFormat.includes('£')) {
+    valueFormat = valueFormat.replace('£', '$').replace('"', '');
+    formatted = num.format(valueFormat).replace('$', '£');
+  }
+  return formatted;
 };
 
 const sumAggFn = values => {
