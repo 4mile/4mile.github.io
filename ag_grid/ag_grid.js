@@ -120,8 +120,8 @@ const adjustFonts = () => {
   }
 
   if ('fontSize' in config) {
-    const agRows = document.getElementsByClassName('ag-row');
-    _.forEach(agRows, row => row.style.fontSize = `${config.fontSize}px`);
+    const agCells = document.getElementsByClassName('ag-cell');
+    _.forEach(agCells, cell => cell.style.fontSize = `${config.fontSize}px`);
   }
 
   if ('rowHeight' in config) {
@@ -249,11 +249,11 @@ const formatNumeral = (num, valueFormat) => {
   // EUR and GBP symbols don't play nice with this JS formatting library.
   // Below are shims to replace the foreign currency.
   if (valueFormat.includes('€')) {
-    valueFormat = valueFormat.replace('€', '$').replace('"', '');
+    valueFormat = valueFormat.replace(new RegExp('"', 'g'), '').replace('€', '$');
     formatted = num.format(valueFormat).replace('$', '€');
   }
   if (valueFormat.includes('£')) {
-    valueFormat = valueFormat.replace('£', '$').replace('"', '');
+    valueFormat = valueFormat.replace(new RegExp('"', 'g'), '').replace('£', '$');
     formatted = num.format(valueFormat).replace('$', '£');
   }
   return formatted;
@@ -433,16 +433,16 @@ const headerName = (dimension, config) => {
 };
 
 const alignText = (styling, config, cell) => {
-  const { measure } = cell.colDef;
-  const alignment = `align_${measure}`;
+  const { field } = cell.colDef;
+  const alignment = `align_${field}`;
   if (alignment in config) {
     styling['text-align'] = config[alignment];
   }
 };
 
 const formatText = (styling, config, cell) => {
-  const { measure } = cell.colDef;
-  const fontFormat = `fontFormat_${measure}`;
+  const { field } = cell.colDef;
+  const fontFormat = `fontFormat_${field}`;
   if (fontFormat in config && config[fontFormat] !== 'none') {
     switch (config[fontFormat]) {
       case 'bold':
