@@ -21,17 +21,10 @@
         return a[columns.event_date] - b[columns.event_date]
     }
 
-    // shim for html hovers, don't ship with this
-    function DEVconvertToHtml(s) {
-        if (! s) return ''
-        const lines = s.split('\n')
-        lines.push('<a href="https://example.com" target="_blank">https://example.com</a>')
-        return `<p>${lines.join('</p><p>')}</p>`
-    }
-
     // looker massager
     function massageData(input_data) {
         log('input_data', input_data)
+        window.input_data = input_data
         const events = (
             input_data
                 .map((row, i) => {
@@ -39,8 +32,8 @@
                     Object.keys(row).forEach(key => {
                         mapped[key] = row[key].value
                     })
+                    mapped[columns.event_hover] = row[columns.event_hover].html
                     mapped[columns.event_date] = convertDateStringToDate(mapped[columns.event_date])
-                    if (i > 0) mapped[columns.event_hover] = DEVconvertToHtml(mapped[columns.event_hover])
                     return mapped
                 })
         )
