@@ -21,7 +21,7 @@
         return a[columns.event_date] - b[columns.event_date]
     }
 
-    // looker massager
+    // data massager
     function massageData(input_data) {
         log('input_data', input_data)
         window.input_data = input_data
