@@ -32,7 +32,6 @@
                     Object.keys(row).forEach(key => {
                         mapped[key] = row[key].value
                     })
-                    mapped[columns.event_hover] = row[columns.event_hover].html
                     mapped[columns.event_date] = convertDateStringToDate(mapped[columns.event_date])
                     return mapped
                 })
