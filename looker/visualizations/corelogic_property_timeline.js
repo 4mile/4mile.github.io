@@ -806,6 +806,7 @@
             for (let i = start; i <= end; i++) {
                 year_ticks.push(convertYearStringToDate(i))
             }
+            console.log('year_ticks', year_ticks)
 
             vis.year_width = 140
             // pad by 1/2 year on each end
