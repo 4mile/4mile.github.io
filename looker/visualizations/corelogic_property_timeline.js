@@ -558,8 +558,8 @@
         },
 
         drawPeriods(canvas, periods, className, xscale, bottom) {
+            canvas.selectAll(`.${className}`).remove()
             const period_lines = canvas.selectAll(`.${className}`).data(periods)
-            period_lines.exit().remove()
             period_lines.enter()
                 .append('rect')
                 .attr('class', className)
@@ -579,8 +579,8 @@
         },
 
         drawEventDots(canvas, events, className, xscale, bottom) {
+            canvas.selectAll(`.${className}`).remove()
             const dots = canvas.selectAll(`.${className}`).data(events)
-            dots.exit().remove()
             dots.enter()
                 .append('circle')
                 .attr('class', className)
@@ -622,9 +622,9 @@
                     { x: xscale(date.getTime()), y: y_bottom - (events.length * event_label_height) + 5 },
                 ]
             })
+            canvas.selectAll('.connector').remove()
             const lines = canvas.selectAll('.connector').data(line_data)
             const lineFunction = vis.drawLine()
-            lines.exit().remove()
             lines.enter()
                 .append('path')
                 .attr('class', 'connector')
@@ -641,8 +641,10 @@
                 return y_origin - offset
             }
 
+            canvas.selectAll(`.${className}`).remove()
+
             const labels = canvas.selectAll(`.${className}`).data(events)
-            labels.exit().remove()
+
             labels.enter()
                 .append('text')
                 .attr('class', className)
@@ -715,8 +717,8 @@
             log('domain_end', domain_end)
 
             // empty the canvas
-            vis.ui.bar_chart.selectAll('*').remove()
-            vis.ui.legend_labels.selectAll('*').remove()
+            // vis.ui.bar_chart.selectAll('*').remove()
+            // vis.ui.legend_labels.selectAll('*').remove()
 
             const chartYScale = (
                 d3.scaleLinear()
@@ -724,9 +726,9 @@
                     .range([0, chart_height])
             )
 
+            vis.ui.bar_chart.selectAll('.bar').remove()
             const chart_blocks = vis.ui.bar_chart.selectAll('.bar').data(events)
             const bar_width = vis.year_width - 10
-            chart_blocks.exit().remove()
             chart_blocks.enter()
                 .append('rect')
                 .attr('class', 'bar')
@@ -742,8 +744,8 @@
             const divisions = [1, 2, 3, 4].map(n => n * chart_division)
             log('divisions', divisions)
 
+            vis.ui.bar_chart.selectAll('.line').remove()
             const chart_lines = vis.ui.bar_chart.selectAll('.line').data(divisions)
-            chart_lines.exit().remove()
             chart_lines.enter()
                 .append('rect')
                 .attr('class', 'line')
@@ -752,8 +754,8 @@
                 .attr('x', 0)
                 .attr('y', d => chart_height - chartYScale(d))
 
+            vis.ui.legend_labels.selectAll('.label').remove()
             const legend_labels = vis.ui.legend_labels.selectAll('.label').data(divisions)
-            legend_labels.exit().remove()
             legend_labels.enter()
                 .append('text')
                 .attr('class', 'label')
@@ -763,9 +765,9 @@
         },
 
         drawOwnerStartMarkers(canvas, periods, year_width, xscale, height) {
+            canvas.selectAll('.owner-start-marker').remove()
             const blocks = canvas.selectAll('.owner-start-marker').data(periods)
             const bar_width = year_width
-            blocks.exit().remove()
             blocks.enter()
                 .append('rect')
                 .attr('class', 'owner-start-marker')
@@ -793,11 +795,11 @@
                     .map(getEventYear)
                     .filter(unique)
             )
-            // log('years', years)
+            log('years', years)
 
             const start = Math.min.apply(Math, years)
             const end = Math.max.apply(Math, years)
-            // log(start, end)
+            log(start, end)
 
             const range = end - start
             // log(range)
@@ -806,11 +808,11 @@
             for (let i = start; i <= end; i++) {
                 year_ticks.push(convertYearStringToDate(i))
             }
-            console.log('year_ticks', year_ticks)
 
             vis.year_width = 140
             // pad by 1/2 year on each end
             vis.width = (range + 2) * vis.year_width
+            log('vis.width', vis.width)
             vis.ui.canvas.attr('width', vis.width).attr('viewbox', `0 0 ${vis.width} ${canvas_height}`)
 
             const one_year = 365 * 24 * 60 * 60 * 1000
@@ -883,7 +885,7 @@
             vis.drawPeriods(vis.ui.property_events, [whole_period], 'line', vis.xscale, property_height)
 
             // add a circle for each year
-            vis.drawEventDots(vis.ui.property_events, year_events, 'year-dot', vis.xscale, property_height)
+            // vis.drawEventDots(vis.ui.property_events, year_events, 'year-dot', vis.xscale, property_height)
 
             // add a text label for each year
             vis.drawEventLabels(vis.ui.year_labels, year_events, 'year-label', vis.xscale, year_label_height - 13)
