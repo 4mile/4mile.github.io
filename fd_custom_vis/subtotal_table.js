@@ -67256,16 +67256,24 @@ var _options = __webpack_require__(79);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+// import addOptionAlignments from './options/addOptionAlignments';
+// import addOptionFontFormats from './options/addOptionFontFormats';
+// import setupConditionalFormatting from './setupConditionalFormatting';
+
+
 // Once columns are available to ag-grid, we can update the options hash/config
 // and add/remove custom configurations.
 // This triggers two events on the visualization object:
 //   vis.trigger('registerOptions', options)
 //   vis.trigger('updateConfig', [config])
 var modifyOptions = function modifyOptions(vis, config) {
-  var measureLike = _globalConfig2.default.queryResponse.fields.measure_like;
+  var _globalConfig$queryRe = _globalConfig2.default.queryResponse.fields,
+      dimensionLike = _globalConfig$queryRe.dimension_like,
+      measureLike = _globalConfig$queryRe.measure_like;
 
 
-  (0, _addOptionCustomLabels2.default)(measureLike);
+  (0, _addOptionCustomLabels2.default)([].concat(_toConsumableArray(dimensionLike), _toConsumableArray(measureLike)));
   (0, _addOptionAlternateSubtotals2.default)(measureLike);
   // addOptionAlignments(measureLike);
   // addOptionFontFormats(measureLike);
@@ -67274,9 +67282,7 @@ var modifyOptions = function modifyOptions(vis, config) {
 
   vis.trigger('registerOptions', _options.options);
 };
-// import addOptionAlignments from './options/addOptionAlignments';
-// import addOptionFontFormats from './options/addOptionFontFormats';
-// import setupConditionalFormatting from './setupConditionalFormatting';
+
 exports.default = modifyOptions;
 
 /***/ }),
