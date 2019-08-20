@@ -33159,6 +33159,12 @@ var options = exports.options = {
     order: 3,
     section: 'Plot',
     type: 'boolean'
+  },
+  top_bottom: {
+    label: 'Top/Bottom',
+    order: 4,
+    section: 'Plot',
+    type: 'number'
   }
   // transpose: {
   //   default: false,
@@ -53955,7 +53961,7 @@ var AgColumn = function () {
           (0, _addMeasures2.default)(dimensions, measures, this.config);
         }
         if (!(0, _lodash.isEmpty)(tableCalcs)) {
-          (0, _addTableCalculations2.default)(dimensions, tableCalcs);
+          (0, _addTableCalculations2.default)(dimensions, tableCalcs, this.config);
         }
       }
       if (!(0, _lodash.isEmpty)(superMeasures)) {
@@ -65983,13 +65989,25 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var addMeasures = function addMeasures(dimensions, measures, config) {
   var dimension = void 0;
   var klass = 'measure';
+  var cellClass = function cellClass(params) {
+    var config = params.context.globalConfig.config;
+
+    if (!config.top_bottom) {
+      return 'measure';
+    } else if (params.rowIndex < config.top_bottom) {
+      return 'measure positive';
+    } else {
+      return 'measure negative';
+    }
+  };
+
   measures.forEach(function (measure) {
     var name = measure.name;
 
     var hideMeasure = 'hide_' + name;
     var hide = config[hideMeasure];
     dimension = {
-      cellClass: klass,
+      cellClass: cellClass,
       cellStyle: _cellStyle2.default,
       cellRenderer: _defaultCellRenderer2.default,
       colType: 'measure',
@@ -66254,22 +66272,28 @@ var _headerName = __webpack_require__(46);
 
 var _headerName2 = _interopRequireDefault(_headerName);
 
-var _globalConfig = __webpack_require__(14);
-
-var _globalConfig2 = _interopRequireDefault(_globalConfig);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var addTableCalculations = function addTableCalculations(dimensions, tableCalcs) {
+var addTableCalculations = function addTableCalculations(dimensions, tableCalcs, config) {
   var dimension = void 0;
   var klass = 'tableCalc';
-  var config = _globalConfig2.default.config;
+  var cellClass = function cellClass(params) {
+    var config = params.context.globalConfig.config;
+
+    if (!config.top_bottom) {
+      return 'measure';
+    } else if (params.rowIndex < config.top_bottom) {
+      return 'measure positive';
+    } else {
+      return 'measure negative';
+    }
+  };
 
   tableCalcs.forEach(function (calc) {
     var hideCalc = 'hide_' + calc.name;
     var hide = config[hideCalc];
     dimension = {
-      cellClass: klass,
+      cellClass: cellClass,
       cellStyle: _cellStyle2.default,
       cellRenderer: _defaultCellRenderer2.default,
       colType: 'table_calculation',
@@ -66326,83 +66350,44 @@ var AgData = function () {
     _classCallCheck(this, AgData);
 
     this.config = config;
-    this.data = data;
+    this.data = this.getData(data, formattedColumns);
     this.formattedColumns = formattedColumns;
-    if (this.config.transpose) {
-      this.formattedData = this.transposeData();
-    } else {
-      this.formattedData = this.formatData();
-    }
+    this.formattedData = this.formatData();
   }
 
+  // Added this function to replicate the top/bottom exclusion behavior.
+
+
   _createClass(AgData, [{
-    key: 'transposeData',
-    value: function transposeData() {
-      var _this = this;
-
-      // Map over each data point, for it, you need to output as many rows as there are measure_likes.
-      // For each data point, set the dimensions normally, but create multiples for each
-      // measure_like.
-      var queryResponse = _globalConfig2.default.queryResponse;
-
-      var measureLike = queryResponse.fields.measure_like;
-      var formattedData = [];
-      (0, _lodash.forEach)(this.data, function (datum) {
-        var transposedData = [];
-        (0, _lodash.forEach)(measureLike, function (ml) {
-          var label = (0, _headerName2.default)(ml, _this.config);
-          var dp = { 'measure': label };
-
-          (0, _lodash.forEach)(datum, function (value, key) {
-            if (measureLike.map(function (m) {
-              return m.name;
-            }).includes(key)) {
-              // The value is a hash of the column fields as keys.
-              // loop over pivoted col names, apply appropriate value to each.
-              if (ml.name === key) {
-                if (value.hasOwnProperty('value')) {
-                  // XXX At least pull this into a constant.
-                  dp['All'] = (0, _displayData2.default)(value);
-                } else {
-                  (0, _lodash.forEach)(value, function (v, k) {
-                    var commaKey = k.split('|FIELD|').join(', ');
-                    if (commaKey === '$$$_row_total_$$$') commaKey = 'Total';
-                    dp[commaKey] = (0, _displayData2.default)(v);
-                  });
-                }
-              }
-            } else {
-              dp[key] = (0, _displayData2.default)(value);
-            }
-          });
-
-          transposedData.push(dp);
+    key: 'getData',
+    value: function getData(data, columnDefs) {
+      if (this.config.top_bottom && data.length >= this.config.top_bottom * 2) {
+        var field = columnDefs[0].field;
+        data = data.sort(function (a, b) {
+          if (a[field].value > b[field].value) return 0;
+          return 1;
         });
-
-        (0, _lodash.forEach)(transposedData, function (td) {
-          formattedData.push(td);
-        });
-      });
-
-      return formattedData;
+        var topX = data.slice(0, this.config.top_bottom);
+        var bottomX = data.slice(data.length - this.config.top_bottom, data.length);
+        data = topX.concat(bottomX);
+      }
+      return data;
     }
   }, {
     key: 'formatData',
     value: function formatData() {
-      var _this2 = this;
+      var _this = this;
 
-      return this.data.map(function (datum) {
+      return this.data.map(function (datum, i) {
         var formattedDatum = {};
 
-        _this2.formattedColumns.forEach(function (col) {
+        _this.formattedColumns.forEach(function (col) {
           var children = col.children,
               colType = col.colType,
               colField = col.field,
               lookup = col.lookup;
 
-          if (colType === 'row') {
-            return;
-          }
+          if (colType === 'row') return;
 
           if (colType === 'pivot') {
             children.forEach(function (child) {
