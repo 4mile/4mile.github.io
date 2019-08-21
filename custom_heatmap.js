@@ -128,6 +128,19 @@ looker.plugins.visualizations.add({
   },
   updateAsync: function updateAsync(data, element, config, queryResponse, details, done) {
     this.clearErrors();
+    // 1 pivot, 1 dim, 1 measure
+    var _queryResponse$fields = queryResponse.fields,
+        dims = _queryResponse$fields.dimension_like,
+        meas = _queryResponse$fields.measure_like,
+        pivots = _queryResponse$fields.pivots;
+
+    if (dims.length !== 1 || meas.length !== 1 || pivots.length !== 1) {
+      this.addError({
+        message: 'This chart requires exactly 1 pivot, 1 dimension, and 1 measure.',
+        title: 'Incorrect Data'
+      });
+      return;
+    }
 
     // Remove in order to rerender with varying sizes
     while (this.vis.firstChild) {
@@ -144,20 +157,6 @@ looker.plugins.visualizations.add({
 
     // append the svg object to the body of the page
     this.svg = d3.select('#' + _constants.ELEMENT_ID).append('svg').attr('width', this.width + margin.left + margin.right).attr('height', this.height + margin.top + margin.bottom).append('g').attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
-
-    // 1 pivot, 1 dim, 1 measure
-    var _queryResponse$fields = queryResponse.fields,
-        dims = _queryResponse$fields.dimension_like,
-        meas = _queryResponse$fields.measure_like,
-        pivots = _queryResponse$fields.pivots;
-
-    if (dims.length !== 1 && meas.length !== 1 && pivots.length !== 1) {
-      this.addError({
-        message: 'This chart requires exactly 1 pivot, 1 dimension, and 1 measure.',
-        title: 'Incorrect Data'
-      });
-      return;
-    }
 
     var pivotName = pivots[0].name;
     var dimName = dims[0].name;
