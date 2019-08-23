@@ -19397,20 +19397,20 @@ var options = exports.options = {
     type: 'string'
   },
 
-  // width: {
-  //   display_size: 'half',
-  //   label: 'Width',
-  //   order: 4,
-  //   section: 'Sizing',
-  //   type: 'number',
-  // },
-  // height: {
-  //   display_size: 'half',
-  //   label: 'Height',
-  //   order: 5,
-  //   section: 'Sizing',
-  //   type: 'number',
-  // },
+  width: {
+    display_size: 'half',
+    label: 'Width',
+    order: 4,
+    section: 'Sizing',
+    type: 'number'
+  },
+  height: {
+    display_size: 'half',
+    label: 'Height',
+    order: 5,
+    section: 'Sizing',
+    type: 'number'
+  },
   scale: {
     default: 25,
     display_size: 'half',
