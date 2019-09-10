@@ -55404,14 +55404,14 @@ looker.plugins.visualizations.add({
 
     element.innerHTML = '\n      <style>\n        #ag-grid-vis {\n          display: flex;\n          flex-direction: column;\n          height: 100%;\n        }\n        .drillable-link {\n          color: inherit;\n          text-decoration: none;\n        }\n        .drillable-link:hover {\n          text-decoration: underline;\n        }\n        #loading {\n          background-color: #FFF;\n          height: 100%;\n          position: absolute;\n          width: 100%;\n          z-index: 1;\n        }\n      </style>\n    ';
 
+    // Create an element to hold the configurable title.
+    this.title = document.createElement('div');
+    element.appendChild(this.title);
+
     // Create an outer element to hold the box shadow.
     var outerDiv = document.createElement('div');
     outerDiv.classList.add('table');
     element.appendChild(outerDiv);
-
-    this.title = document.createElement('div');
-    this.title.classList.add('title');
-    outerDiv.appendChild(this.title);
 
     // Create an element to contain the grid.
     this.grid = outerDiv.appendChild(document.createElement('div'));
@@ -55450,7 +55450,16 @@ looker.plugins.visualizations.add({
       return;
     }
 
-    this.title.innerHTML = config.chartTitle || '';
+    // Applies/removes title text and styling
+    if (config.chartTitle) {
+      if (!this.title.classList.contains('title')) {
+        this.title.classList.add('title');
+      }
+      this.title.innerHTML = config.chartTitle;
+    } else {
+      this.title.innerHTML = '';
+      this.title.classList.remove('title');
+    }
 
     // Toggles header on/off
     if (config.headerRow) {
@@ -66743,7 +66752,8 @@ var aggregate = function aggregate(values, mType, valueFormat) {
   }
   var value = void 0;
   if ((0, _lodash.isEmpty)(valueFormat)) {
-    value = (0, _isFloat2.default)(agg) ? (0, _truncFloat2.default)(agg, values) : _ssf2.default.format(_commaFormat2.default, agg);
+    value = (0, _isFloat2.default)(agg) ? (0, _truncFloat2.default)(agg, values) : agg;
+    value = _ssf2.default.format(_commaFormat2.default, Number.parseInt(value));
   } else if (valueFormat.includes('bps')) {
     // SSF doesn't seem to support 'bps', at least not the way we pass it along to them.
     // The desired output is simple enough, though, so skipping `SSF.format()`:
