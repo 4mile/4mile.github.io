@@ -17947,7 +17947,7 @@ else if(freeModule){// Export for Node.js.
 (freeModule.exports=_)._=_;// Export for CommonJS support.
 freeExports._=_;}else{// Export to the global object.
 root._=_;}}).call(undefined);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(124), __webpack_require__(304)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(124), __webpack_require__(305)(module)))
 
 /***/ }),
 /* 12 */
@@ -23810,19 +23810,19 @@ var _globalConfig = __webpack_require__(15);
 
 var _globalConfig2 = _interopRequireDefault(_globalConfig);
 
-var _groupRowAggNodes = __webpack_require__(311);
+var _groupRowAggNodes = __webpack_require__(312);
 
 var _groupRowAggNodes2 = _interopRequireDefault(_groupRowAggNodes);
 
-var _totalsRowStyle = __webpack_require__(321);
+var _totalsRowStyle = __webpack_require__(322);
 
 var _totalsRowStyle2 = _interopRequireDefault(_totalsRowStyle);
 
-var _setColumns = __webpack_require__(322);
+var _setColumns = __webpack_require__(323);
 
 var _setColumns2 = _interopRequireDefault(_setColumns);
 
-var _sortChanged = __webpack_require__(323);
+var _sortChanged = __webpack_require__(324);
 
 var _sortChanged2 = _interopRequireDefault(_sortChanged);
 
@@ -27227,6 +27227,12 @@ var _globalConfig = __webpack_require__(15);
 
 var _globalConfig2 = _interopRequireDefault(_globalConfig);
 
+var _agGridCommunity = __webpack_require__(2);
+
+var _setColor = __webpack_require__(303);
+
+var _setColor2 = _interopRequireDefault(_setColor);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Used to apply conditional formatting to cells, if enabled.
@@ -27238,6 +27244,7 @@ var cellStyle = function cellStyle(cell) {
   (0, _alignText2.default)(styling, config, cell);
   (0, _formatText2.default)(styling, config, cell);
   (0, _setFontSize2.default)(styling, config);
+  (0, _setColor2.default)(styling, cell);
   // conditionallyFormat(styling, config, cell);
 
   return styling;
@@ -32983,7 +32990,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _numeral = __webpack_require__(303);
+var _numeral = __webpack_require__(304);
 
 var _numeral2 = _interopRequireDefault(_numeral);
 
@@ -53862,19 +53869,19 @@ var _addBasicDimensions = __webpack_require__(297);
 
 var _addBasicDimensions2 = _interopRequireDefault(_addBasicDimensions);
 
-var _addMeasures = __webpack_require__(305);
+var _addMeasures = __webpack_require__(306);
 
 var _addMeasures2 = _interopRequireDefault(_addMeasures);
 
-var _addPivots = __webpack_require__(306);
+var _addPivots = __webpack_require__(307);
 
 var _addPivots2 = _interopRequireDefault(_addPivots);
 
-var _addSuperMeasures = __webpack_require__(308);
+var _addSuperMeasures = __webpack_require__(309);
 
 var _addSuperMeasures2 = _interopRequireDefault(_addSuperMeasures);
 
-var _addTableCalculations = __webpack_require__(309);
+var _addTableCalculations = __webpack_require__(310);
 
 var _addTableCalculations2 = _interopRequireDefault(_addTableCalculations);
 
@@ -55312,7 +55319,7 @@ var _AgColumn = __webpack_require__(191);
 
 var _AgColumn2 = _interopRequireDefault(_AgColumn);
 
-var _AgData = __webpack_require__(310);
+var _AgData = __webpack_require__(311);
 
 var _AgData2 = _interopRequireDefault(_AgData);
 
@@ -55320,15 +55327,15 @@ var _adjustFonts = __webpack_require__(195);
 
 var _adjustFonts2 = _interopRequireDefault(_adjustFonts);
 
-var _autoSize = __webpack_require__(324);
+var _autoSize = __webpack_require__(325);
 
 var _autoSize2 = _interopRequireDefault(_autoSize);
 
-var _calculateRange = __webpack_require__(325);
+var _calculateRange = __webpack_require__(326);
 
 var _calculateRange2 = _interopRequireDefault(_calculateRange);
 
-var _drillingCallback = __webpack_require__(328);
+var _drillingCallback = __webpack_require__(329);
 
 var _drillingCallback2 = _interopRequireDefault(_drillingCallback);
 
@@ -55336,7 +55343,7 @@ var _globalConfig = __webpack_require__(15);
 
 var _globalConfig2 = _interopRequireDefault(_globalConfig);
 
-var _grandTotals = __webpack_require__(329);
+var _grandTotals = __webpack_require__(330);
 
 var _grandTotals2 = _interopRequireDefault(_grandTotals);
 
@@ -55344,19 +55351,19 @@ var _gridOptions = __webpack_require__(31);
 
 var _gridOptions2 = _interopRequireDefault(_gridOptions);
 
-var _modifyOptions = __webpack_require__(330);
+var _modifyOptions = __webpack_require__(331);
 
 var _modifyOptions2 = _interopRequireDefault(_modifyOptions);
 
-var _refreshColumns = __webpack_require__(333);
+var _refreshColumns = __webpack_require__(334);
 
 var _refreshColumns2 = _interopRequireDefault(_refreshColumns);
 
-var _setPivots = __webpack_require__(334);
+var _setPivots = __webpack_require__(335);
 
 var _setPivots2 = _interopRequireDefault(_setPivots);
 
-var _updateTheme = __webpack_require__(337);
+var _updateTheme = __webpack_require__(338);
 
 var _updateTheme2 = _interopRequireDefault(_updateTheme);
 
@@ -55371,12 +55378,12 @@ var _options = __webpack_require__(79);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // eslint-disable-line
-var base = __webpack_require__(338);
+var base = __webpack_require__(339);
 // import loadStylesheets from './gridStyling/loadStylesheets';
 /* eslint-disable arrow-body-style, no-undef, no-use-before-define */
 
-var theme = __webpack_require__(340);
-var fdCSS = __webpack_require__(342);
+var theme = __webpack_require__(341);
+var fdCSS = __webpack_require__(343);
 
 // The grid works without a license key, however, without it a watermark flashes in the bottom right on load.
 _agGridEnterprise.LicenseManager.setLicenseKey('Evaluation_License-_Not_For_Production_Valid_Until_25_April_2019__MTU1NjE0NjgwMDAwMA==5095db85700c871b2d29d9537cd451b3');
@@ -64993,6 +65000,27 @@ exports.default = setFontSize;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = setColor;
+function setColor(styling, cell) {
+  if (!cell.node.aggData) return;
+
+  var parsed = Number.parseFloat(cell.value);
+
+  if (parsed) {
+    styling.color = parsed >= 0 ? 'green' : 'red';
+  }
+}
+
+/***/ }),
+/* 304 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -66001,7 +66029,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 });
 
 /***/ }),
-/* 304 */
+/* 305 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66031,7 +66059,7 @@ module.exports = function (module) {
 };
 
 /***/ }),
-/* 305 */
+/* 306 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66103,7 +66131,7 @@ var addMeasures = function addMeasures(dimensions, measures, config) {
 exports.default = addMeasures;
 
 /***/ }),
-/* 306 */
+/* 307 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66113,7 +66141,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _PivotHeader = __webpack_require__(307);
+var _PivotHeader = __webpack_require__(308);
 
 var _PivotHeader2 = _interopRequireDefault(_PivotHeader);
 
@@ -66210,7 +66238,7 @@ var generateKeys = function generateKeys(key) {
 exports.default = addPivots;
 
 /***/ }),
-/* 307 */
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66269,7 +66297,7 @@ var PivotHeader = function () {
 exports.default = PivotHeader;
 
 /***/ }),
-/* 308 */
+/* 309 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66319,7 +66347,7 @@ var addSuperMeasures = function addSuperMeasures(dimensions, superMeasures) {
 exports.default = addSuperMeasures;
 
 /***/ }),
-/* 309 */
+/* 310 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66388,7 +66416,7 @@ var addTableCalculations = function addTableCalculations(dimensions, tableCalcs,
 exports.default = addTableCalculations;
 
 /***/ }),
-/* 310 */
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66418,6 +66446,22 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+// A hack that replaces positive/negative CSS class
+// in Cells' HTML, so that we get the proper colors 
+// when using the top/bottom feature.
+var replaceStyles = function replaceStyles(rows, fields, newStyle) {
+  var pattern = /positive|negative/;
+  rows.map(function (row) {
+    fields.forEach(function (field) {
+      var cell = row[field];
+      if (cell && cell.html) {
+        cell.html = cell.html.replace(pattern, newStyle);
+      }
+    });
+    return row;
+  });
+};
+
 var AgData = function () {
   function AgData(config, data, formattedColumns) {
     _classCallCheck(this, AgData);
@@ -66441,7 +66485,12 @@ var AgData = function () {
           return 1;
         });
         var topX = data.slice(0, this.config.top_bottom);
+        var fields = columnDefs.map(function (cd) {
+          return cd.field;
+        });
         var bottomX = data.slice(data.length - this.config.top_bottom, data.length);
+        replaceStyles(topX, fields, 'positive');
+        replaceStyles(bottomX, fields, 'negative');
         data = topX.concat(bottomX);
       }
       return data;
@@ -66482,7 +66531,7 @@ var AgData = function () {
 exports.default = AgData;
 
 /***/ }),
-/* 311 */
+/* 312 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66492,11 +66541,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _aggregate = __webpack_require__(312);
+var _aggregate = __webpack_require__(313);
 
 var _aggregate2 = _interopRequireDefault(_aggregate);
 
-var _cellValue = __webpack_require__(320);
+var _cellValue = __webpack_require__(321);
 
 var _cellValue2 = _interopRequireDefault(_cellValue);
 
@@ -66675,7 +66724,7 @@ var getAggType = function getAggType(name, mType, config) {
 exports.default = groupRowAggNodes;
 
 /***/ }),
-/* 312 */
+/* 313 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66693,31 +66742,31 @@ var _commaFormat = __webpack_require__(197);
 
 var _commaFormat2 = _interopRequireDefault(_commaFormat);
 
-var _countAggFn = __webpack_require__(313);
+var _countAggFn = __webpack_require__(314);
 
 var _countAggFn2 = _interopRequireDefault(_countAggFn);
 
-var _avgAggFn = __webpack_require__(314);
+var _avgAggFn = __webpack_require__(315);
 
 var _avgAggFn2 = _interopRequireDefault(_avgAggFn);
 
-var _maxAggFn = __webpack_require__(315);
+var _maxAggFn = __webpack_require__(316);
 
 var _maxAggFn2 = _interopRequireDefault(_maxAggFn);
 
-var _minAggFn = __webpack_require__(316);
+var _minAggFn = __webpack_require__(317);
 
 var _minAggFn2 = _interopRequireDefault(_minAggFn);
 
-var _sumAggFn = __webpack_require__(317);
+var _sumAggFn = __webpack_require__(318);
 
 var _sumAggFn2 = _interopRequireDefault(_sumAggFn);
 
-var _isFloat = __webpack_require__(318);
+var _isFloat = __webpack_require__(319);
 
 var _isFloat2 = _interopRequireDefault(_isFloat);
 
-var _truncFloat = __webpack_require__(319);
+var _truncFloat = __webpack_require__(320);
 
 var _truncFloat2 = _interopRequireDefault(_truncFloat);
 
@@ -66767,7 +66816,7 @@ var aggregate = function aggregate(values, mType, valueFormat) {
 exports.default = aggregate;
 
 /***/ }),
-/* 313 */
+/* 314 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66788,7 +66837,7 @@ var countAggFn = function countAggFn(values) {
 exports.default = countAggFn;
 
 /***/ }),
-/* 314 */
+/* 315 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66811,7 +66860,7 @@ var avgAggFn = function avgAggFn(values) {
 exports.default = avgAggFn;
 
 /***/ }),
-/* 315 */
+/* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66830,7 +66879,7 @@ var maxAggFn = function maxAggFn(values) {
 exports.default = maxAggFn;
 
 /***/ }),
-/* 316 */
+/* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66849,7 +66898,7 @@ var minAggFn = function minAggFn(values) {
 exports.default = minAggFn;
 
 /***/ }),
-/* 317 */
+/* 318 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66870,7 +66919,7 @@ var sumAggFn = function sumAggFn(values) {
 exports.default = sumAggFn;
 
 /***/ }),
-/* 318 */
+/* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66886,7 +66935,7 @@ var isFloat = function isFloat(num) {
 exports.default = isFloat;
 
 /***/ }),
-/* 319 */
+/* 320 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66926,7 +66975,7 @@ var truncFloat = function truncFloat(float, values) {
 exports.default = truncFloat;
 
 /***/ }),
-/* 320 */
+/* 321 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66959,7 +67008,7 @@ var cellValue = function cellValue(value) {
 exports.default = cellValue;
 
 /***/ }),
-/* 321 */
+/* 322 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66978,7 +67027,7 @@ var totalsRowStyle = function totalsRowStyle(params) {
 exports.default = totalsRowStyle;
 
 /***/ }),
-/* 322 */
+/* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67005,7 +67054,7 @@ var setColumns = function setColumns() {
 exports.default = setColumns;
 
 /***/ }),
-/* 323 */
+/* 324 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67028,7 +67077,7 @@ var sortChanged = function sortChanged() {
 exports.default = sortChanged;
 
 /***/ }),
-/* 324 */
+/* 325 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67064,7 +67113,7 @@ var autoSize = function autoSize() {
 exports.default = autoSize;
 
 /***/ }),
-/* 325 */
+/* 326 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67078,11 +67127,11 @@ var _globalConfig = __webpack_require__(15);
 
 var _globalConfig2 = _interopRequireDefault(_globalConfig);
 
-var _setNonPivotRange = __webpack_require__(326);
+var _setNonPivotRange = __webpack_require__(327);
 
 var _setNonPivotRange2 = _interopRequireDefault(_setNonPivotRange);
 
-var _setPivotRange = __webpack_require__(327);
+var _setPivotRange = __webpack_require__(328);
 
 var _setPivotRange2 = _interopRequireDefault(_setPivotRange);
 
@@ -67129,7 +67178,7 @@ var calculateRange = function calculateRange(data, queryResponse, config) {
 exports.default = calculateRange;
 
 /***/ }),
-/* 326 */
+/* 327 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67161,7 +67210,7 @@ var setNonPivotRange = function setNonPivotRange(datum, key, range) {
 exports.default = setNonPivotRange;
 
 /***/ }),
-/* 327 */
+/* 328 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67197,7 +67246,7 @@ var setPivotRange = function setPivotRange(datum, key, range) {
 exports.default = setPivotRange;
 
 /***/ }),
-/* 328 */
+/* 329 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67233,7 +67282,7 @@ var drillingCallback = function drillingCallback(event) {
 exports.default = drillingCallback;
 
 /***/ }),
-/* 329 */
+/* 330 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67289,7 +67338,7 @@ var displayValue = function displayValue(val) {
 exports.default = grandTotals;
 
 /***/ }),
-/* 330 */
+/* 331 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67303,11 +67352,11 @@ var _globalConfig = __webpack_require__(15);
 
 var _globalConfig2 = _interopRequireDefault(_globalConfig);
 
-var _addOptionCustomLabels = __webpack_require__(331);
+var _addOptionCustomLabels = __webpack_require__(332);
 
 var _addOptionCustomLabels2 = _interopRequireDefault(_addOptionCustomLabels);
 
-var _addOptionAlternateSubtotals = __webpack_require__(332);
+var _addOptionAlternateSubtotals = __webpack_require__(333);
 
 var _addOptionAlternateSubtotals2 = _interopRequireDefault(_addOptionAlternateSubtotals);
 
@@ -67345,7 +67394,7 @@ var modifyOptions = function modifyOptions(vis, config) {
 exports.default = modifyOptions;
 
 /***/ }),
-/* 331 */
+/* 332 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67376,7 +67425,7 @@ var addOptionCustomLabels = function addOptionCustomLabels(fields) {
 exports.default = addOptionCustomLabels;
 
 /***/ }),
-/* 332 */
+/* 333 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67444,7 +67493,7 @@ exports.default = addOptionAlternateSubtotals;
 // boolean for hidden from config
 
 /***/ }),
-/* 333 */
+/* 334 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67491,7 +67540,7 @@ var refreshColumns = function refreshColumns(config, details) {
 exports.default = refreshColumns;
 
 /***/ }),
-/* 334 */
+/* 335 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67501,11 +67550,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _addPivotLabels = __webpack_require__(335);
+var _addPivotLabels = __webpack_require__(336);
 
 var _addPivotLabels2 = _interopRequireDefault(_addPivotLabels);
 
-var _setPivotHeaders = __webpack_require__(336);
+var _setPivotHeaders = __webpack_require__(337);
 
 var _setPivotHeaders2 = _interopRequireDefault(_setPivotHeaders);
 
@@ -67519,7 +67568,7 @@ var setPivots = function setPivots() {
 exports.default = setPivots;
 
 /***/ }),
-/* 335 */
+/* 336 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67571,7 +67620,7 @@ var addPivotLabels = function addPivotLabels() {
 exports.default = addPivotLabels;
 
 /***/ }),
-/* 336 */
+/* 337 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67609,7 +67658,7 @@ var setPivotHeaders = function setPivotHeaders() {
 exports.default = setPivotHeaders;
 
 /***/ }),
-/* 337 */
+/* 338 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67639,11 +67688,11 @@ var updateTheme = function updateTheme(classList, theme) {
 exports.default = updateTheme;
 
 /***/ }),
-/* 338 */
+/* 339 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-        var result = __webpack_require__(339);
+        var result = __webpack_require__(340);
 
         if (typeof result === "string") {
             module.exports = result;
@@ -67653,7 +67702,7 @@ exports.default = updateTheme;
     
 
 /***/ }),
-/* 339 */
+/* 340 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(123)(false);
@@ -67667,11 +67716,11 @@ exports.push([module.i, "/**\n ****************************\n * Generic Styles\n
 
 
 /***/ }),
-/* 340 */
+/* 341 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-        var result = __webpack_require__(341);
+        var result = __webpack_require__(342);
 
         if (typeof result === "string") {
             module.exports = result;
@@ -67681,7 +67730,7 @@ exports.push([module.i, "/**\n ****************************\n * Generic Styles\n
     
 
 /***/ }),
-/* 341 */
+/* 342 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(123)(false);
@@ -67695,11 +67744,11 @@ exports.push([module.i, ".ag-theme-material {\n  background-color: #fff;\n  colo
 
 
 /***/ }),
-/* 342 */
+/* 343 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-        var result = __webpack_require__(343);
+        var result = __webpack_require__(344);
 
         if (typeof result === "string") {
             module.exports = result;
@@ -67709,7 +67758,7 @@ exports.push([module.i, ".ag-theme-material {\n  background-color: #fff;\n  colo
     
 
 /***/ }),
-/* 343 */
+/* 344 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(123)(false);
