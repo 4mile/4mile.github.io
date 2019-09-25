@@ -65009,9 +65009,16 @@ exports.default = setColor;
 function setColor(styling, cell) {
   if (!cell.node.aggData) return;
 
+  var re = /\([0-9]+.+\) bps/;
+  if (cell.value && cell.value.match(re)) {
+    styling.color = 'red';
+    return;
+  }
+
   var parsed = Number.parseFloat(cell.value);
 
-  if (parsed) {
+  // Don't apply if parsing fails or if it's the group header cell
+  if (parsed && !cell.colDef.enableRowGroup) {
     styling.color = parsed >= 0 ? 'green' : 'red';
   }
 }
@@ -66569,6 +66576,11 @@ var _lodash = __webpack_require__(11);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var getValueFormat = function getValueFormat(config, measure) {
+  var key = 'format_' + measure.name;
+  return config[key] || measure.value_format;
+};
+
 // In order to maintain proper formatting for aggregate columns, we need to use
 // a group aggregate function, which requires us to calculate aggregates for
 // all columns at once. As a result, the code is significantly more complex
@@ -66621,9 +66633,9 @@ var groupRowAggNodes = function groupRowAggNodes(nodes) {
     pivots.forEach(function (pivot) {
       // Map over again to calculate a final result value and convert to value_format.
       measures.forEach(function (measure) {
-        var mType = measure.type,
-            valueFormat = measure.value_format;
+        var mType = measure.type;
 
+        var valueFormat = getValueFormat(config, measure);
         var formattedField = pivot.key + '_' + measure.name;
         result[formattedField] = (0, _aggregate2.default)(result[formattedField], mType, valueFormat) || genericNullValue;
       });
@@ -66651,9 +66663,9 @@ var groupRowAggNodes = function groupRowAggNodes(nodes) {
     // Map over again to calculate a final result value and convert to value_format.
     measures.forEach(function (measure) {
       var name = measure.name,
-          mType = measure.type,
-          valueFormat = measure.value_format;
+          mType = measure.type;
 
+      var valueFormat = getValueFormat(config, measure);
       var aggType = getAggType(name, mType, config);
       result[name] = (0, _aggregate2.default)(result[name], aggType, valueFormat) || genericNullValue;
     });
@@ -66679,9 +66691,9 @@ var groupRowAggNodes = function groupRowAggNodes(nodes) {
     });
     superMeasures.forEach(function (superMeasure) {
       var name = superMeasure.name,
-          mType = superMeasure.type,
-          valueFormat = superMeasure.value_format;
+          mType = superMeasure.type;
 
+      var valueFormat = getValueFormat(config, measure);
       result[name] = (0, _aggregate2.default)(result[name], mType, valueFormat) || genericNullValue;
     });
   }
@@ -67360,6 +67372,10 @@ var _addOptionAlternateSubtotals = __webpack_require__(333);
 
 var _addOptionAlternateSubtotals2 = _interopRequireDefault(_addOptionAlternateSubtotals);
 
+var _addOptionCustomFormatting = __webpack_require__(345);
+
+var _addOptionCustomFormatting2 = _interopRequireDefault(_addOptionCustomFormatting);
+
 var _options = __webpack_require__(79);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -67383,6 +67399,7 @@ var modifyOptions = function modifyOptions(vis, config) {
 
   (0, _addOptionCustomLabels2.default)([].concat(_toConsumableArray(dimensionLike), _toConsumableArray(measureLike)));
   (0, _addOptionAlternateSubtotals2.default)(measureLike);
+  (0, _addOptionCustomFormatting2.default)(measureLike);
   // addOptionAlignments(measureLike);
   // addOptionFontFormats(measureLike);
 
@@ -67770,6 +67787,36 @@ exports.push([module.i, "/* cyrillic-ext */\n@font-face {\n  font-family: 'Robot
 
 // exports
 
+
+/***/ }),
+/* 345 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _options = __webpack_require__(79);
+
+var addOptionCustomFormatting = function addOptionCustomFormatting(fields) {
+  fields.forEach(function (field) {
+    var label = field.label,
+        name = field.name;
+
+    var cl = 'format_' + name;
+    _options.options[cl] = {
+      display: 'text',
+      label: 'Format - "' + label + '"',
+      section: 'Series',
+      type: 'string'
+    };
+  });
+};
+
+exports.default = addOptionCustomFormatting;
 
 /***/ })
 /******/ ]);
