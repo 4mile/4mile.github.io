@@ -2344,7 +2344,7 @@ var columnKeyCreator_1 = __webpack_require__(137);
 exports.ColumnKeyCreator = columnKeyCreator_1.ColumnKeyCreator;
 var columnUtils_1 = __webpack_require__(36);
 exports.ColumnUtils = columnUtils_1.ColumnUtils;
-var displayedGroupCreator_1 = __webpack_require__(59);
+var displayedGroupCreator_1 = __webpack_require__(60);
 exports.DisplayedGroupCreator = displayedGroupCreator_1.DisplayedGroupCreator;
 var groupInstanceIdCreator_1 = __webpack_require__(100);
 exports.GroupInstanceIdCreator = groupInstanceIdCreator_1.GroupInstanceIdCreator;
@@ -2399,7 +2399,7 @@ exports.OriginalColumnGroup = originalColumnGroup_1.OriginalColumnGroup;
 var rowNode_1 = __webpack_require__(20);
 exports.RowNode = rowNode_1.RowNode;
 // filter
-var baseFilter_1 = __webpack_require__(64);
+var baseFilter_1 = __webpack_require__(65);
 exports.BaseFilter = baseFilter_1.BaseFilter;
 var dateFilter_1 = __webpack_require__(89);
 exports.DateFilter = dateFilter_1.DateFilter;
@@ -2429,7 +2429,7 @@ var headerRootComp_1 = __webpack_require__(104);
 exports.HeaderRootComp = headerRootComp_1.HeaderRootComp;
 var headerRowComp_1 = __webpack_require__(139);
 exports.HeaderRowComp = headerRowComp_1.HeaderRowComp;
-var horizontalResizeService_1 = __webpack_require__(69);
+var horizontalResizeService_1 = __webpack_require__(70);
 exports.HorizontalResizeService = horizontalResizeService_1.HorizontalResizeService;
 var moveColumnController_1 = __webpack_require__(141);
 exports.MoveColumnController = moveColumnController_1.MoveColumnController;
@@ -2462,16 +2462,16 @@ exports.AnimateSlideCellRenderer = animateSlideCellRenderer_1.AnimateSlideCellRe
 var groupCellRenderer_1 = __webpack_require__(91);
 exports.GroupCellRenderer = groupCellRenderer_1.GroupCellRenderer;
 // features
-var setLeftFeature_1 = __webpack_require__(65);
+var setLeftFeature_1 = __webpack_require__(66);
 exports.SetLeftFeature = setLeftFeature_1.SetLeftFeature;
 // rendering
 var autoWidthCalculator_1 = __webpack_require__(48);
 exports.AutoWidthCalculator = autoWidthCalculator_1.AutoWidthCalculator;
-var cellEditorFactory_1 = __webpack_require__(63);
+var cellEditorFactory_1 = __webpack_require__(64);
 exports.CellEditorFactory = cellEditorFactory_1.CellEditorFactory;
-var cellRendererFactory_1 = __webpack_require__(67);
+var cellRendererFactory_1 = __webpack_require__(68);
 exports.CellRendererFactory = cellRendererFactory_1.CellRendererFactory;
-var cellRendererService_1 = __webpack_require__(66);
+var cellRendererService_1 = __webpack_require__(67);
 exports.CellRendererService = cellRendererService_1.CellRendererService;
 var checkboxSelectionComponent_1 = __webpack_require__(84);
 exports.CheckboxSelectionComponent = checkboxSelectionComponent_1.CheckboxSelectionComponent;
@@ -2495,13 +2495,13 @@ var pinnedRowModel_1 = __webpack_require__(34);
 exports.PinnedRowModel = pinnedRowModel_1.PinnedRowModel;
 var clientSideRowModel_1 = __webpack_require__(153);
 exports.ClientSideRowModel = clientSideRowModel_1.ClientSideRowModel;
-var changedPath_1 = __webpack_require__(61);
+var changedPath_1 = __webpack_require__(62);
 exports.ChangedPath = changedPath_1.ChangedPath;
 var clientSideNodeManager_1 = __webpack_require__(154);
 exports.ClientSideNodeManager = clientSideNodeManager_1.ClientSideNodeManager;
 var infiniteRowModel_1 = __webpack_require__(151);
 exports.InfiniteRowModel = infiniteRowModel_1.InfiniteRowModel;
-var rowNodeBlock_1 = __webpack_require__(72);
+var rowNodeBlock_1 = __webpack_require__(73);
 exports.RowNodeBlock = rowNodeBlock_1.RowNodeBlock;
 var rowNodeBlockLoader_1 = __webpack_require__(152);
 exports.RowNodeBlockLoader = rowNodeBlockLoader_1.RowNodeBlockLoader;
@@ -2513,7 +2513,7 @@ exports.RowNodeCache = rowNodeCache_1.RowNodeCache;
 var stylingService_1 = __webpack_require__(97);
 exports.StylingService = stylingService_1.StylingService;
 // widgets
-var agCheckbox_1 = __webpack_require__(70);
+var agCheckbox_1 = __webpack_require__(71);
 exports.AgCheckbox = agCheckbox_1.AgCheckbox;
 var popupWindow_1 = __webpack_require__(158);
 exports.PopupWindow = popupWindow_1.PopupWindow;
@@ -2535,10 +2535,10 @@ var downloader_1 = __webpack_require__(101);
 exports.Downloader = downloader_1.Downloader;
 var xmlFactory_1 = __webpack_require__(156);
 exports.XmlFactory = xmlFactory_1.XmlFactory;
-var gridSerializer_1 = __webpack_require__(58);
+var gridSerializer_1 = __webpack_require__(59);
 exports.BaseGridSerializingSession = gridSerializer_1.BaseGridSerializingSession;
 exports.GridSerializer = gridSerializer_1.GridSerializer;
-var gridSerializer_2 = __webpack_require__(58);
+var gridSerializer_2 = __webpack_require__(59);
 exports.RowType = gridSerializer_2.RowType;
 var zipContainer_1 = __webpack_require__(157);
 exports.ZipContainer = zipContainer_1.ZipContainer;
@@ -2547,7 +2547,7 @@ var baseFrameworkFactory_1 = __webpack_require__(155);
 exports.BaseFrameworkFactory = baseFrameworkFactory_1.BaseFrameworkFactory;
 var cellNavigationService_1 = __webpack_require__(85);
 exports.CellNavigationService = cellNavigationService_1.CellNavigationService;
-var alignedGridsService_1 = __webpack_require__(71);
+var alignedGridsService_1 = __webpack_require__(72);
 exports.AlignedGridsService = alignedGridsService_1.AlignedGridsService;
 var constants_1 = __webpack_require__(7);
 exports.Constants = constants_1.Constants;
@@ -2575,7 +2575,7 @@ var selectionController_1 = __webpack_require__(23);
 exports.SelectionController = selectionController_1.SelectionController;
 var sortController_1 = __webpack_require__(26);
 exports.SortController = sortController_1.SortController;
-var templateService_1 = __webpack_require__(60);
+var templateService_1 = __webpack_require__(61);
 exports.TemplateService = templateService_1.TemplateService;
 var utils_1 = __webpack_require__(1);
 exports.Utils = utils_1.Utils;
@@ -4106,7 +4106,7 @@ var column_1 = __webpack_require__(12);
 var gridOptionsWrapper_1 = __webpack_require__(3);
 var expressionService_1 = __webpack_require__(22);
 var columnFactory_1 = __webpack_require__(47);
-var displayedGroupCreator_1 = __webpack_require__(59);
+var displayedGroupCreator_1 = __webpack_require__(60);
 var autoWidthCalculator_1 = __webpack_require__(48);
 var eventService_1 = __webpack_require__(4);
 var columnUtils_1 = __webpack_require__(36);
@@ -4115,7 +4115,7 @@ var events_1 = __webpack_require__(6);
 var originalColumnGroup_1 = __webpack_require__(37);
 var groupInstanceIdCreator_1 = __webpack_require__(100);
 var context_1 = __webpack_require__(0);
-var columnAnimationService_1 = __webpack_require__(62);
+var columnAnimationService_1 = __webpack_require__(63);
 var autoGroupColService_1 = __webpack_require__(133);
 var valueCache_1 = __webpack_require__(38);
 var gridApi_1 = __webpack_require__(8);
@@ -6816,12 +6816,12 @@ var context_1 = __webpack_require__(0);
 var sortController_1 = __webpack_require__(26);
 var focusedCellController_1 = __webpack_require__(25);
 var gridCell_1 = __webpack_require__(27);
-var cellRendererFactory_1 = __webpack_require__(67);
-var cellEditorFactory_1 = __webpack_require__(63);
+var cellRendererFactory_1 = __webpack_require__(68);
+var cellEditorFactory_1 = __webpack_require__(64);
 var paginationProxy_1 = __webpack_require__(28);
 var immutableService_1 = __webpack_require__(134);
 var valueCache_1 = __webpack_require__(38);
-var alignedGridsService_1 = __webpack_require__(71);
+var alignedGridsService_1 = __webpack_require__(72);
 var pinnedRowModel_1 = __webpack_require__(34);
 var animationFrameService_1 = __webpack_require__(41);
 var utils_1 = __webpack_require__(1);
@@ -19280,7 +19280,7 @@ var __param = undefined && undefined.__param || function (paramIndex, decorator)
 Object.defineProperty(exports, "__esModule", { value: true });
 var gridOptionsWrapper_1 = __webpack_require__(3);
 var expressionService_1 = __webpack_require__(22);
-var templateService_1 = __webpack_require__(60);
+var templateService_1 = __webpack_require__(61);
 var valueService_1 = __webpack_require__(19);
 var eventService_1 = __webpack_require__(4);
 var rowComp_1 = __webpack_require__(82);
@@ -19300,7 +19300,7 @@ var gridApi_1 = __webpack_require__(8);
 var pinnedRowModel_1 = __webpack_require__(34);
 var beans_1 = __webpack_require__(35);
 var animationFrameService_1 = __webpack_require__(41);
-var maxDivHeightScaler_1 = __webpack_require__(68);
+var maxDivHeightScaler_1 = __webpack_require__(69);
 var utils_1 = __webpack_require__(1);
 var RowRenderer = /** @class */function (_super) {
     __extends(RowRenderer, _super);
@@ -21897,7 +21897,7 @@ var constants_1 = __webpack_require__(7);
 var columnApi_1 = __webpack_require__(9);
 var gridApi_1 = __webpack_require__(8);
 var utils_1 = __webpack_require__(1);
-var changedPath_1 = __webpack_require__(61);
+var changedPath_1 = __webpack_require__(62);
 var SelectionController = /** @class */function () {
     function SelectionController() {}
     SelectionController.prototype.setBeans = function (loggerFactory) {
@@ -24466,15 +24466,15 @@ var gridApi_1 = __webpack_require__(8);
 var gridOptionsWrapper_1 = __webpack_require__(3);
 var expressionService_1 = __webpack_require__(22);
 var rowRenderer_1 = __webpack_require__(18);
-var templateService_1 = __webpack_require__(60);
+var templateService_1 = __webpack_require__(61);
 var valueService_1 = __webpack_require__(19);
 var eventService_1 = __webpack_require__(4);
-var columnAnimationService_1 = __webpack_require__(62);
+var columnAnimationService_1 = __webpack_require__(63);
 var focusedCellController_1 = __webpack_require__(25);
-var cellEditorFactory_1 = __webpack_require__(63);
-var cellRendererFactory_1 = __webpack_require__(67);
+var cellEditorFactory_1 = __webpack_require__(64);
+var cellRendererFactory_1 = __webpack_require__(68);
 var popupService_1 = __webpack_require__(30);
-var cellRendererService_1 = __webpack_require__(66);
+var cellRendererService_1 = __webpack_require__(67);
 var valueFormatterService_1 = __webpack_require__(54);
 var stylingService_1 = __webpack_require__(97);
 var columnHoverService_1 = __webpack_require__(52);
@@ -24484,7 +24484,7 @@ var componentResolver_1 = __webpack_require__(29);
 var dragAndDropService_1 = __webpack_require__(17);
 var sortController_1 = __webpack_require__(26);
 var filterManager_1 = __webpack_require__(21);
-var maxDivHeightScaler_1 = __webpack_require__(68);
+var maxDivHeightScaler_1 = __webpack_require__(69);
 var tooltipManager_1 = __webpack_require__(98);
 /** Using the IoC has a slight performance consideration, which is no problem most of the
  * time, unless we are trashing objects - which is the case when scrolling and rowComp
@@ -28782,7 +28782,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _numericValue = __webpack_require__(78);
+var _numericValue = __webpack_require__(79);
 
 var _numericValue2 = _interopRequireDefault(_numericValue);
 
@@ -28831,6 +28831,224 @@ var grabPercentage = function grabPercentage(val) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.options = undefined;
+
+var _themes = __webpack_require__(199);
+
+var _themes2 = _interopRequireDefault(_themes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// These are all of the options that set up the initial
+var options = exports.options = {
+  // FORMATTING
+  // enableConditionalFormatting: {
+  //   default: false,
+  //   label: 'Enable Conditional Formatting',
+  //   order: 1,
+  //   section: 'Formatting',
+  //   type: 'boolean',
+  // },
+  // perColumnRange: {
+  //   default: true,
+  //   hidden: true,
+  //   label: 'Per column range',
+  //   order: 2,
+  //   section: 'Formatting',
+  //   type: 'boolean',
+  // },
+  // conditionalFormattingType: {
+  //   default: 'all',
+  //   display: 'select',
+  //   label: 'Formatting Type',
+  //   order: 3,
+  //   section: 'Formatting',
+  //   type: 'string',
+  //   values: [
+  //     { 'All': 'all' },
+  //     { 'Subtotals only': 'subtotals_only' },
+  //     { 'Non-subtotals only': 'non_subtotals_only' },
+  //   ],
+  // },
+  // includeNullValuesAsZero: {
+  //   default: false,
+  //   label: 'Include Null Values as Zero',
+  //   order: 4,
+  //   section: 'Formatting',
+  //   type: 'boolean',
+  // },
+  // formattingStyle: {
+  //   default: 'low_to_high',
+  //   display: 'select',
+  //   label: 'Format',
+  //   order: 5,
+  //   section: 'Formatting',
+  //   type: 'string',
+  //   values: [
+  //     { 'From low to high': 'low_to_high' },
+  //     { 'From high to low': 'high_to_low' },
+  //   ],
+  // },
+  // formattingPalette: {
+  //   default: 'red_yellow_green',
+  //   display: 'select',
+  //   label: 'Palette',
+  //   order: 6,
+  //   section: 'Formatting',
+  //   type: 'string',
+  //   values: [
+  //     { 'Red to Yellow to Green': 'red_yellow_green' },
+  //     { 'Red to White to Green': 'red_white_green' },
+  //     { 'Red to White': 'red_white' },
+  //     { 'White to Green': 'white_green' },
+  //     { 'Custom...': 'custom' },
+  //   ],
+  // },
+  // lowColor: {
+  //   display: 'color',
+  //   display_size: 'third',
+  //   label: 'Low', // These values updated in updateAsync
+  //   order: 7,
+  //   section: 'Formatting',
+  //   type: 'string',
+  // },
+  // midColor: {
+  //   display: 'color',
+  //   display_size: 'third',
+  //   label: 'Middle',
+  //   order: 8,
+  //   section: 'Formatting',
+  //   type: 'string',
+  // },
+  // highColor: {
+  //   display: 'color',
+  //   display_size: 'third',
+  //   label: 'High',
+  //   order: 9,
+  //   section: 'Formatting',
+  //   type: 'string',
+  // },
+  // applyTo: {
+  //   default: 'all_numeric_fields',
+  //   display: 'select',
+  //   label: 'Apply to',
+  //   order: 10,
+  //   section: 'Formatting',
+  //   type: 'string',
+  //   values: [
+  //     { 'All numeric fields': 'all_numeric_fields' },
+  //     { 'Select fields...': 'select_fields' },
+  //   ],
+  // },
+  // CONFIG
+  // fontSize: {
+  //   default: 12,
+  //   display_size: 'third',
+  //   label: 'Font size (pt)',
+  //   order: 1,
+  //   section: 'Config',
+  //   type: 'number',
+  // },
+  // fontFamily: {
+  //   default: 'Open Sans, Helvetica, Arial, sans-serif',
+  //   display: 'select',
+  //   display_size: 'two-thirds',
+  //   label: 'Font Family',
+  //   order: 2,
+  //   section: 'Config',
+  //   type: 'string',
+  //   values: [
+  //     { 'Looker': 'Open Sans, Helvetica, Arial, sans-serif' },
+  //     { 'Helvetica': 'BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif' },
+  //     { 'Times New Roman': 'Times, "Times New Roman", serif' },
+  //   ],
+  // },
+  rowHeight: {
+    default: 50,
+    display_size: 'third',
+    label: 'Row Height',
+    order: 3,
+    section: 'Config',
+    type: 'number'
+  },
+  headerRow: {
+    type: 'boolean',
+    label: 'Display Header Row',
+    default: true,
+    section: 'Config'
+  },
+  // SERIES
+  chartTitle: {
+    label: 'Chart Title',
+    order: 1,
+    section: 'Series',
+    type: 'string'
+  },
+  // truncateColumnNames: {
+  //   default: false,
+  //   label: 'Truncate Column Names',
+  //   order: 1,
+  //   section: 'Series',
+  //   type: 'boolean',
+  // },
+  // showFullFieldName: {
+  //   default: false,
+  //   label: 'Show Full Field Name',
+  //   order: 2,
+  //   section: 'Series',
+  //   type: 'boolean',
+  // },
+  // CUSTOMIZATIONS
+
+  // PLOT
+  // theme: {
+  //   default: 'ag-theme-looker',
+  //   display: 'select',
+  //   label: 'Table Theme',
+  //   order: 1,
+  //   section: 'Plot',
+  //   type: 'string',
+  //   values: themes,
+  // },
+  // showRowNumbers: {
+  //   default: false,
+  //   label: 'Show Row Numbers',
+  //   order: 2,
+  //   section: 'Plot',
+  //   type: 'boolean',
+  // },
+  autoSizeEnabled: {
+    default: true,
+    label: 'Enable Auto Sizing',
+    order: 3,
+    section: 'Plot',
+    type: 'boolean'
+  },
+  top_bottom: {
+    label: 'Top/Bottom',
+    order: 4,
+    section: 'Plot',
+    type: 'number'
+  }
+  // transpose: {
+  //   default: false,
+  //   label: 'Transpose',
+  //   order: 4,
+  //   section: 'Plot',
+  //   type: 'boolean',
+  // },
+};
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /**
  * ag-grid-community - Advanced Data Grid / Data Table supporting Javascript / React / AngularJS / Web Components
  * @version v20.1.0
@@ -28858,7 +29076,7 @@ var columnController_1 = __webpack_require__(5);
 var constants_1 = __webpack_require__(7);
 var selectionController_1 = __webpack_require__(23);
 var gridOptionsWrapper_1 = __webpack_require__(3);
-var displayedGroupCreator_1 = __webpack_require__(59);
+var displayedGroupCreator_1 = __webpack_require__(60);
 var columnFactory_1 = __webpack_require__(47);
 var groupInstanceIdCreator_1 = __webpack_require__(100);
 var columnGroup_1 = __webpack_require__(33);
@@ -29114,7 +29332,7 @@ var RowType;
 })(RowType = exports.RowType || (exports.RowType = {}));
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29315,7 +29533,7 @@ var DisplayedGroupCreator = /** @class */function () {
 exports.DisplayedGroupCreator = DisplayedGroupCreator;
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29407,7 +29625,7 @@ var TemplateService = /** @class */function () {
 exports.TemplateService = TemplateService;
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29579,7 +29797,7 @@ var ChangedPath = /** @class */function () {
 exports.ChangedPath = ChangedPath;
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29697,7 +29915,7 @@ var ColumnAnimationService = /** @class */function () {
 exports.ColumnAnimationService = ColumnAnimationService;
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29775,7 +29993,7 @@ var CellEditorFactory = /** @class */function () {
 exports.CellEditorFactory = CellEditorFactory;
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30328,7 +30546,7 @@ var ScalarBaseFilter = /** @class */function (_super) {
 exports.ScalarBaseFilter = ScalarBaseFilter;
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30453,7 +30671,7 @@ var SetLeftFeature = /** @class */function (_super) {
 exports.SetLeftFeature = SetLeftFeature;
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30593,7 +30811,7 @@ var CellRendererService = /** @class */function () {
 exports.CellRendererService = CellRendererService;
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30669,7 +30887,7 @@ var CellRendererFactory = /** @class */function () {
 exports.CellRendererFactory = CellRendererFactory;
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30817,7 +31035,7 @@ var MaxDivHeightScaler = /** @class */function (_super) {
 exports.MaxDivHeightScaler = MaxDivHeightScaler;
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30905,7 +31123,7 @@ var HorizontalResizeService = /** @class */function () {
 exports.HorizontalResizeService = HorizontalResizeService;
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31067,7 +31285,7 @@ var AgCheckbox = /** @class */function (_super) {
 exports.AgCheckbox = AgCheckbox;
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31290,7 +31508,7 @@ var AlignedGridsService = /** @class */function () {
 exports.AlignedGridsService = AlignedGridsService;
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31516,7 +31734,7 @@ var RowNodeBlock = /** @class */function (_super) {
 exports.RowNodeBlock = RowNodeBlock;
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31656,7 +31874,7 @@ var MenuItemComponent = /** @class */function (_super) {
 exports.MenuItemComponent = MenuItemComponent;
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32281,7 +32499,7 @@ var ClipboardService = /** @class */function () {
 exports.ClipboardService = ClipboardService;
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32453,7 +32671,7 @@ var VirtualList = /** @class */function (_super) {
 exports.VirtualList = VirtualList;
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32612,7 +32830,7 @@ var LicenseManager = /** @class */function () {
 exports.LicenseManager = LicenseManager;
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32980,7 +33198,7 @@ var BaseDropZonePanel = /** @class */function (_super) {
 exports.BaseDropZonePanel = BaseDropZonePanel;
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -33001,224 +33219,6 @@ var numericValue = function numericValue(val) {
 };
 
 exports.default = numericValue;
-
-/***/ }),
-/* 79 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.options = undefined;
-
-var _themes = __webpack_require__(199);
-
-var _themes2 = _interopRequireDefault(_themes);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// These are all of the options that set up the initial
-var options = exports.options = {
-  // FORMATTING
-  // enableConditionalFormatting: {
-  //   default: false,
-  //   label: 'Enable Conditional Formatting',
-  //   order: 1,
-  //   section: 'Formatting',
-  //   type: 'boolean',
-  // },
-  // perColumnRange: {
-  //   default: true,
-  //   hidden: true,
-  //   label: 'Per column range',
-  //   order: 2,
-  //   section: 'Formatting',
-  //   type: 'boolean',
-  // },
-  // conditionalFormattingType: {
-  //   default: 'all',
-  //   display: 'select',
-  //   label: 'Formatting Type',
-  //   order: 3,
-  //   section: 'Formatting',
-  //   type: 'string',
-  //   values: [
-  //     { 'All': 'all' },
-  //     { 'Subtotals only': 'subtotals_only' },
-  //     { 'Non-subtotals only': 'non_subtotals_only' },
-  //   ],
-  // },
-  // includeNullValuesAsZero: {
-  //   default: false,
-  //   label: 'Include Null Values as Zero',
-  //   order: 4,
-  //   section: 'Formatting',
-  //   type: 'boolean',
-  // },
-  // formattingStyle: {
-  //   default: 'low_to_high',
-  //   display: 'select',
-  //   label: 'Format',
-  //   order: 5,
-  //   section: 'Formatting',
-  //   type: 'string',
-  //   values: [
-  //     { 'From low to high': 'low_to_high' },
-  //     { 'From high to low': 'high_to_low' },
-  //   ],
-  // },
-  // formattingPalette: {
-  //   default: 'red_yellow_green',
-  //   display: 'select',
-  //   label: 'Palette',
-  //   order: 6,
-  //   section: 'Formatting',
-  //   type: 'string',
-  //   values: [
-  //     { 'Red to Yellow to Green': 'red_yellow_green' },
-  //     { 'Red to White to Green': 'red_white_green' },
-  //     { 'Red to White': 'red_white' },
-  //     { 'White to Green': 'white_green' },
-  //     { 'Custom...': 'custom' },
-  //   ],
-  // },
-  // lowColor: {
-  //   display: 'color',
-  //   display_size: 'third',
-  //   label: 'Low', // These values updated in updateAsync
-  //   order: 7,
-  //   section: 'Formatting',
-  //   type: 'string',
-  // },
-  // midColor: {
-  //   display: 'color',
-  //   display_size: 'third',
-  //   label: 'Middle',
-  //   order: 8,
-  //   section: 'Formatting',
-  //   type: 'string',
-  // },
-  // highColor: {
-  //   display: 'color',
-  //   display_size: 'third',
-  //   label: 'High',
-  //   order: 9,
-  //   section: 'Formatting',
-  //   type: 'string',
-  // },
-  // applyTo: {
-  //   default: 'all_numeric_fields',
-  //   display: 'select',
-  //   label: 'Apply to',
-  //   order: 10,
-  //   section: 'Formatting',
-  //   type: 'string',
-  //   values: [
-  //     { 'All numeric fields': 'all_numeric_fields' },
-  //     { 'Select fields...': 'select_fields' },
-  //   ],
-  // },
-  // CONFIG
-  // fontSize: {
-  //   default: 12,
-  //   display_size: 'third',
-  //   label: 'Font size (pt)',
-  //   order: 1,
-  //   section: 'Config',
-  //   type: 'number',
-  // },
-  // fontFamily: {
-  //   default: 'Open Sans, Helvetica, Arial, sans-serif',
-  //   display: 'select',
-  //   display_size: 'two-thirds',
-  //   label: 'Font Family',
-  //   order: 2,
-  //   section: 'Config',
-  //   type: 'string',
-  //   values: [
-  //     { 'Looker': 'Open Sans, Helvetica, Arial, sans-serif' },
-  //     { 'Helvetica': 'BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif' },
-  //     { 'Times New Roman': 'Times, "Times New Roman", serif' },
-  //   ],
-  // },
-  rowHeight: {
-    default: 50,
-    display_size: 'third',
-    label: 'Row Height',
-    order: 3,
-    section: 'Config',
-    type: 'number'
-  },
-  headerRow: {
-    type: 'boolean',
-    label: 'Display Header Row',
-    default: true,
-    section: 'Config'
-  },
-  // SERIES
-  chartTitle: {
-    label: 'Chart Title',
-    order: 1,
-    section: 'Series',
-    type: 'string'
-  },
-  // truncateColumnNames: {
-  //   default: false,
-  //   label: 'Truncate Column Names',
-  //   order: 1,
-  //   section: 'Series',
-  //   type: 'boolean',
-  // },
-  // showFullFieldName: {
-  //   default: false,
-  //   label: 'Show Full Field Name',
-  //   order: 2,
-  //   section: 'Series',
-  //   type: 'boolean',
-  // },
-  // CUSTOMIZATIONS
-
-  // PLOT
-  // theme: {
-  //   default: 'ag-theme-looker',
-  //   display: 'select',
-  //   label: 'Table Theme',
-  //   order: 1,
-  //   section: 'Plot',
-  //   type: 'string',
-  //   values: themes,
-  // },
-  // showRowNumbers: {
-  //   default: false,
-  //   label: 'Show Row Numbers',
-  //   order: 2,
-  //   section: 'Plot',
-  //   type: 'boolean',
-  // },
-  autoSizeEnabled: {
-    default: true,
-    label: 'Enable Auto Sizing',
-    order: 3,
-    section: 'Plot',
-    type: 'boolean'
-  },
-  top_bottom: {
-    label: 'Top/Bottom',
-    order: 4,
-    section: 'Plot',
-    type: 'number'
-  }
-  // transpose: {
-  //   default: false,
-  //   label: 'Transpose',
-  //   order: 4,
-  //   section: 'Plot',
-  //   type: 'boolean',
-  // },
-};
 
 /***/ }),
 /* 80 */
@@ -33482,7 +33482,7 @@ var __metadata = undefined && undefined.__metadata || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var context_1 = __webpack_require__(0);
-var gridSerializer_1 = __webpack_require__(58);
+var gridSerializer_1 = __webpack_require__(59);
 var downloader_1 = __webpack_require__(101);
 var columnController_1 = __webpack_require__(5);
 var valueService_1 = __webpack_require__(19);
@@ -36061,7 +36061,7 @@ var __metadata = undefined && undefined.__metadata || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var component_1 = __webpack_require__(10);
 var componentAnnotations_1 = __webpack_require__(13);
-var baseFilter_1 = __webpack_require__(64);
+var baseFilter_1 = __webpack_require__(65);
 var context_1 = __webpack_require__(0);
 var componentRecipes_1 = __webpack_require__(24);
 var utils_1 = __webpack_require__(1);
@@ -36441,7 +36441,7 @@ var constants_1 = __webpack_require__(7);
 var context_1 = __webpack_require__(0);
 var component_1 = __webpack_require__(10);
 var rowNode_1 = __webpack_require__(20);
-var cellRendererService_1 = __webpack_require__(66);
+var cellRendererService_1 = __webpack_require__(67);
 var valueFormatterService_1 = __webpack_require__(54);
 var checkboxSelectionComponent_1 = __webpack_require__(84);
 var columnController_1 = __webpack_require__(5);
@@ -37905,14 +37905,14 @@ var eventService_1 = __webpack_require__(4);
 var gridPanel_1 = __webpack_require__(105);
 var gridApi_1 = __webpack_require__(8);
 var columnFactory_1 = __webpack_require__(47);
-var displayedGroupCreator_1 = __webpack_require__(59);
+var displayedGroupCreator_1 = __webpack_require__(60);
 var expressionService_1 = __webpack_require__(22);
-var templateService_1 = __webpack_require__(60);
+var templateService_1 = __webpack_require__(61);
 var popupService_1 = __webpack_require__(30);
 var logger_1 = __webpack_require__(14);
 var columnUtils_1 = __webpack_require__(36);
 var autoWidthCalculator_1 = __webpack_require__(48);
-var horizontalResizeService_1 = __webpack_require__(69);
+var horizontalResizeService_1 = __webpack_require__(70);
 var context_1 = __webpack_require__(0);
 var csvCreator_1 = __webpack_require__(81);
 var gridCore_1 = __webpack_require__(144);
@@ -37926,22 +37926,22 @@ var cellNavigationService_1 = __webpack_require__(85);
 var filterStage_1 = __webpack_require__(146);
 var sortStage_1 = __webpack_require__(148);
 var flattenStage_1 = __webpack_require__(150);
-var cellEditorFactory_1 = __webpack_require__(63);
+var cellEditorFactory_1 = __webpack_require__(64);
 var events_1 = __webpack_require__(6);
 var infiniteRowModel_1 = __webpack_require__(151);
 var clientSideRowModel_1 = __webpack_require__(153);
-var cellRendererFactory_1 = __webpack_require__(67);
-var cellRendererService_1 = __webpack_require__(66);
+var cellRendererFactory_1 = __webpack_require__(68);
+var cellRendererService_1 = __webpack_require__(67);
 var valueFormatterService_1 = __webpack_require__(54);
-var agCheckbox_1 = __webpack_require__(70);
+var agCheckbox_1 = __webpack_require__(71);
 var baseFrameworkFactory_1 = __webpack_require__(155);
 var scrollVisibleService_1 = __webpack_require__(51);
 var downloader_1 = __webpack_require__(101);
 var xmlFactory_1 = __webpack_require__(156);
-var gridSerializer_1 = __webpack_require__(58);
+var gridSerializer_1 = __webpack_require__(59);
 var stylingService_1 = __webpack_require__(97);
 var columnHoverService_1 = __webpack_require__(52);
-var columnAnimationService_1 = __webpack_require__(62);
+var columnAnimationService_1 = __webpack_require__(63);
 var sortService_1 = __webpack_require__(149);
 var filterService_1 = __webpack_require__(147);
 var autoGroupColService_1 = __webpack_require__(133);
@@ -37950,7 +37950,7 @@ var immutableService_1 = __webpack_require__(134);
 var constants_1 = __webpack_require__(7);
 var valueCache_1 = __webpack_require__(38);
 var changeDetectionService_1 = __webpack_require__(219);
-var alignedGridsService_1 = __webpack_require__(71);
+var alignedGridsService_1 = __webpack_require__(72);
 var pinnedRowModel_1 = __webpack_require__(34);
 var componentResolver_1 = __webpack_require__(29);
 var componentRecipes_1 = __webpack_require__(24);
@@ -37961,7 +37961,7 @@ var beans_1 = __webpack_require__(35);
 var environment_1 = __webpack_require__(50);
 var animationFrameService_1 = __webpack_require__(41);
 var navigationService_1 = __webpack_require__(143);
-var maxDivHeightScaler_1 = __webpack_require__(68);
+var maxDivHeightScaler_1 = __webpack_require__(69);
 var selectableService_1 = __webpack_require__(107);
 var autoHeightCalculator_1 = __webpack_require__(102);
 var paginationComp_1 = __webpack_require__(220);
@@ -38343,7 +38343,7 @@ var scrollVisibleService_1 = __webpack_require__(51);
 var rowContainerComponent_1 = __webpack_require__(215);
 var paginationProxy_1 = __webpack_require__(28);
 var popupEditorWrapper_1 = __webpack_require__(86);
-var alignedGridsService_1 = __webpack_require__(71);
+var alignedGridsService_1 = __webpack_require__(72);
 var pinnedRowModel_1 = __webpack_require__(34);
 var gridApi_1 = __webpack_require__(8);
 var animationFrameService_1 = __webpack_require__(41);
@@ -38354,10 +38354,10 @@ var touchListener_1 = __webpack_require__(53);
 var componentRecipes_1 = __webpack_require__(24);
 var dragAndDropService_1 = __webpack_require__(17);
 var rowDragFeature_1 = __webpack_require__(216);
-var maxDivHeightScaler_1 = __webpack_require__(68);
+var maxDivHeightScaler_1 = __webpack_require__(69);
 var component_1 = __webpack_require__(10);
 var autoHeightCalculator_1 = __webpack_require__(102);
-var columnAnimationService_1 = __webpack_require__(62);
+var columnAnimationService_1 = __webpack_require__(63);
 var autoWidthCalculator_1 = __webpack_require__(48);
 var beans_1 = __webpack_require__(35);
 var componentAnnotations_1 = __webpack_require__(13);
@@ -39741,7 +39741,7 @@ var __extends = undefined && undefined.__extends || function () {
 }();
 Object.defineProperty(exports, "__esModule", { value: true });
 var beanStub_1 = __webpack_require__(16);
-var rowNodeBlock_1 = __webpack_require__(72);
+var rowNodeBlock_1 = __webpack_require__(73);
 var utils_1 = __webpack_require__(1);
 var RowNodeCache = /** @class */function (_super) {
     __extends(RowNodeCache, _super);
@@ -40042,7 +40042,7 @@ var __metadata = undefined && undefined.__metadata || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var ag_grid_community_1 = __webpack_require__(2);
-var menuItemComponent_1 = __webpack_require__(73);
+var menuItemComponent_1 = __webpack_require__(74);
 var MenuList = /** @class */function (_super) {
     __extends(MenuList, _super);
     function MenuList() {
@@ -40195,7 +40195,7 @@ var __metadata = undefined && undefined.__metadata || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var ag_grid_community_1 = __webpack_require__(2);
-var clipboardService_1 = __webpack_require__(74);
+var clipboardService_1 = __webpack_require__(75);
 var aggFuncService_1 = __webpack_require__(56);
 var chartingService_1 = __webpack_require__(111);
 var MenuItemMapper = /** @class */function () {
@@ -41383,7 +41383,7 @@ var __metadata = undefined && undefined.__metadata || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var main_1 = __webpack_require__(2);
-var baseDropZonePanel_1 = __webpack_require__(77);
+var baseDropZonePanel_1 = __webpack_require__(78);
 var RowGroupDropZonePanel = /** @class */function (_super) {
     __extends(RowGroupDropZonePanel, _super);
     function RowGroupDropZonePanel(horizontal) {
@@ -41494,7 +41494,7 @@ var __metadata = undefined && undefined.__metadata || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var main_1 = __webpack_require__(2);
-var baseDropZonePanel_1 = __webpack_require__(77);
+var baseDropZonePanel_1 = __webpack_require__(78);
 var PivotDropZonePanel = /** @class */function (_super) {
     __extends(PivotDropZonePanel, _super);
     function PivotDropZonePanel(horizontal) {
@@ -42949,7 +42949,7 @@ var __metadata = undefined && undefined.__metadata || function (k, v) {
     if ((typeof Reflect === "undefined" ? "undefined" : _typeof(Reflect)) === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var baseFilter_1 = __webpack_require__(64);
+var baseFilter_1 = __webpack_require__(65);
 var componentAnnotations_1 = __webpack_require__(13);
 var utils_1 = __webpack_require__(1);
 var TextFilter = /** @class */function (_super) {
@@ -43189,7 +43189,7 @@ var __metadata = undefined && undefined.__metadata || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var componentAnnotations_1 = __webpack_require__(13);
-var baseFilter_1 = __webpack_require__(64);
+var baseFilter_1 = __webpack_require__(65);
 var utils_1 = __webpack_require__(1);
 var NumberFilter = /** @class */function (_super) {
     __extends(NumberFilter, _super);
@@ -43429,15 +43429,15 @@ var column_1 = __webpack_require__(12);
 var dragAndDropService_1 = __webpack_require__(17);
 var columnApi_1 = __webpack_require__(9);
 var columnController_1 = __webpack_require__(5);
-var horizontalResizeService_1 = __webpack_require__(69);
+var horizontalResizeService_1 = __webpack_require__(70);
 var gridOptionsWrapper_1 = __webpack_require__(3);
 var cssClassApplier_1 = __webpack_require__(99);
-var setLeftFeature_1 = __webpack_require__(65);
+var setLeftFeature_1 = __webpack_require__(66);
 var gridApi_1 = __webpack_require__(8);
 var sortController_1 = __webpack_require__(26);
 var eventService_1 = __webpack_require__(4);
 var componentRecipes_1 = __webpack_require__(24);
-var agCheckbox_1 = __webpack_require__(70);
+var agCheckbox_1 = __webpack_require__(71);
 var componentAnnotations_1 = __webpack_require__(13);
 var selectAllFeature_1 = __webpack_require__(211);
 var events_1 = __webpack_require__(6);
@@ -46866,7 +46866,7 @@ var __param = undefined && undefined.__param || function (paramIndex, decorator)
     };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var rowNodeBlock_1 = __webpack_require__(72);
+var rowNodeBlock_1 = __webpack_require__(73);
 var logger_1 = __webpack_require__(14);
 var context_1 = __webpack_require__(0);
 var utils_1 = __webpack_require__(1);
@@ -46992,7 +46992,7 @@ var events_1 = __webpack_require__(6);
 var context_1 = __webpack_require__(0);
 var selectionController_1 = __webpack_require__(23);
 var clientSideNodeManager_1 = __webpack_require__(154);
-var changedPath_1 = __webpack_require__(61);
+var changedPath_1 = __webpack_require__(62);
 var valueService_1 = __webpack_require__(19);
 var valueCache_1 = __webpack_require__(38);
 var gridApi_1 = __webpack_require__(8);
@@ -48398,7 +48398,7 @@ var __metadata = undefined && undefined.__metadata || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var ag_grid_community_1 = __webpack_require__(2);
 var menuList_1 = __webpack_require__(109);
-var menuItemComponent_1 = __webpack_require__(73);
+var menuItemComponent_1 = __webpack_require__(74);
 var menuItemMapper_1 = __webpack_require__(110);
 var primaryColsPanel_1 = __webpack_require__(161);
 var EnterpriseMenuFactory = /** @class */function () {
@@ -49943,7 +49943,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var ag_grid_community_1 = __webpack_require__(2);
 var setFilter_1 = __webpack_require__(166);
 var richSelectCellEditor_1 = __webpack_require__(169);
-var licenseManager_1 = __webpack_require__(76);
+var licenseManager_1 = __webpack_require__(77);
 var detailCellRenderer_1 = __webpack_require__(240);
 var totalRowsComp_1 = __webpack_require__(241);
 var totalAndFilteredRowsComp_1 = __webpack_require__(242);
@@ -50021,7 +50021,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var ag_grid_community_1 = __webpack_require__(2);
 var setFilterModel_1 = __webpack_require__(167);
 var setFilterListItem_1 = __webpack_require__(168);
-var virtualList_1 = __webpack_require__(75);
+var virtualList_1 = __webpack_require__(76);
 var CheckboxState;
 (function (CheckboxState) {
     CheckboxState[CheckboxState["CHECKED"] = 0] = "CHECKED";
@@ -50888,7 +50888,7 @@ var __metadata = undefined && undefined.__metadata || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var ag_grid_community_1 = __webpack_require__(2);
 var richSelectRow_1 = __webpack_require__(170);
-var virtualList_1 = __webpack_require__(75);
+var virtualList_1 = __webpack_require__(76);
 var RichSelectCellEditor = /** @class */function (_super) {
     __extends(RichSelectCellEditor, _super);
     function RichSelectCellEditor() {
@@ -51251,7 +51251,7 @@ var __metadata = undefined && undefined.__metadata || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var ag_grid_community_1 = __webpack_require__(2);
 var aggFuncService_1 = __webpack_require__(56);
-var virtualList_1 = __webpack_require__(75);
+var virtualList_1 = __webpack_require__(76);
 var DropZoneColumnComp = /** @class */function (_super) {
     __extends(DropZoneColumnComp, _super);
     function DropZoneColumnComp(column, dragSourceDropTarget, ghost, valueColumn) {
@@ -51468,7 +51468,7 @@ var __metadata = undefined && undefined.__metadata || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var main_1 = __webpack_require__(2);
-var baseDropZonePanel_1 = __webpack_require__(77);
+var baseDropZonePanel_1 = __webpack_require__(78);
 var ValuesDropZonePanel = /** @class */function (_super) {
     __extends(ValuesDropZonePanel, _super);
     function ValuesDropZonePanel(horizontal) {
@@ -51579,8 +51579,8 @@ var __metadata = undefined && undefined.__metadata || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var ag_grid_community_1 = __webpack_require__(2);
-var clipboardService_1 = __webpack_require__(74);
-var menuItemComponent_1 = __webpack_require__(73);
+var clipboardService_1 = __webpack_require__(75);
+var menuItemComponent_1 = __webpack_require__(74);
 var menuList_1 = __webpack_require__(109);
 var menuItemMapper_1 = __webpack_require__(110);
 var rangeController_1 = __webpack_require__(42);
@@ -53821,7 +53821,7 @@ var __metadata = undefined && undefined.__metadata || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var ag_grid_community_1 = __webpack_require__(2);
-var licenseManager_1 = __webpack_require__(76);
+var licenseManager_1 = __webpack_require__(77);
 var WatermarkComp = /** @class */function (_super) {
     __extends(WatermarkComp, _super);
     function WatermarkComp() {
@@ -55261,7 +55261,7 @@ var _globalConfig = __webpack_require__(15);
 
 var _globalConfig2 = _interopRequireDefault(_globalConfig);
 
-var _numericValue = __webpack_require__(78);
+var _numericValue = __webpack_require__(79);
 
 var _numericValue2 = _interopRequireDefault(_numericValue);
 
@@ -55355,15 +55355,15 @@ var _modifyOptions = __webpack_require__(331);
 
 var _modifyOptions2 = _interopRequireDefault(_modifyOptions);
 
-var _refreshColumns = __webpack_require__(334);
+var _refreshColumns = __webpack_require__(335);
 
 var _refreshColumns2 = _interopRequireDefault(_refreshColumns);
 
-var _setPivots = __webpack_require__(335);
+var _setPivots = __webpack_require__(336);
 
 var _setPivots2 = _interopRequireDefault(_setPivots);
 
-var _updateTheme = __webpack_require__(338);
+var _updateTheme = __webpack_require__(339);
 
 var _updateTheme2 = _interopRequireDefault(_updateTheme);
 
@@ -55373,17 +55373,17 @@ var _lodash = __webpack_require__(11);
 
 var _agGridCommunity = __webpack_require__(2);
 
-var _options = __webpack_require__(79);
+var _options = __webpack_require__(58);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // eslint-disable-line
-var base = __webpack_require__(339);
+var base = __webpack_require__(340);
 // import loadStylesheets from './gridStyling/loadStylesheets';
 /* eslint-disable arrow-body-style, no-undef, no-use-before-define */
 
-var theme = __webpack_require__(341);
-var fdCSS = __webpack_require__(343);
+var theme = __webpack_require__(342);
+var fdCSS = __webpack_require__(344);
 
 // The grid works without a license key, however, without it a watermark flashes in the bottom right on load.
 _agGridEnterprise.LicenseManager.setLicenseKey('Evaluation_License-_Not_For_Production_Valid_Until_25_April_2019__MTU1NjE0NjgwMDAwMA==5095db85700c871b2d29d9537cd451b3');
@@ -55519,7 +55519,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var ag_grid_community_1 = __webpack_require__(2);
 var enterpriseMenu_1 = __webpack_require__(159);
 var rangeController_1 = __webpack_require__(42);
-var clipboardService_1 = __webpack_require__(74);
+var clipboardService_1 = __webpack_require__(75);
 var groupStage_1 = __webpack_require__(163);
 var aggregationStage_1 = __webpack_require__(164);
 var enterpriseBoot_1 = __webpack_require__(165);
@@ -55527,7 +55527,7 @@ var contextMenu_1 = __webpack_require__(174);
 var viewportRowModel_1 = __webpack_require__(175);
 var sideBarComp_1 = __webpack_require__(176);
 var rowGroupCompFactory_1 = __webpack_require__(179);
-var licenseManager_1 = __webpack_require__(76);
+var licenseManager_1 = __webpack_require__(77);
 var md5_1 = __webpack_require__(115);
 var pivotStage_1 = __webpack_require__(113);
 var pivotColDefService_1 = __webpack_require__(114);
@@ -55560,13 +55560,13 @@ var statusBar_2 = __webpack_require__(189);
 exports.StatusBar = statusBar_2.StatusBar;
 var statusBarService_2 = __webpack_require__(121);
 exports.StatusBarService = statusBarService_2.StatusBarService;
-var clipboardService_2 = __webpack_require__(74);
+var clipboardService_2 = __webpack_require__(75);
 exports.ClipboardService = clipboardService_2.ClipboardService;
 var enterpriseBoot_2 = __webpack_require__(165);
 exports.EnterpriseBoot = enterpriseBoot_2.EnterpriseBoot;
 var enterpriseMenu_2 = __webpack_require__(159);
 exports.EnterpriseMenu = enterpriseMenu_2.EnterpriseMenu;
-var menuItemComponent_1 = __webpack_require__(73);
+var menuItemComponent_1 = __webpack_require__(74);
 exports.MenuItemComponent = menuItemComponent_1.MenuItemComponent;
 var menuList_1 = __webpack_require__(109);
 exports.MenuList = menuList_1.MenuList;
@@ -55582,15 +55582,15 @@ var richSelectCellEditor_1 = __webpack_require__(169);
 exports.RichSelectCellEditor = richSelectCellEditor_1.RichSelectCellEditor;
 var richSelectRow_1 = __webpack_require__(170);
 exports.RichSelectRow = richSelectRow_1.RichSelectRow;
-var virtualList_1 = __webpack_require__(75);
+var virtualList_1 = __webpack_require__(76);
 exports.VirtualList = virtualList_1.VirtualList;
-var baseDropZonePanel_1 = __webpack_require__(77);
+var baseDropZonePanel_1 = __webpack_require__(78);
 exports.BaseDropZonePanel = baseDropZonePanel_1.BaseDropZonePanel;
 var pivotDropZonePanel_1 = __webpack_require__(117);
 exports.PivotDropZonePanel = pivotDropZonePanel_1.PivotDropZonePanel;
 var sideBarComp_2 = __webpack_require__(176);
 exports.SideBarComp = sideBarComp_2.SideBarComp;
-var licenseManager_2 = __webpack_require__(76);
+var licenseManager_2 = __webpack_require__(77);
 exports.LicenseManager = licenseManager_2.LicenseManager;
 var pivotStage_2 = __webpack_require__(113);
 exports.PivotStage = pivotStage_2.PivotStage;
@@ -55880,7 +55880,7 @@ var __metadata = undefined && undefined.__metadata || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var context_1 = __webpack_require__(0);
 var column_1 = __webpack_require__(12);
-var setLeftFeature_1 = __webpack_require__(65);
+var setLeftFeature_1 = __webpack_require__(66);
 var component_1 = __webpack_require__(10);
 var componentAnnotations_1 = __webpack_require__(13);
 var gridOptionsWrapper_1 = __webpack_require__(3);
@@ -56820,7 +56820,7 @@ var __metadata = undefined && undefined.__metadata || function (k, v) {
     if ((typeof Reflect === "undefined" ? "undefined" : _typeof(Reflect)) === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var agCheckbox_1 = __webpack_require__(70);
+var agCheckbox_1 = __webpack_require__(71);
 var beanStub_1 = __webpack_require__(16);
 var context_1 = __webpack_require__(0);
 var columnApi_1 = __webpack_require__(9);
@@ -57106,11 +57106,11 @@ var columnGroup_1 = __webpack_require__(33);
 var columnApi_1 = __webpack_require__(9);
 var columnController_1 = __webpack_require__(5);
 var gridOptionsWrapper_1 = __webpack_require__(3);
-var horizontalResizeService_1 = __webpack_require__(69);
+var horizontalResizeService_1 = __webpack_require__(70);
 var context_1 = __webpack_require__(0);
 var cssClassApplier_1 = __webpack_require__(99);
 var dragAndDropService_1 = __webpack_require__(17);
-var setLeftFeature_1 = __webpack_require__(65);
+var setLeftFeature_1 = __webpack_require__(66);
 var gridApi_1 = __webpack_require__(8);
 var componentRecipes_1 = __webpack_require__(24);
 var beans_1 = __webpack_require__(35);
@@ -58020,7 +58020,7 @@ var __metadata = undefined && undefined.__metadata || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var gridOptionsWrapper_1 = __webpack_require__(3);
 var context_1 = __webpack_require__(0);
-var rowNodeBlock_1 = __webpack_require__(72);
+var rowNodeBlock_1 = __webpack_require__(73);
 var rowRenderer_1 = __webpack_require__(18);
 var utils_1 = __webpack_require__(1);
 var InfiniteBlock = /** @class */function (_super) {
@@ -58153,7 +58153,7 @@ var __metadata = undefined && undefined.__metadata || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var context_1 = __webpack_require__(0);
 var gridOptionsWrapper_1 = __webpack_require__(3);
-var changedPath_1 = __webpack_require__(61);
+var changedPath_1 = __webpack_require__(62);
 var rowRenderer_1 = __webpack_require__(18);
 var eventService_1 = __webpack_require__(4);
 var constants_1 = __webpack_require__(7);
@@ -66564,7 +66564,7 @@ var _gridOptions = __webpack_require__(31);
 
 var _gridOptions2 = _interopRequireDefault(_gridOptions);
 
-var _numericValue = __webpack_require__(78);
+var _numericValue = __webpack_require__(79);
 
 var _numericValue2 = _interopRequireDefault(_numericValue);
 
@@ -66997,7 +66997,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _numericValue = __webpack_require__(78);
+var _numericValue = __webpack_require__(79);
 
 var _numericValue2 = _interopRequireDefault(_numericValue);
 
@@ -67372,11 +67372,11 @@ var _addOptionAlternateSubtotals = __webpack_require__(333);
 
 var _addOptionAlternateSubtotals2 = _interopRequireDefault(_addOptionAlternateSubtotals);
 
-var _addOptionCustomFormatting = __webpack_require__(345);
+var _addOptionCustomFormatting = __webpack_require__(334);
 
 var _addOptionCustomFormatting2 = _interopRequireDefault(_addOptionCustomFormatting);
 
-var _options = __webpack_require__(79);
+var _options = __webpack_require__(58);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -67421,7 +67421,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _options = __webpack_require__(79);
+var _options = __webpack_require__(58);
 
 var addOptionCustomLabels = function addOptionCustomLabels(fields) {
   fields.forEach(function (field) {
@@ -67452,7 +67452,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _options = __webpack_require__(79);
+var _options = __webpack_require__(58);
 
 var addOptionAlternateSubtotals = function addOptionAlternateSubtotals(fields) {
   // Create dropdown values representing all measureLike fields:
@@ -67520,6 +67520,36 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _options = __webpack_require__(58);
+
+var addOptionCustomFormatting = function addOptionCustomFormatting(fields) {
+  fields.forEach(function (field) {
+    var label = field.label,
+        name = field.name;
+
+    var cl = 'format_' + name;
+    _options.options[cl] = {
+      display: 'text',
+      label: 'Format - "' + label + '"',
+      section: 'Series',
+      type: 'string'
+    };
+  });
+};
+
+exports.default = addOptionCustomFormatting;
+
+/***/ }),
+/* 335 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _AgColumn = __webpack_require__(191);
 
 var _AgColumn2 = _interopRequireDefault(_AgColumn);
@@ -67557,7 +67587,7 @@ var refreshColumns = function refreshColumns(config, details) {
 exports.default = refreshColumns;
 
 /***/ }),
-/* 335 */
+/* 336 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67567,11 +67597,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _addPivotLabels = __webpack_require__(336);
+var _addPivotLabels = __webpack_require__(337);
 
 var _addPivotLabels2 = _interopRequireDefault(_addPivotLabels);
 
-var _setPivotHeaders = __webpack_require__(337);
+var _setPivotHeaders = __webpack_require__(338);
 
 var _setPivotHeaders2 = _interopRequireDefault(_setPivotHeaders);
 
@@ -67585,7 +67615,7 @@ var setPivots = function setPivots() {
 exports.default = setPivots;
 
 /***/ }),
-/* 336 */
+/* 337 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67637,7 +67667,7 @@ var addPivotLabels = function addPivotLabels() {
 exports.default = addPivotLabels;
 
 /***/ }),
-/* 337 */
+/* 338 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67675,7 +67705,7 @@ var setPivotHeaders = function setPivotHeaders() {
 exports.default = setPivotHeaders;
 
 /***/ }),
-/* 338 */
+/* 339 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67705,11 +67735,11 @@ var updateTheme = function updateTheme(classList, theme) {
 exports.default = updateTheme;
 
 /***/ }),
-/* 339 */
+/* 340 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-        var result = __webpack_require__(340);
+        var result = __webpack_require__(341);
 
         if (typeof result === "string") {
             module.exports = result;
@@ -67719,7 +67749,7 @@ exports.default = updateTheme;
     
 
 /***/ }),
-/* 340 */
+/* 341 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(123)(false);
@@ -67733,11 +67763,11 @@ exports.push([module.i, "/**\n ****************************\n * Generic Styles\n
 
 
 /***/ }),
-/* 341 */
+/* 342 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-        var result = __webpack_require__(342);
+        var result = __webpack_require__(343);
 
         if (typeof result === "string") {
             module.exports = result;
@@ -67747,7 +67777,7 @@ exports.push([module.i, "/**\n ****************************\n * Generic Styles\n
     
 
 /***/ }),
-/* 342 */
+/* 343 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(123)(false);
@@ -67761,11 +67791,11 @@ exports.push([module.i, ".ag-theme-material {\n  background-color: #fff;\n  colo
 
 
 /***/ }),
-/* 343 */
+/* 344 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-        var result = __webpack_require__(344);
+        var result = __webpack_require__(345);
 
         if (typeof result === "string") {
             module.exports = result;
@@ -67775,7 +67805,7 @@ exports.push([module.i, ".ag-theme-material {\n  background-color: #fff;\n  colo
     
 
 /***/ }),
-/* 344 */
+/* 345 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(123)(false);
@@ -67783,40 +67813,10 @@ exports = module.exports = __webpack_require__(123)(false);
 
 
 // module
-exports.push([module.i, "/* cyrillic-ext */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 300;\n  src: local('Roboto Light'), local('Roboto-Light'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fCRc4EsA.woff2) format('woff2');\n  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;\n}\n/* cyrillic */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 300;\n  src: local('Roboto Light'), local('Roboto-Light'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fABc4EsA.woff2) format('woff2');\n  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;\n}\n/* greek-ext */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 300;\n  src: local('Roboto Light'), local('Roboto-Light'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fCBc4EsA.woff2) format('woff2');\n  unicode-range: U+1F00-1FFF;\n}\n/* greek */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 300;\n  src: local('Roboto Light'), local('Roboto-Light'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fBxc4EsA.woff2) format('woff2');\n  unicode-range: U+0370-03FF;\n}\n/* vietnamese */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 300;\n  src: local('Roboto Light'), local('Roboto-Light'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fCxc4EsA.woff2) format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;\n}\n/* latin-ext */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 300;\n  src: local('Roboto Light'), local('Roboto-Light'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fChc4EsA.woff2) format('woff2');\n  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}\n/* latin */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 300;\n  src: local('Roboto Light'), local('Roboto-Light'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}\n/* cyrillic-ext */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 400;\n  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu72xKOzY.woff2) format('woff2');\n  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;\n}\n/* cyrillic */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 400;\n  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu5mxKOzY.woff2) format('woff2');\n  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;\n}\n/* greek-ext */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 400;\n  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu7mxKOzY.woff2) format('woff2');\n  unicode-range: U+1F00-1FFF;\n}\n/* greek */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 400;\n  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4WxKOzY.woff2) format('woff2');\n  unicode-range: U+0370-03FF;\n}\n/* vietnamese */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 400;\n  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu7WxKOzY.woff2) format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;\n}\n/* latin-ext */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 400;\n  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu7GxKOzY.woff2) format('woff2');\n  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}\n/* latin */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 400;\n  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxK.woff2) format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}\n/* cyrillic-ext */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 500;\n  src: local('Roboto Medium'), local('Roboto-Medium'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fCRc4EsA.woff2) format('woff2');\n  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;\n}\n/* cyrillic */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 500;\n  src: local('Roboto Medium'), local('Roboto-Medium'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fABc4EsA.woff2) format('woff2');\n  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;\n}\n/* greek-ext */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 500;\n  src: local('Roboto Medium'), local('Roboto-Medium'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fCBc4EsA.woff2) format('woff2');\n  unicode-range: U+1F00-1FFF;\n}\n/* greek */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 500;\n  src: local('Roboto Medium'), local('Roboto-Medium'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fBxc4EsA.woff2) format('woff2');\n  unicode-range: U+0370-03FF;\n}\n/* vietnamese */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 500;\n  src: local('Roboto Medium'), local('Roboto-Medium'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fCxc4EsA.woff2) format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;\n}\n/* latin-ext */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 500;\n  src: local('Roboto Medium'), local('Roboto-Medium'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fChc4EsA.woff2) format('woff2');\n  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}\n/* latin */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 500;\n  src: local('Roboto Medium'), local('Roboto-Medium'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}\n\n/* cyrillic-ext */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 400;\n  src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm459WRhyzbi.woff2) format('woff2');\n  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;\n}\n/* cyrillic */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 400;\n  src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm459W1hyzbi.woff2) format('woff2');\n  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;\n}\n/* vietnamese */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 400;\n  src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm459WZhyzbi.woff2) format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;\n}\n/* latin-ext */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 400;\n  src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm459Wdhyzbi.woff2) format('woff2');\n  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}\n/* latin */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 400;\n  src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2) format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}\n/* cyrillic-ext */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 500;\n  src: local('Montserrat Medium'), local('Montserrat-Medium'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_ZpC3gTD_u50.woff2) format('woff2');\n  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;\n}\n/* cyrillic */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 500;\n  src: local('Montserrat Medium'), local('Montserrat-Medium'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_ZpC3g3D_u50.woff2) format('woff2');\n  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;\n}\n/* vietnamese */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 500;\n  src: local('Montserrat Medium'), local('Montserrat-Medium'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_ZpC3gbD_u50.woff2) format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;\n}\n/* latin-ext */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 500;\n  src: local('Montserrat Medium'), local('Montserrat-Medium'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_ZpC3gfD_u50.woff2) format('woff2');\n  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}\n/* latin */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 500;\n  src: local('Montserrat Medium'), local('Montserrat-Medium'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_ZpC3gnD_g.woff2) format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}\n/* cyrillic-ext */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 600;\n  src: local('Montserrat SemiBold'), local('Montserrat-SemiBold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_bZF3gTD_u50.woff2) format('woff2');\n  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;\n}\n/* cyrillic */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 600;\n  src: local('Montserrat SemiBold'), local('Montserrat-SemiBold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_bZF3g3D_u50.woff2) format('woff2');\n  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;\n}\n/* vietnamese */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 600;\n  src: local('Montserrat SemiBold'), local('Montserrat-SemiBold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_bZF3gbD_u50.woff2) format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;\n}\n/* latin-ext */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 600;\n  src: local('Montserrat SemiBold'), local('Montserrat-SemiBold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_bZF3gfD_u50.woff2) format('woff2');\n  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}\n/* latin */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 600;\n  src: local('Montserrat SemiBold'), local('Montserrat-SemiBold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_bZF3gnD_g.woff2) format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}\n/* cyrillic-ext */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 700;\n  src: local('Montserrat Bold'), local('Montserrat-Bold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_dJE3gTD_u50.woff2) format('woff2');\n  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;\n}\n/* cyrillic */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 700;\n  src: local('Montserrat Bold'), local('Montserrat-Bold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_dJE3g3D_u50.woff2) format('woff2');\n  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;\n}\n/* vietnamese */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 700;\n  src: local('Montserrat Bold'), local('Montserrat-Bold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_dJE3gbD_u50.woff2) format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;\n}\n/* latin-ext */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 700;\n  src: local('Montserrat Bold'), local('Montserrat-Bold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_dJE3gfD_u50.woff2) format('woff2');\n  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}\n/* latin */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 700;\n  src: local('Montserrat Bold'), local('Montserrat-Bold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_dJE3gnD_g.woff2) format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}\n/* cyrillic-ext */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 800;\n  src: local('Montserrat ExtraBold'), local('Montserrat-ExtraBold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_c5H3gTD_u50.woff2) format('woff2');\n  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;\n}\n/* cyrillic */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 800;\n  src: local('Montserrat ExtraBold'), local('Montserrat-ExtraBold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_c5H3g3D_u50.woff2) format('woff2');\n  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;\n}\n/* vietnamese */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 800;\n  src: local('Montserrat ExtraBold'), local('Montserrat-ExtraBold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_c5H3gbD_u50.woff2) format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;\n}\n/* latin-ext */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 800;\n  src: local('Montserrat ExtraBold'), local('Montserrat-ExtraBold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_c5H3gfD_u50.woff2) format('woff2');\n  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}\n/* latin */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 800;\n  src: local('Montserrat ExtraBold'), local('Montserrat-ExtraBold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_c5H3gnD_g.woff2) format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}\n/* cyrillic-ext */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 900;\n  src: local('Montserrat Black'), local('Montserrat-Black'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_epG3gTD_u50.woff2) format('woff2');\n  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;\n}\n/* cyrillic */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 900;\n  src: local('Montserrat Black'), local('Montserrat-Black'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_epG3g3D_u50.woff2) format('woff2');\n  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;\n}\n/* vietnamese */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 900;\n  src: local('Montserrat Black'), local('Montserrat-Black'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_epG3gbD_u50.woff2) format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;\n}\n/* latin-ext */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 900;\n  src: local('Montserrat Black'), local('Montserrat-Black'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_epG3gfD_u50.woff2) format('woff2');\n  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}\n/* latin */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 900;\n  src: local('Montserrat Black'), local('Montserrat-Black'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_epG3gnD_g.woff2) format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}\n\n.absolute, .looker__absolute {\n  height: 25px;\n}\n\n.vis-container > iframe {\n  padding: 0 !important;\n}\n\n#vis {\n  margin: 10px;\n}\n\n.table {\n  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.14);\n  width: '97%';\n  padding: '5px 10px 10px';\n}\n\n.table:hover {\n  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12), 0 5px 5px -3px rgba(0, 0, 0, .2);\n}\n\n.positive, .looker__positive {\n  color: green;\n}\n\n.negative, .looker__negative {\n  color: red;\n}\n\n.change, .looker__change {\n  display: block;\n}\n\n.ag-theme-material .ag-header-cell {\n  padding: 0 10px;\n}\n\n.ag-theme-material .ag-cell {\n  padding: 0 9px;\n  line-height: 0;\n  display: grid;\n  align-items: center;\n}\n\n.header {\n  margin-bottom: 10px;\n}\n\n.title {\n  color: #555;\n  font-size: 1.25rem;\n  line-height: 1.6;\n  font-family: \"Roboto\", \"Helvetica\", \"Arial\", sans-serif;\n}\n", ""]);
+exports.push([module.i, "/* cyrillic-ext */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 300;\n  src: local('Roboto Light'), local('Roboto-Light'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fCRc4EsA.woff2) format('woff2');\n  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;\n}\n/* cyrillic */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 300;\n  src: local('Roboto Light'), local('Roboto-Light'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fABc4EsA.woff2) format('woff2');\n  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;\n}\n/* greek-ext */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 300;\n  src: local('Roboto Light'), local('Roboto-Light'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fCBc4EsA.woff2) format('woff2');\n  unicode-range: U+1F00-1FFF;\n}\n/* greek */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 300;\n  src: local('Roboto Light'), local('Roboto-Light'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fBxc4EsA.woff2) format('woff2');\n  unicode-range: U+0370-03FF;\n}\n/* vietnamese */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 300;\n  src: local('Roboto Light'), local('Roboto-Light'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fCxc4EsA.woff2) format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;\n}\n/* latin-ext */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 300;\n  src: local('Roboto Light'), local('Roboto-Light'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fChc4EsA.woff2) format('woff2');\n  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}\n/* latin */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 300;\n  src: local('Roboto Light'), local('Roboto-Light'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}\n/* cyrillic-ext */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 400;\n  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu72xKOzY.woff2) format('woff2');\n  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;\n}\n/* cyrillic */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 400;\n  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu5mxKOzY.woff2) format('woff2');\n  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;\n}\n/* greek-ext */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 400;\n  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu7mxKOzY.woff2) format('woff2');\n  unicode-range: U+1F00-1FFF;\n}\n/* greek */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 400;\n  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4WxKOzY.woff2) format('woff2');\n  unicode-range: U+0370-03FF;\n}\n/* vietnamese */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 400;\n  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu7WxKOzY.woff2) format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;\n}\n/* latin-ext */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 400;\n  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu7GxKOzY.woff2) format('woff2');\n  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}\n/* latin */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 400;\n  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxK.woff2) format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}\n/* cyrillic-ext */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 500;\n  src: local('Roboto Medium'), local('Roboto-Medium'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fCRc4EsA.woff2) format('woff2');\n  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;\n}\n/* cyrillic */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 500;\n  src: local('Roboto Medium'), local('Roboto-Medium'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fABc4EsA.woff2) format('woff2');\n  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;\n}\n/* greek-ext */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 500;\n  src: local('Roboto Medium'), local('Roboto-Medium'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fCBc4EsA.woff2) format('woff2');\n  unicode-range: U+1F00-1FFF;\n}\n/* greek */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 500;\n  src: local('Roboto Medium'), local('Roboto-Medium'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fBxc4EsA.woff2) format('woff2');\n  unicode-range: U+0370-03FF;\n}\n/* vietnamese */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 500;\n  src: local('Roboto Medium'), local('Roboto-Medium'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fCxc4EsA.woff2) format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;\n}\n/* latin-ext */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 500;\n  src: local('Roboto Medium'), local('Roboto-Medium'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fChc4EsA.woff2) format('woff2');\n  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}\n/* latin */\n@font-face {\n  font-family: 'Roboto';\n  font-style: normal;\n  font-weight: 500;\n  src: local('Roboto Medium'), local('Roboto-Medium'), url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}\n\n/* cyrillic-ext */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 400;\n  src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm459WRhyzbi.woff2) format('woff2');\n  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;\n}\n/* cyrillic */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 400;\n  src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm459W1hyzbi.woff2) format('woff2');\n  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;\n}\n/* vietnamese */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 400;\n  src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm459WZhyzbi.woff2) format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;\n}\n/* latin-ext */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 400;\n  src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm459Wdhyzbi.woff2) format('woff2');\n  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}\n/* latin */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 400;\n  src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2) format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}\n/* cyrillic-ext */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 500;\n  src: local('Montserrat Medium'), local('Montserrat-Medium'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_ZpC3gTD_u50.woff2) format('woff2');\n  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;\n}\n/* cyrillic */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 500;\n  src: local('Montserrat Medium'), local('Montserrat-Medium'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_ZpC3g3D_u50.woff2) format('woff2');\n  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;\n}\n/* vietnamese */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 500;\n  src: local('Montserrat Medium'), local('Montserrat-Medium'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_ZpC3gbD_u50.woff2) format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;\n}\n/* latin-ext */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 500;\n  src: local('Montserrat Medium'), local('Montserrat-Medium'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_ZpC3gfD_u50.woff2) format('woff2');\n  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}\n/* latin */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 500;\n  src: local('Montserrat Medium'), local('Montserrat-Medium'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_ZpC3gnD_g.woff2) format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}\n/* cyrillic-ext */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 600;\n  src: local('Montserrat SemiBold'), local('Montserrat-SemiBold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_bZF3gTD_u50.woff2) format('woff2');\n  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;\n}\n/* cyrillic */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 600;\n  src: local('Montserrat SemiBold'), local('Montserrat-SemiBold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_bZF3g3D_u50.woff2) format('woff2');\n  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;\n}\n/* vietnamese */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 600;\n  src: local('Montserrat SemiBold'), local('Montserrat-SemiBold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_bZF3gbD_u50.woff2) format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;\n}\n/* latin-ext */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 600;\n  src: local('Montserrat SemiBold'), local('Montserrat-SemiBold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_bZF3gfD_u50.woff2) format('woff2');\n  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}\n/* latin */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 600;\n  src: local('Montserrat SemiBold'), local('Montserrat-SemiBold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_bZF3gnD_g.woff2) format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}\n/* cyrillic-ext */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 700;\n  src: local('Montserrat Bold'), local('Montserrat-Bold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_dJE3gTD_u50.woff2) format('woff2');\n  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;\n}\n/* cyrillic */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 700;\n  src: local('Montserrat Bold'), local('Montserrat-Bold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_dJE3g3D_u50.woff2) format('woff2');\n  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;\n}\n/* vietnamese */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 700;\n  src: local('Montserrat Bold'), local('Montserrat-Bold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_dJE3gbD_u50.woff2) format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;\n}\n/* latin-ext */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 700;\n  src: local('Montserrat Bold'), local('Montserrat-Bold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_dJE3gfD_u50.woff2) format('woff2');\n  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}\n/* latin */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 700;\n  src: local('Montserrat Bold'), local('Montserrat-Bold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_dJE3gnD_g.woff2) format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}\n/* cyrillic-ext */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 800;\n  src: local('Montserrat ExtraBold'), local('Montserrat-ExtraBold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_c5H3gTD_u50.woff2) format('woff2');\n  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;\n}\n/* cyrillic */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 800;\n  src: local('Montserrat ExtraBold'), local('Montserrat-ExtraBold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_c5H3g3D_u50.woff2) format('woff2');\n  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;\n}\n/* vietnamese */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 800;\n  src: local('Montserrat ExtraBold'), local('Montserrat-ExtraBold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_c5H3gbD_u50.woff2) format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;\n}\n/* latin-ext */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 800;\n  src: local('Montserrat ExtraBold'), local('Montserrat-ExtraBold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_c5H3gfD_u50.woff2) format('woff2');\n  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}\n/* latin */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 800;\n  src: local('Montserrat ExtraBold'), local('Montserrat-ExtraBold'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_c5H3gnD_g.woff2) format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}\n/* cyrillic-ext */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 900;\n  src: local('Montserrat Black'), local('Montserrat-Black'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_epG3gTD_u50.woff2) format('woff2');\n  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;\n}\n/* cyrillic */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 900;\n  src: local('Montserrat Black'), local('Montserrat-Black'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_epG3g3D_u50.woff2) format('woff2');\n  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;\n}\n/* vietnamese */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 900;\n  src: local('Montserrat Black'), local('Montserrat-Black'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_epG3gbD_u50.woff2) format('woff2');\n  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;\n}\n/* latin-ext */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 900;\n  src: local('Montserrat Black'), local('Montserrat-Black'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_epG3gfD_u50.woff2) format('woff2');\n  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}\n/* latin */\n@font-face {\n  font-family: 'Montserrat';\n  font-style: normal;\n  font-weight: 900;\n  src: local('Montserrat Black'), local('Montserrat-Black'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_epG3gnD_g.woff2) format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}\n\n.absolute, .looker__absolute {\n  height: 20px;\n}\n\n.vis-container > iframe {\n  padding: 0 !important;\n}\n\n#vis {\n  margin: 10px;\n}\n\n.table {\n  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.14);\n  width: '97%';\n  padding: '5px 10px 10px';\n}\n\n.table:hover {\n  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12), 0 5px 5px -3px rgba(0, 0, 0, .2);\n}\n\n.positive, .looker__positive {\n  color: green;\n}\n\n.negative, .looker__negative {\n  color: red;\n}\n\n.change, .looker__change {\n  display: block;\n}\n\n.ag-theme-material .ag-header-cell {\n  padding: 0 10px;\n}\n\n.ag-theme-material .ag-cell {\n  padding: 0 9px;\n  line-height: 0;\n  display: grid;\n  align-items: center;\n}\n\n.header {\n  margin-bottom: 10px;\n}\n\n.title {\n  color: #555;\n  font-size: 1.25rem;\n  line-height: 1.6;\n  font-family: \"Roboto\", \"Helvetica\", \"Arial\", sans-serif;\n}\n", ""]);
 
 // exports
 
-
-/***/ }),
-/* 345 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _options = __webpack_require__(79);
-
-var addOptionCustomFormatting = function addOptionCustomFormatting(fields) {
-  fields.forEach(function (field) {
-    var label = field.label,
-        name = field.name;
-
-    var cl = 'format_' + name;
-    _options.options[cl] = {
-      display: 'text',
-      label: 'Format - "' + label + '"',
-      section: 'Series',
-      type: 'string'
-    };
-  });
-};
-
-exports.default = addOptionCustomFormatting;
 
 /***/ })
 /******/ ]);
