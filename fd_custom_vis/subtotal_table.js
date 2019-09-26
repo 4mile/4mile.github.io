@@ -65009,7 +65009,7 @@ exports.default = setColor;
 function setColor(styling, cell) {
   if (!cell.node.aggData) return;
 
-  var re = /\([0-9]+.+\) bps/;
+  var re = /\(-*[0-9]+.+\) bps/;
   if (cell.value && cell.value.match(re)) {
     styling.color = 'red';
     return;
