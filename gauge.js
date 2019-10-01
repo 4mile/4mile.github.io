@@ -30027,7 +30027,7 @@ var drawGauge = function drawGauge(props) {
 
   // const dashedLine = el.append('div').attr('class', 'dashedLine')
 
-  d3.select('svg').remove();
+  d3.select('.svgContainer').remove();
   var svg = el.append('div').classed('svgContainer', true).append('svg').attr('width', '250') //width + margin.left + margin.right)
   .attr('height', height / 2 + margin.top + margin.bottom).attr("preserveAspectRatio", "xMidYMid meet").attr("viewBox", '0 30 380 150');
 
