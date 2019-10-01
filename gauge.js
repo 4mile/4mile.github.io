@@ -30028,9 +30028,10 @@ var drawGauge = function drawGauge(props) {
   // const dashedLine = el.append('div').attr('class', 'dashedLine')
 
   d3.select('svg').remove();
-  var svg = el.append('svg').attr('width', width + margin.left + margin.right).attr('height', height / 2 + margin.top + margin.bottom);
+  var svg = el.append('div').classed('svgContainer', true).append('svg').attr('width', '250') //width + margin.left + margin.right)
+  .attr('height', height / 2 + margin.top + margin.bottom).attr("preserveAspectRatio", "xMidYMid meet").attr("viewBox", '0 30 380 150');
 
-  var chart = svg.append('g').attr('transform', 'translate(' + (width + margin.left) / 2 + ',' + height / 2 + ')');
+  var chart = svg.append('g').attr('transform', 'translate(190,' + height / 2 + ')'); //${(width + margin.left) / 2}
 
   // These values are used to determine where the colors go along the arc.
   var middle = props.goal * 2 / 100 * (1.2 + 1.2) - 1.2;
@@ -30088,7 +30089,7 @@ var drawGauge = function drawGauge(props) {
     return Needle;
   }();
 
-  var needle = new Needle(height * .5 - barWidth, 15);
+  var needle = new Needle(height * .65 - barWidth, 15);
   needle.drawOn(chart, 0);
   needle.animateOn(chart, percent);
 };
@@ -30222,8 +30223,7 @@ var Gauge = function (_Component) {
 }(_react.Component);
 
 Gauge.defaultProps = {
-  width: 400,
-  height: 200,
+  width: 300,
   barWidth: 40,
   colors: [_constants.RED, _constants.YELLOW, _constants.GREEN],
   needleColor: _constants.NEEDLE
@@ -40783,7 +40783,7 @@ exports = module.exports = __webpack_require__(29)(false);
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700,800);", ""]);
 
 // module
-exports.push([module.i, "* {\n  font-family: \"Montserrat\", sans-serif;\n}\n\n#gauge {\n  align-items: center;\n  display: flex;\n  height: 100%;\n  justify-content: center;\n}\n\n.fc822f8a-5edc-41ca-a557-93ec4b5970b7 {\n  position: relative;\n}\n\n.dashedLine {\n  border-top: 4px dashed #71BCDE;\n  position: absolute;\n  right: 124px;\n  top: 88px;\n  transform: rotate(112deg);\n  width: 57px;\n}\n\n.titles {\n  display: flex;\n  flex-direction: column;\n  margin-top: 15px;\n  margin-left: 45px;\n  margin-bottom: -15px;\n}\n\n.labels {\n  align-items: baseline;\n  display: flex;\n  margin-bottom: 5px;\n}\n\n.indicator {\n  font-size: 14px;\n  font-weight: 800;\n  margin-left: 20px;\n}\n\n.customTitles {\n  align-items: baseline;\n  display: flex;\n  margin-bottom: 20px;\n}\n\n.customTitle {\n  color: #00355E;\n  font-size: 22px;\n  font-weight: 800;\n  margin-right: 5px;\n}\n\n.customSubtitle {\n  color: #00355E;\n  font-size: 18px;\n  font-weight: 700;\n}\n\n.actualLabel {\n  color: #27A645;\n  font-size: 16px;\n  font-weight: 400;\n}\n\n.goalLabel {\n  color: #5797C2;\n  font-size: 16px;\n  font-weight: 400;\n}\n\n.min {\n  bottom: 80px;\n  font-size: 14px;\n  position: absolute;\n  left: 35px;\n}\n\n.max {\n  bottom: 80px;\n  font-size: 14px;\n  position: absolute;\n  right: 25px;\n}\n", ""]);
+exports.push([module.i, "* {\n  font-family: \"Montserrat\", sans-serif;\n}\n\n#gauge {\n  align-items: center;\n  display: flex;\n  height: 100%;\n  justify-content: center;\n}\n\n.fc822f8a-5edc-41ca-a557-93ec4b5970b7 {\n  position: relative;\n}\n\n.dashedLine {\n  border-top: 4px dashed #71BCDE;\n  position: absolute;\n  right: 124px;\n  top: 88px;\n  transform: rotate(112deg);\n  width: 57px;\n}\n\n.titles {\n  display: flex;\n  flex-direction: column;\n  /* margin-top: 15px; */\n  margin-left: 45px;\n  /* margin-bottom: -15px; */\n}\n\n.labels {\n  align-items: baseline;\n  display: flex;\n  margin-bottom: 5px;\n}\n\n.indicator {\n  font-size: 14px;\n  font-weight: 800;\n  margin-left: 20px;\n}\n\n.customTitles {\n  align-items: baseline;\n  display: flex;\n  margin-bottom: 20px;\n}\n\n.customTitle {\n  color: #00355E;\n  font-size: 22px;\n  font-weight: 800;\n  margin-right: 5px;\n}\n\n.customSubtitle {\n  color: #00355E;\n  font-size: 18px;\n  font-weight: 700;\n}\n\n.actualLabel {\n  color: #27A645;\n  font-size: 16px;\n  font-weight: 400;\n}\n\n.goalLabel {\n  color: #5797C2;\n  font-size: 16px;\n  font-weight: 400;\n}\n\n.min {\n  bottom: 80px;\n  font-size: 14px;\n  position: absolute;\n  left: 35px;\n}\n\n.max {\n  bottom: 80px;\n  font-size: 14px;\n  position: absolute;\n  right: 25px;\n}\n\n.svgContainer {\n  display: flex;\n  justify-content: center;\n}\n", ""]);
 
 // exports
 
