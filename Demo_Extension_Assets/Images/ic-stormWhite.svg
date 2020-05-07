@@ -6,7 +6,7 @@
         <mask id="prefix__b" fill="#fff">
             <use xlink:href="#prefix__a"/>
         </mask>
-        <g fill="#FFF" mask="url(#prefix__b)">
+        <g fill="#000" mask="url(#prefix__b)">
             <path d="M0 0H50V50H0z" transform="translate(-16 -16)"/>
         </g>
     </g>
