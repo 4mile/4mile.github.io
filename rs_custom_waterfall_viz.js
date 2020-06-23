@@ -21438,7 +21438,7 @@ looker.plugins.visualizations.add({
       this.vis.removeChild(this.vis.firstChild);
     } // set the dimensions and margins of the graph
     var margin = {
-      top: 10,
+      top: 15,
       right: 10,
       bottom: 100,
       left: 50
