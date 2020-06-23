@@ -21425,10 +21425,6 @@ looker.plugins.visualizations.add({
     myVisStyles.innerHTML = css;
     document.head.appendChild(myVisStyles);
 
-    var titleEl = document.createElement('h3');
-    titleEl.id = "rs_waterfall_vis_title";
-    element.appendChild(titleEl);
-
     this.vis = document.createElement('div');
     this.vis.id = _constants.ELEMENT_ID;
     element.appendChild(this.vis);
@@ -21437,27 +21433,18 @@ looker.plugins.visualizations.add({
     var vis = this;
     (0, _modifyOptions2.default)(this, config, queryResponse);
 
-    var getTitle = function getTitle(data, qr) {
-      var dimension = qr.fields.dimensions[0];
-      var fieldValue = (0, _lodash.get)(data[0][dimension.name], "value");
-      return (0, _lodash.get)(dimension, "label") + ' ' + fieldValue;
-    };
-
-    var titleElement = document.querySelector('#rs_waterfall_vis_title');
-    titleElement.innerHTML = getTitle(lData, queryResponse);
-
     // Remove in order to rerender with varying sizes
     while (this.vis.firstChild) {
       this.vis.removeChild(this.vis.firstChild);
     } // set the dimensions and margins of the graph
     var margin = {
-      top: 20,
+      top: 10,
       right: 10,
       bottom: 100,
       left: 50
     };
     var width = element.offsetWidth - 100;
-    var height = element.offsetHeight < 200 ? 300 : element.offsetHeight - 100;
+    var height = element.offsetHeight < 160 ? 120 : element.offsetHeight - 40;
     // append the svg object to the body of the page
     var svg = d3.select('#' + _constants.ELEMENT_ID).append('svg').attr('width', width + margin.left + margin.right).attr('height', height + margin.top + margin.bottom).append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
