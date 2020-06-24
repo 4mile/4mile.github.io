@@ -21600,7 +21600,7 @@ var parseData = exports.parseData = function parseData(lData, qr, config) {
 
     var newObj = (0, _lodash.cloneDeep)(lData[0][m.name]);
 
-    newObj.name = m.label;
+    newObj.name = m.label_short || m.label;
     if (config[m.name] === true) {
       newObj.class = "total";
       newObj.start = 0;
@@ -21694,8 +21694,8 @@ var modifyOptions = function modifyOptions(vis, config, qr) {
   var measures = qr.fields.measure_like;
 
 
-  var values = measures.map(function (d) {
-    return { name: d.name, label: d.label };
+  var values = measures.map(function (m) {
+    return { name: m.name, label: m.label_short || m.label };
   });
 
   values.forEach(function (val, i) {
