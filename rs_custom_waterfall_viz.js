@@ -6732,6 +6732,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var ELEMENT_ID = exports.ELEMENT_ID = 'my_vis';
+var LEGEND_ID = exports.LEGEND_ID = 'legend';
+var NONE = exports.NONE = 'none';
+
+var GRID_COLOR_POS = exports.GRID_COLOR_POS = '#717171';
+var GRID_COLOR_NEG = exports.GRID_COLOR_NEG = '#D3D3D3';
 
 /***/ }),
 /* 91 */
@@ -21435,11 +21440,11 @@ looker.plugins.visualizations.add({
     var margin = {
       top: 15,
       right: 10,
-      bottom: 45,
+      bottom: 100,
       left: 50
     };
     var width = element.offsetWidth - 100;
-    var height = element.offsetHeight < 160 ? 120 : element.offsetHeight - 50;
+    var height = element.offsetHeight < 160 ? 120 : element.offsetHeight - 40;
     // append the svg object to the body of the page
     var svg = d3.select('#' + _constants.ELEMENT_ID).append('svg').attr('width', width + margin.left + margin.right).attr('height', height + margin.top + margin.bottom).append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -21457,19 +21462,10 @@ looker.plugins.visualizations.add({
 
     var processData = function processData(data) {
       var getBaseline = function getBaseline() {
-        var chartBaseline = Number(config["chart_baseline"]);
         if (config["chart_baseline"] === '' || isNaN(Number(config["chart_baseline"]))) {
-          chartBaseline = 0;
+          return 0;
         }
-        // Baseline is calculated by taking the difference between the highest and lowest value
-        // and subtracting that from the lowest value.
-        var intermediateValues = (0, _lodash.filter)(data, function (e) {
-          return e.class !== 'total';
-        });
-        var minValue = (0, _lodash.min)((0, _lodash.map)(intermediateValues, 'start'));
-        var maxValue = (0, _lodash.max)((0, _lodash.map)(intermediateValues, 'end'));
-        var baselineDiff = maxValue - minValue;
-        return minValue - baselineDiff + Number(chartBaseline);
+        return config["chart_baseline"];
       };
 
       var withBaseline = function withBaseline(d) {
@@ -21505,7 +21501,7 @@ looker.plugins.visualizations.add({
       svg.append("g").attr("class", "x axis").attr("transform", "translate(0," + height + ")").call(xAxis).selectAll("text").style("text-anchor", "middle").attr("dx", "-.8em").attr("dy", ".15em").attr("y", function (d) {
         var pos = "2em";
         if (labelIndex % 2 === 0) {
-          pos = "4em";
+          pos = "5em";
         }
         labelIndex++;
         return pos;
@@ -21527,9 +21523,7 @@ looker.plugins.visualizations.add({
             end = _withBaseline.end;
 
         return Math.abs(y(start) - y(end));
-      }).attr("width", x.bandwidth()).attr("style", function (d) {
-        return "fill: " + config[d.class + '_color'];
-      });
+      }).attr("width", x.bandwidth());
 
       bar.on("mouseover", function (d) {
         var rect = this.getBoundingClientRect();
@@ -21606,7 +21600,7 @@ var parseData = exports.parseData = function parseData(lData, qr, config) {
 
     var newObj = (0, _lodash.cloneDeep)(lData[0][m.name]);
 
-    newObj.name = config[m.name + "_label"] || m.label_short || m.label;
+    newObj.name = m.label_short || m.label;
     if (config[m.name] === true) {
       newObj.class = "total";
       newObj.start = 0;
@@ -21618,7 +21612,6 @@ var parseData = exports.parseData = function parseData(lData, qr, config) {
       newObj.end = cumulative;
       newObj.class = newObj.value >= 0 ? 'positive' : 'negative';
     }
-    newObj.color = config[newObj.class + "_color"];
 
     return newObj;
   }));
@@ -21717,36 +21710,11 @@ var modifyOptions = function modifyOptions(vis, config, qr) {
       section: 'Total Columns',
       order: i
     };
-    _options.options[val.name + "_label"] = {
-      type: 'string',
-      label: val.label_short || val.label,
-      default: '',
-      section: 'Labels',
-      order: i
-    };
-  });
-
-  var colorDefaults = {
-    total: '#0071c1',
-    negative: '#c00000',
-    positive: '#94d150'
-  };
-
-  var barTypes = ['Total', 'Negative', 'Positive'];
-  barTypes.forEach(function (type) {
-    _options.options[type.toLowerCase() + '_color'] = {
-      display: 'color',
-      display_size: 'third',
-      type: 'string',
-      label: type,
-      default: colorDefaults[type.toLowerCase()],
-      section: 'Chart'
-    };
   });
 
   _options.options['chart_baseline'] = {
     type: 'string',
-    label: 'Baseline Offset Value',
+    label: 'Baseline Value',
     default: '',
     section: 'Chart'
   };
