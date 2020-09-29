@@ -17696,12 +17696,98 @@ function Main(props) {
       data = props.data,
       qr = props.qr;
 
+  if (!data) {
+    return _react2.default.createElement(
+      'div',
+      null,
+      'No results'
+    );
+  }
   var datum = data[0];
+
+  var clientName = '[Client name field not selected.]';
+  if (config.client_name_field) {
+    var field = datum[config.client_name_field];
+    clientName = field.rendered || field.value;
+  }
+
+  var adId = '[Ad ID field not selected.]';
+  if (config.ad_id_field) {
+    var _field = datum[config.ad_id_field];
+    adId = _field.rendered || _field.value;
+  }
+
+  var adName = '[Ad name field not selected.]';
+  if (config.ad_name_field) {
+    var _field2 = datum[config.ad_name_field];
+    adName = _field2.rendered || _field2.value;
+  }
+
+  var adText = '[Ad text field not selected.]';
+  if (config.ad_text_field) {
+    var _field3 = datum[config.ad_text_field];
+    adText = _field3.rendered || _field3.value;
+  }
 
   return _react2.default.createElement(
     'div',
     null,
-    _react2.default.createElement(_Video2.default, { config: config, tileData: datum }),
+    _react2.default.createElement(
+      'div',
+      { className: 'videoSection' },
+      _react2.default.createElement(_Video2.default, { config: config, tileData: datum }),
+      _react2.default.createElement(
+        'div',
+        { className: 'videoDetails' },
+        _react2.default.createElement(
+          'div',
+          { className: 'clientName' },
+          clientName
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'adId' },
+          _react2.default.createElement(
+            'span',
+            { className: 'label' },
+            'Ad ID: '
+          ),
+          _react2.default.createElement(
+            'span',
+            { className: 'value' },
+            adId
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'adName' },
+          _react2.default.createElement(
+            'span',
+            { className: 'label' },
+            'Ad Name: '
+          ),
+          _react2.default.createElement(
+            'span',
+            { className: 'value' },
+            adName
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'adText' },
+          _react2.default.createElement(
+            'span',
+            { className: 'label' },
+            'Description: '
+          ),
+          _react2.default.createElement(
+            'span',
+            { className: 'value' },
+            adText
+          )
+        )
+      )
+    ),
     _react2.default.createElement(_MGrid2.default, { data: data, qr: qr, config: config })
   );
 }
@@ -17767,6 +17853,8 @@ var _Paper = __webpack_require__(91);
 
 var _Paper2 = _interopRequireDefault(_Paper);
 
+var _constants = __webpack_require__(275);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var createHeadCell = function createHeadCell(id, label) {
@@ -17775,6 +17863,9 @@ var createHeadCell = function createHeadCell(id, label) {
 
 function descendingComparator(a, b, orderBy) {
   // TODO check for undefineds
+  if (b[orderBy] === undefined) {
+    return 0;
+  }
   if (b[orderBy].value < a[orderBy].value) {
     return -1;
   }
@@ -17810,10 +17901,8 @@ function EnhancedTableHead(props) {
   var headCells = props.headCells,
       config = props.config,
       classes = props.classes,
-      onSelectAllClick = props.onSelectAllClick,
       order = props.order,
       orderBy = props.orderBy,
-      rowCount = props.rowCount,
       onRequestSort = props.onRequestSort;
 
   var createSortHandler = function createSortHandler(property) {
@@ -17832,8 +17921,8 @@ function EnhancedTableHead(props) {
         return _react2.default.createElement(
           _TableCell2.default,
           {
-            key: headCell.id,
-            align: headCell.numeric ? 'left' : 'right',
+            key: headCell.label,
+            align: 'left',
             padding: 'default',
             sortDirection: orderBy === headCell.id ? order : false
           },
@@ -17858,13 +17947,11 @@ function EnhancedTableHead(props) {
 }
 
 EnhancedTableHead.propTypes = {
-  headCells: _propTypes2.default.object.isRequired,
+  headCells: _propTypes2.default.array.isRequired,
   classes: _propTypes2.default.object.isRequired,
   onRequestSort: _propTypes2.default.func.isRequired,
-  onSelectAllClick: _propTypes2.default.func.isRequired,
   order: _propTypes2.default.oneOf(['asc', 'desc']).isRequired,
-  orderBy: _propTypes2.default.string.isRequired,
-  rowCount: _propTypes2.default.number.isRequired
+  orderBy: _propTypes2.default.number.isRequired
 };
 
 var useStyles = (0, _styles.makeStyles)(function (theme) {
@@ -17873,6 +17960,7 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
       width: '100%'
     },
     paper: {
+      boxShadow: 'none',
       width: '100%',
       marginBottom: theme.spacing(2)
     },
@@ -17912,8 +18000,8 @@ function EnhancedTable(props) {
   };
   // Need client name. Otherwise, whatever they want.
   var df = displayedFields();
-  var rows = data.map(function (d, i) {
-    return df.map(function (f, j) {
+  var rows = data.map(function (d) {
+    return df.map(function (f) {
       return d[f];
     });
   });
@@ -17944,19 +18032,23 @@ function EnhancedTable(props) {
       rowsPerPage = _React$useState8[0],
       setRowsPerPage = _React$useState8[1];
 
-  var handleRequestSort = function handleRequestSort(event, property) {
+  var handleRequestSort = function handleRequestSort(_event, property) {
     var isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(property);
   };
 
-  var handleChangePage = function handleChangePage(event, newPage) {
+  var handleChangePage = function handleChangePage(_event, newPage) {
     setPage(newPage);
   };
 
   var handleChangeRowsPerPage = function handleChangeRowsPerPage(event) {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
+  };
+
+  var rowStyle = function rowStyle(i) {
+    return { background: i % 2 ? _constants.GRID_ROW_COLOR : '#fff' };
   };
 
   var emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
@@ -17984,30 +18076,23 @@ function EnhancedTable(props) {
             classes: classes,
             order: order,
             orderBy: orderBy,
-            onRequestSort: handleRequestSort,
-            rowCount: rows.length
+            onRequestSort: handleRequestSort
           }),
           _react2.default.createElement(
             _TableBody2.default,
             null,
             stableSort(rows, getComparator(order, orderBy)).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(function (row, index) {
-              var labelId = 'enhanced-table-checkbox-' + index;
-
-              // {columns.map((c, i) => (
-              //   <TableCell align="right">{row.calories}</TableCell>
-              // ))}
-
               return _react2.default.createElement(
                 _TableRow2.default,
                 {
-                  hover: true,
                   tabIndex: -1,
-                  key: row.name
+                  key: 'row:' + index,
+                  style: rowStyle(index)
                 },
                 row.map(function (cell, j) {
                   return _react2.default.createElement(
                     _TableCell2.default,
-                    { key: j, align: 'right' },
+                    { key: index + ':' + j, align: 'left' },
                     cell.rendered || cell.value
                   );
                 })
@@ -37313,6 +37398,8 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _constants = __webpack_require__(275);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Video(props) {
@@ -37333,7 +37420,7 @@ function Video(props) {
     );
   }
 
-  var vid = videoData.html.replace('preload="none"', 'preload="auto" class="video-js"').replace(/width="[0-9]*"/, 'width="800"').replace(/height="[0-9]*"/, 'height="500"');
+  var vid = videoData.html.replace('preload="none"', 'preload="auto" class="video-js"').replace(/width="[0-9]*"/, 'width="' + _constants.VIDEO_WIDTH + '"').replace(/height="[0-9]*"/, 'height="' + _constants.VIDEO_HEIGHT + '"');
 
   return _react2.default.createElement('div', {
     className: 'videoContainer',
@@ -37458,7 +37545,27 @@ var modifyOptions = function modifyOptions(vis, config, qr) {
   _options.options.client_name_field = {
     display: 'select',
     type: 'string',
-    label: 'Spend',
+    label: 'Client Name Field',
+    section: SPECIAL,
+    values: dimensions.map(function (field, i) {
+      return _defineProperty({}, field.label_short, field.name);
+    })
+  };
+
+  _options.options.ad_name_field = {
+    display: 'select',
+    type: 'string',
+    label: 'Ad Name Field',
+    section: SPECIAL,
+    values: dimensions.map(function (field, i) {
+      return _defineProperty({}, field.label_short, field.name);
+    })
+  };
+
+  _options.options.ad_text_field = {
+    display: 'select',
+    type: 'string',
+    label: 'Ad Text Field',
     section: SPECIAL,
     values: dimensions.map(function (field, i) {
       return _defineProperty({}, field.label_short, field.name);
@@ -37489,6 +37596,16 @@ var modifyOptions = function modifyOptions(vis, config, qr) {
     label: 'Top Right Unit',
     section: SPECIAL,
     default: 'comments'
+  };
+
+  _options.options.ad_id_field = {
+    display: 'select',
+    type: 'string',
+    label: 'Ad ID Field',
+    section: SPECIAL,
+    values: dimensions.map(function (field, i) {
+      return _defineProperty({}, field.label_short, field.name);
+    })
   };
 
   [].concat(_toConsumableArray(dimensions), _toConsumableArray(measures)).forEach(function (field, i) {
@@ -37525,6 +37642,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var ELEMENT_ID = exports.ELEMENT_ID = 'drill_vis';
+var VIDEO_HEIGHT = exports.VIDEO_HEIGHT = 400;
+var VIDEO_WIDTH = exports.VIDEO_WIDTH = 400;
+
+var GRID_ROW_COLOR = exports.GRID_ROW_COLOR = '#F6F6F7';
 
 /***/ }),
 /* 276 */
@@ -37549,7 +37670,7 @@ exports = module.exports = __webpack_require__(24)(false);
 
 
 // module
-exports.push([module.i, "body {\n    font-family: 'Roboto', sans-serif;\n}\n\n.videoContainer {\n    margin-bottom: 20px;\n}\n", ""]);
+exports.push([module.i, "body {\n    font-family: 'Roboto', sans-serif;\n}\n\n.videoContainer {\n    margin-bottom: 20px;\n}\n\n.videoSection {\n    display: flex;\n    flex-direction: row;\n}\n\n.videoDetails {\n    display: flex;\n    flex-direction: column;\n    padding: 0 12px;\n}\n\n.clientName {\n    font-size: 24px;\n}\n\n.clientName, .adId, .adName, .adText {\n    margin-bottom: 12px;\n}\n\n.label {\n    font-weight: 600;\n    font-size: 15px;\n}\n\n.value {\n    font-weight: 400;\n    font-size: 15px;\n}\n", ""]);
 
 // exports
 
