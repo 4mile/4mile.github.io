@@ -15847,11 +15847,11 @@ var options = exports.options = {
     default: 'hi_low',
     section: 'Page'
   },
-  drill_link: {
-    display: 'text',
-    type: 'string',
-    default: '',
-    label: 'Drill Link Base URL',
+  drill_dashboard: {
+    display: 'number',
+    type: 'number',
+    default: 7,
+    label: 'Drill Link Dashboard Number',
     section: 'Page'
   },
   page_size: {
@@ -16676,58 +16676,21 @@ looker.plugins.visualizations.add({
     // See modifyOptions.js for more info on why you'd want to do this.
     (0, _modifyOptions2.default)(this, config, qr);
 
-    if (config.sort_order && config.sort_field) {
-      if (config.sort_order === 'hi_low') {
-        data.sort(function (a, b) {
-          var bb = b[config.sort_field].value;
-          var aa = a[config.sort_field].value;
-          return aa - bb;
-        });
-      } else {
-        data.sort(function (a, b) {
-          var aa = a[config.sort_field].value;
-          var bb = b[config.sort_field].value;
-          return bb - aa;
-        });
-      }
-    }
-    var totalResults = data.length;
-
-    var pageSize = config.page_size || _constants.DEFAULT_PAGE_SIZE;
-    var totalPages = Math.ceil(data.length / pageSize);
-    // This is awful, but if we use a number value in the vis config it doesn't get hidden correctly,
-    // so we're stuck with translating it from a string.
-    var currentPage = Number(config.current_page) || 0;
-    var pageStart = Number(currentPage) * pageSize;
-
-    var changePage = function changePage(newPageNumber) {
-      _this.trigger('updateConfig', [{ current_page: String(newPageNumber) }]);
-    };
-
-    // TODO: Test this. It's saving this currentPage so it can get trapped on a higher
-    // page than exists, careful there.
-    if (currentPage > totalPages) {
-      changePage(0);
-    }
-
-    var pageInfo = {
-      pageSize: pageSize,
-      totalPages: totalPages,
-      currentPage: currentPage,
-      pageStart: pageStart,
-      changePage: changePage,
-      totalResults: totalResults
-    };
-
-    var dataPage = data.slice(pageStart, pageStart + pageSize);
-
-    var toggleSort = function toggleSort() {
-      var curr = config.sort_order;
-      var nxt = curr === 'hi_low' ? 'low_hi' : 'hi_low';
+    var updateSortConfig = function updateSortConfig(nxt) {
       _this.trigger("updateConfig", [{ sort_order: nxt }]);
     };
 
-    _reactDom2.default.render(_react2.default.createElement(_Main2.default, { qr: qr, pageInfo: pageInfo, toggleSort: toggleSort, data: dataPage, config: config }), this.vis);
+    var updatePageConfig = function updatePageConfig(nxt) {
+      _this.trigger('updateConfig', [{ current_page: String(nxt) }]);
+    };
+
+    _reactDom2.default.render(_react2.default.createElement(_Main2.default, {
+      qr: qr,
+      updatePageConfig: updatePageConfig,
+      updateSortConfig: updateSortConfig,
+      data: data,
+      config: config
+    }), this.vis);
 
     done();
   }
@@ -16743,6 +16706,9 @@ looker.plugins.visualizations.add({
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 exports.default = Main;
 
 var _react = __webpack_require__(1);
@@ -16761,6 +16727,8 @@ var _Pages = __webpack_require__(102);
 
 var _Pages2 = _interopRequireDefault(_Pages);
 
+var _constants = __webpack_require__(104);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // This is the main react component file. From here, you should be able
@@ -16770,10 +16738,73 @@ function Main(props) {
   var qr = props.qr,
       data = props.data,
       config = props.config,
-      toggleSort = props.toggleSort,
-      pageInfo = props.pageInfo;
-  var totalResults = pageInfo.totalResults;
+      updatePageConfig = props.updatePageConfig,
+      updateSortConfig = props.updateSortConfig;
+  // We keep these variables in state so that they properly rerender in the dashboard.
+  // Leaving it only to the config doesn't work on dashboards, only explores.
 
+  var _useState = (0, _react.useState)(Number(config.current_page) || 0),
+      _useState2 = _slicedToArray(_useState, 2),
+      currentPage = _useState2[0],
+      setCurrentPage = _useState2[1];
+
+  var _useState3 = (0, _react.useState)(config.sort_order || _constants.LOW_HI),
+      _useState4 = _slicedToArray(_useState3, 2),
+      sortOrder = _useState4[0],
+      setSortOrder = _useState4[1];
+
+  if (sortOrder && config.sort_field) {
+    if (sortOrder === _constants.HI_LOW) {
+      data.sort(function (a, b) {
+        var bb = b[config.sort_field].value;
+        var aa = a[config.sort_field].value;
+        return aa - bb;
+      });
+    } else {
+      data.sort(function (a, b) {
+        var aa = a[config.sort_field].value;
+        var bb = b[config.sort_field].value;
+        return bb - aa;
+      });
+    }
+  }
+
+  var totalResults = data.length;
+
+  var pageSize = config.page_size || _constants.DEFAULT_PAGE_SIZE;
+  var totalPages = Math.ceil(data.length / pageSize);
+  // This is awful, but if we use a number value in the vis config it doesn't get hidden correctly,
+  // so we're stuck with translating it from a string.
+  var pageStart = currentPage * pageSize;
+
+  var changePage = function changePage(newPageNumber) {
+    setCurrentPage(newPageNumber);
+    updatePageConfig(newPageNumber);
+  };
+
+  // TODO: Test this. It's saving this currentPage so it can get trapped on a higher
+  // page than exists, careful there.
+  if (currentPage > totalPages) {
+    changePage(0);
+  }
+
+  var pageInfo = {
+    pageSize: pageSize,
+    totalPages: totalPages,
+    currentPage: currentPage,
+    pageStart: pageStart,
+    changePage: changePage,
+    totalResults: totalResults
+  };
+
+  var dataPage = data.slice(pageStart, pageStart + pageSize);
+
+  var toggleSort = function toggleSort() {
+    var curr = sortOrder;
+    var nxt = curr === _constants.HI_LOW ? _constants.LOW_HI : _constants.HI_LOW;
+    setSortOrder(nxt);
+    updateSortConfig(nxt);
+  };
 
   return _react2.default.createElement(
     'div',
@@ -16793,7 +16824,7 @@ function Main(props) {
         _react2.default.createElement(
           'div',
           { className: 'sorts' },
-          _react2.default.createElement(_Sorts2.default, { toggleSort: toggleSort, config: config })
+          _react2.default.createElement(_Sorts2.default, { sortOrder: sortOrder, toggleSort: toggleSort, config: config })
         ),
         _react2.default.createElement(
           'div',
@@ -16802,7 +16833,7 @@ function Main(props) {
         )
       )
     ),
-    data.map(function (tileData, i) {
+    dataPage.map(function (tileData, i) {
       return _react2.default.createElement(_Tile2.default, { key: i, tileData: tileData, config: config });
     })
   );
@@ -16832,6 +16863,8 @@ var _OpenInNew = __webpack_require__(279);
 
 var _OpenInNew2 = _interopRequireDefault(_OpenInNew);
 
+var _constants = __webpack_require__(104);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Tile(props) {
@@ -16850,7 +16883,6 @@ function Tile(props) {
   var placement = function placement() {
     if (config.placement_field) {
       var val = tileData[config.placement_field];
-      console.log(val.rendered || val.value);
       return val.rendered || val.value;
     }
     return null;
@@ -16923,7 +16955,7 @@ function Tile(props) {
   };
 
   var drillLink = '';
-  if (config.drill_link && config.ad_id_field) {
+  if (config.drill_dashboard && config.ad_id_field) {
     var adIdField = tileData[config.ad_id_field];
     var _adId2 = adIdField.value;
     // TODO: Remove in prod with real data.
@@ -16931,11 +16963,33 @@ function Tile(props) {
       _adId2 = adIdField.links[0].url.split('ID=')[1];
     }
     // TODO: make this readable and merge with encodeURI / decodeURI
-    drillLink = config.drill_link + '?Ad%20Id%20Filter=' + _adId2;
+    drillLink = '/dashboards/' + config.drill_dashboard + '?Ad%20Id%20Filter=' + _adId2;
   }
 
+  // This escapes the sandbox and navigates to a dashboard containing individual drill
+  // videos and their metadata.
+  var handleDrillClick = function handleDrillClick(event) {
+    var fakeLink = {
+      label: 'Please select a dashboard and ad ID field',
+      url: '',
+      type: "dimension_default"
+    };
+    if (drillLink) {
+      fakeLink = {
+        label: 'Drill to Source',
+        url: drillLink,
+        // This hack indicates to Looker to follow the link directly, rather than open the drill options first.
+        type: "measure_default"
+      };
+    }
+    LookerCharts.Utils.openDrillMenu({
+      links: [fakeLink],
+      event: event
+    });
+  };
+
   var iconStyle = {
-    backgroundColor: "#64518A",
+    backgroundColor: _constants.VIDEO_ICON_COLOR,
     color: "#fff",
     fontSize: "34px"
   };
@@ -16953,8 +17007,8 @@ function Tile(props) {
         'div',
         { className: 'header' },
         _react2.default.createElement(
-          'a',
-          { className: 'videoLink', href: drillLink, target: '_blank' },
+          'div',
+          { className: 'videoLink', onClick: handleDrillClick },
           _react2.default.createElement(_OpenInNew2.default, { style: iconStyle })
         ),
         _react2.default.createElement(
@@ -17081,14 +17135,17 @@ var _Button = __webpack_require__(282);
 
 var _Button2 = _interopRequireDefault(_Button);
 
+var _constants = __webpack_require__(104);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Sorts(props) {
   var config = props.config,
-      toggleSort = props.toggleSort;
+      toggleSort = props.toggleSort,
+      sortOrder = props.sortOrder;
 
   var fieldLabel = config.sort_field_label;
-  var label = config.sort_order === 'low_hi' ? fieldLabel + ': High -> Low' : fieldLabel + ' Low -> High';
+  var label = sortOrder === _constants.LOW_HI ? fieldLabel + ': High -> Low' : fieldLabel + ' Low -> High';
   return _react2.default.createElement(
     _Button2.default,
     { size: 'small', variant: 'contained', onClick: toggleSort },
@@ -17393,6 +17450,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 var DEFAULT_PAGE_SIZE = exports.DEFAULT_PAGE_SIZE = 12;
 var ELEMENT_ID = exports.ELEMENT_ID = 'tube_vis';
+var VIDEO_ICON_COLOR = exports.VIDEO_ICON_COLOR = "#64518A";
+var LOW_HI = exports.LOW_HI = 'low_hi';
+var HI_LOW = exports.HI_LOW = 'hi_low';
 
 /***/ }),
 /* 105 */
