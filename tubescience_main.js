@@ -34367,7 +34367,7 @@ function Sorts(props) {
     { className: 'sorts' },
     _react2.default.createElement(
       _Select2.default,
-      { variant: 'filled', labelId: 'label', id: 'select', value: sortFields[sortField].value },
+      { variant: 'standard', labelId: 'label', id: 'select', value: sortFields[sortField].value },
       sortFields.map(function (o, i) {
         return _react2.default.createElement(
           _MenuItem2.default,
@@ -34379,9 +34379,13 @@ function Sorts(props) {
       })
     ),
     _react2.default.createElement(
-      _Button2.default,
-      { className: 'sortBtn', size: 'small', variant: 'contained', onClick: toggleSort },
-      label
+      'div',
+      { className: 'sortBtn' },
+      _react2.default.createElement(
+        _Button2.default,
+        { size: 'small', variant: 'contained', onClick: toggleSort },
+        label
+      )
     )
   );
 }
@@ -35087,24 +35091,6 @@ var modifyOptions = function modifyOptions(vis, config, qr) {
     })
   };
 
-  _options.options.sort_field = {
-    display: 'select',
-    type: 'string',
-    label: 'Sort Field',
-    section: 'Page',
-    values: [].concat(_toConsumableArray(dimensions), _toConsumableArray(measures)).map(function (field, i) {
-      return _defineProperty({}, field.label_short, field.name);
-    })
-  };
-
-  _options.options.sort_field_label = {
-    display: 'text',
-    type: 'string',
-    label: 'Sort Field Label',
-    section: 'Page',
-    default: 'Retention'
-  };
-
   _options.options.top_right_unit = {
     display: 'text',
     type: 'string',
@@ -35179,7 +35165,7 @@ exports = module.exports = __webpack_require__(78)(false);
 
 
 // module
-exports.push([module.i, "body {\n    font-family: 'Roboto', sans-serif;\n    font-size: 12px;\n}\n\n#tube_vis {\n    max-width: 1400px;\n    margin: 0 auto;\n}\n\n.sorts {\n    margin-right: 4px;\n    display: flex;\n    flex-direction: row;\n    height: 30px;\n}\n\n.sortBtn {\n    margin-left: 4px;\n}\n\n#select {\n    padding-top: 10px;\n}\n\n.pages {\n    display: flex;\n    flex-direction: row;\n}\n\n.active {\n    border: 1px solid blue;\n}\n\n.boop {\n    background-color: red;\n}\n\n.tile {\n    background: #fff;\n    display: flex;\n    flex-direction: row;\n    margin: 5px;\n    margin-left: 10px;\n    float: left;\n    -webkit-box-shadow: -1px 1px 5px 0px rgba(100,100,100,0.85);\n    -moz-box-shadow: -1px 1px 5px 0px rgba(100,100,100,0.85);\n    box-shadow: -1px 1px 5px 0px rgba(100,100,100,0.85);\n}\n\n.tileRight {\n    min-height: 180px;\n    width: 260px;\n}\n\n.header {\n    align-items: center;\n    height: 42px;\n    display: flex;\n    flex-direction: row;\n    padding: 0 8px;\n}\n.headerRight {\n    display: flex;\n    flex-direction: column;\n}\n.clientName {\n    font-weight: 600;\n    font-size: 15px;\n}\n.adId {\n    font-weight: 200;\n    font-size: 12px;\n}\n.videoLink {\n    cursor: pointer;\n    padding-top: 3px;\n    padding-right: 8px;\n}\n.pills {\n    background-color: #EEF0FA;\n    height: 32px;\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n}\n.pill {\n    background-color: #2F80ED;\n    margin-left: 8px;\n    height: 20px;\n    width: 50px;\n    color: #fff;\n    border-radius: 25px;\n    display: flex;\n    justify-content: center;\n    text-align: center;\n    font-weight: 100;\n    font-size: 11px;\n    align-items: center;\n}\n.displayedFieldsContainer {\n    padding: 2px 8px;\n    display: flex;\n    height: 80px;\n    flex-direction: column;\n}\n.displayedFieldsRow {\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n}\n.fieldNameContainer {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    width: 58px;\n    overflow: hidden;\n    margin: 0 auto;\n}\n.fieldNameLabel {\n    font-weight: 100;\n    font-size: 10px;\n    margin-bottom: 1px;\n}\n.fieldNameValue {\n    font-weight: 600;\n    font-size: 12px;\n    margin-bottom: 2px;\n}\n.footer {\n    padding: 0 8px;\n    font-size: 11px;\n}\n\n.videoLoading {\n    height: 180px;\n    width: 180px;\n    background: #000;\n    color: #fff;\n    display: flex;\n    align-items: center;\n    text-align: center;\n    font-size: 14px;\n}\n\n.videoContainer {\n    width: 180px;\n}\n\n.topnav {\n    height: 50px;\n}\n\n.totalResults {\n    float: left;\n    font-size: 16px;\n    font-weight: 600;\n}\n\n.sortsNPages {\n    display: flex;\n    flex-direction: row;\n    float: right;\n    align-items: flex-end;\n}\n", ""]);
+exports.push([module.i, "body {\n    font-family: 'Roboto', sans-serif;\n    font-size: 12px;\n}\n\n#tube_vis {\n    max-width: 1400px;\n    margin: 0 auto;\n}\n\n.sorts {\n    margin-right: 4px;\n    display: flex;\n    flex-direction: row;\n    height: 30px;\n}\n\n.sortBtn {\n    margin-left: 4px;\n}\n\n#select {\n    padding-top: 10px;\n    background-color: #fff;\n}\n\n.pages {\n    display: flex;\n    flex-direction: row;\n}\n\n.active {\n    border: 1px solid blue;\n}\n\n.boop {\n    background-color: red;\n}\n\n.tile {\n    background: #fff;\n    display: flex;\n    flex-direction: row;\n    margin: 5px;\n    margin-left: 10px;\n    float: left;\n    -webkit-box-shadow: -1px 1px 5px 0px rgba(100,100,100,0.85);\n    -moz-box-shadow: -1px 1px 5px 0px rgba(100,100,100,0.85);\n    box-shadow: -1px 1px 5px 0px rgba(100,100,100,0.85);\n}\n\n.tileRight {\n    min-height: 180px;\n    width: 260px;\n}\n\n.header {\n    align-items: center;\n    height: 42px;\n    display: flex;\n    flex-direction: row;\n    padding: 0 8px;\n}\n.headerRight {\n    display: flex;\n    flex-direction: column;\n}\n.clientName {\n    font-weight: 600;\n    font-size: 15px;\n}\n.adId {\n    font-weight: 200;\n    font-size: 12px;\n}\n.videoLink {\n    cursor: pointer;\n    padding-top: 3px;\n    padding-right: 8px;\n}\n.pills {\n    background-color: #EEF0FA;\n    height: 32px;\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n}\n.pill {\n    background-color: #2F80ED;\n    margin-left: 8px;\n    height: 20px;\n    width: 50px;\n    color: #fff;\n    border-radius: 25px;\n    display: flex;\n    justify-content: center;\n    text-align: center;\n    font-weight: 100;\n    font-size: 11px;\n    align-items: center;\n}\n.displayedFieldsContainer {\n    padding: 2px 8px;\n    display: flex;\n    height: 80px;\n    flex-direction: column;\n}\n.displayedFieldsRow {\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n}\n.fieldNameContainer {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    width: 58px;\n    overflow: hidden;\n    margin: 0 auto;\n}\n.fieldNameLabel {\n    font-weight: 100;\n    font-size: 10px;\n    margin-bottom: 1px;\n}\n.fieldNameValue {\n    font-weight: 600;\n    font-size: 12px;\n    margin-bottom: 2px;\n}\n.footer {\n    padding: 0 8px;\n    font-size: 11px;\n}\n\n.videoLoading {\n    height: 180px;\n    width: 180px;\n    background: #000;\n    color: #fff;\n    display: flex;\n    align-items: center;\n    text-align: center;\n    font-size: 14px;\n}\n\n.videoContainer {\n    width: 180px;\n}\n\n.topnav {\n    height: 50px;\n}\n\n.totalResults {\n    float: left;\n    font-size: 16px;\n    font-weight: 600;\n}\n\n.sortsNPages {\n    display: flex;\n    flex-direction: row;\n    float: right;\n    align-items: flex-end;\n}\n", ""]);
 
 // exports
 
