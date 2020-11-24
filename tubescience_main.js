@@ -7124,6 +7124,10 @@ var VIDEO_ICON_COLOR = exports.VIDEO_ICON_COLOR = "#64518A";
 var LOW_HI = exports.LOW_HI = 'low_hi';
 var HI_LOW = exports.HI_LOW = 'hi_low';
 
+var DISPLAYED = exports.DISPLAYED = 'Displayed';
+var SPECIAL = exports.SPECIAL = 'Special';
+var TAGS = exports.TAGS = 'Tags';
+
 /***/ }),
 /* 82 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -33653,7 +33657,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Button = __webpack_require__(238);
+var _Button = __webpack_require__(239);
 
 Object.defineProperty(exports, 'default', {
   enumerable: true,
@@ -33740,7 +33744,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _options = __webpack_require__(226);
 
-var _modifyOptions = __webpack_require__(240);
+var _modifyOptions = __webpack_require__(241);
 
 var _modifyOptions2 = _interopRequireDefault(_modifyOptions);
 
@@ -33748,7 +33752,7 @@ var _constants = __webpack_require__(81);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var css = __webpack_require__(241);
+var css = __webpack_require__(242);
 var videojsCss = __webpack_require__(221);
 
 looker.plugins.visualizations.add({
@@ -33852,11 +33856,11 @@ var _Tile = __webpack_require__(232);
 
 var _Tile2 = _interopRequireDefault(_Tile);
 
-var _Sorts = __webpack_require__(237);
+var _Sorts = __webpack_require__(238);
 
 var _Sorts2 = _interopRequireDefault(_Sorts);
 
-var _Pages = __webpack_require__(239);
+var _Pages = __webpack_require__(240);
 
 var _Pages2 = _interopRequireDefault(_Pages);
 
@@ -34039,11 +34043,11 @@ var _Video = __webpack_require__(233);
 
 var _Video2 = _interopRequireDefault(_Video);
 
-var _Tag = __webpack_require__(337);
+var _Tag = __webpack_require__(234);
 
 var _Tag2 = _interopRequireDefault(_Tag);
 
-var _OpenInNew = __webpack_require__(234);
+var _OpenInNew = __webpack_require__(235);
 
 var _OpenInNew2 = _interopRequireDefault(_OpenInNew);
 
@@ -34318,6 +34322,37 @@ function Video(props) {
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Tag;
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Tag(props) {
+  var tag = props.tag,
+      category = props.category,
+      config = props.config;
+
+  var style = config[category] ? { backgroundColor: config[category] } : {};
+  return _react2.default.createElement(
+    'div',
+    { className: 'tag', style: style },
+    tag
+  );
+}
+
+/***/ }),
+/* 235 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 var _interopRequireDefault = __webpack_require__(224);
 
 Object.defineProperty(exports, "__esModule", {
@@ -34327,7 +34362,7 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(__webpack_require__(1));
 
-var _createSvgIcon = _interopRequireDefault(__webpack_require__(235));
+var _createSvgIcon = _interopRequireDefault(__webpack_require__(236));
 
 var _default = (0, _createSvgIcon.default)(_react.default.createElement("path", {
   d: "M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
@@ -34336,7 +34371,7 @@ var _default = (0, _createSvgIcon.default)(_react.default.createElement("path", 
 exports.default = _default;
 
 /***/ }),
-/* 235 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34349,7 +34384,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = createSvgIcon;
 
-var _extends2 = _interopRequireDefault(__webpack_require__(236));
+var _extends2 = _interopRequireDefault(__webpack_require__(237));
 
 var _react = _interopRequireDefault(__webpack_require__(1));
 
@@ -34372,7 +34407,7 @@ function createSvgIcon(path, displayName) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 236 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34399,7 +34434,7 @@ function _extends() {
 module.exports = _extends;
 
 /***/ }),
-/* 237 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34467,7 +34502,7 @@ function Sorts(props) {
 }
 
 /***/ }),
-/* 238 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34948,7 +34983,7 @@ exports.default = (0, _withStyles2.default)(styles, {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 239 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35040,7 +35075,7 @@ function Pages(props) {
 }
 
 /***/ }),
-/* 240 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35051,6 +35086,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _options = __webpack_require__(226);
+
+var _constants = __webpack_require__(81);
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
@@ -35078,9 +35115,6 @@ var modifyOptions = function modifyOptions(vis, config, qr, categories) {
   })
   */
 
-  var DISPLAYED = 'Displayed';
-  var SPECIAL = 'Special';
-
   var _qr$fields = qr.fields,
       dimensions = _qr$fields.dimension_like,
       measures = _qr$fields.measure_like;
@@ -35091,7 +35125,7 @@ var modifyOptions = function modifyOptions(vis, config, qr, categories) {
     display: 'select',
     type: 'string',
     label: 'Video Field',
-    section: SPECIAL,
+    section: _constants.SPECIAL,
     values: dimensions.map(function (field, i) {
       return _defineProperty({}, field.label_short, field.name);
     })
@@ -35102,7 +35136,7 @@ var modifyOptions = function modifyOptions(vis, config, qr, categories) {
     display: 'select',
     type: 'string',
     label: 'Video Img Field',
-    section: SPECIAL,
+    section: _constants.SPECIAL,
     values: dimensions.map(function (field, i) {
       return _defineProperty({}, field.label_short, field.name);
     })
@@ -35113,7 +35147,7 @@ var modifyOptions = function modifyOptions(vis, config, qr, categories) {
     display: 'select',
     type: 'string',
     label: 'Tag Field',
-    section: SPECIAL,
+    section: _constants.SPECIAL,
     values: [].concat(_toConsumableArray(dimensions), _toConsumableArray(measures)).map(function (field, i) {
       return _defineProperty({}, field.label_short, field.name);
     })
@@ -35123,7 +35157,7 @@ var modifyOptions = function modifyOptions(vis, config, qr, categories) {
     _options.options[cat] = {
       display: 'color',
       label: cat + ' Color',
-      section: 'Tags',
+      section: _constants.TAGS,
       type: 'string'
     };
   });
@@ -35132,7 +35166,7 @@ var modifyOptions = function modifyOptions(vis, config, qr, categories) {
     display: 'select',
     type: 'string',
     label: 'Client Name Field',
-    section: SPECIAL,
+    section: _constants.SPECIAL,
     values: dimensions.map(function (field, i) {
       return _defineProperty({}, field.label_short, field.name);
     })
@@ -35142,7 +35176,7 @@ var modifyOptions = function modifyOptions(vis, config, qr, categories) {
     display: 'select',
     type: 'string',
     label: 'Ad ID Field',
-    section: SPECIAL,
+    section: _constants.SPECIAL,
     values: dimensions.map(function (field, i) {
       return _defineProperty({}, field.label_short, field.name);
     })
@@ -35152,7 +35186,7 @@ var modifyOptions = function modifyOptions(vis, config, qr, categories) {
     display: 'select',
     type: 'string',
     label: 'Placement',
-    section: SPECIAL,
+    section: _constants.SPECIAL,
     values: dimensions.map(function (field, i) {
       return _defineProperty({}, field.label_short, field.name);
     })
@@ -35164,7 +35198,7 @@ var modifyOptions = function modifyOptions(vis, config, qr, categories) {
       order: i * 3,
       type: 'boolean',
       label: 'Show ' + field.label_short,
-      section: DISPLAYED
+      section: _constants.DISPLAYED
     };
     _options.options['label_' + field.name] = {
       order: i * 3 + 1,
@@ -35172,7 +35206,7 @@ var modifyOptions = function modifyOptions(vis, config, qr, categories) {
       type: 'string',
       label: 'Label: ' + field.label_short,
       default: field.label_short,
-      section: DISPLAYED
+      section: _constants.DISPLAYED
     };
   });
 
@@ -35182,11 +35216,11 @@ var modifyOptions = function modifyOptions(vis, config, qr, categories) {
 exports.default = modifyOptions;
 
 /***/ }),
-/* 241 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-        var result = __webpack_require__(242);
+        var result = __webpack_require__(243);
 
         if (typeof result === "string") {
             module.exports = result;
@@ -35196,7 +35230,7 @@ exports.default = modifyOptions;
     
 
 /***/ }),
-/* 242 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(78)(false);
@@ -35208,131 +35242,6 @@ exports.push([module.i, "body {\n    font-family: 'Roboto', sans-serif;\n    fon
 
 // exports
 
-
-/***/ }),
-/* 243 */,
-/* 244 */,
-/* 245 */,
-/* 246 */,
-/* 247 */,
-/* 248 */,
-/* 249 */,
-/* 250 */,
-/* 251 */,
-/* 252 */,
-/* 253 */,
-/* 254 */,
-/* 255 */,
-/* 256 */,
-/* 257 */,
-/* 258 */,
-/* 259 */,
-/* 260 */,
-/* 261 */,
-/* 262 */,
-/* 263 */,
-/* 264 */,
-/* 265 */,
-/* 266 */,
-/* 267 */,
-/* 268 */,
-/* 269 */,
-/* 270 */,
-/* 271 */,
-/* 272 */,
-/* 273 */,
-/* 274 */,
-/* 275 */,
-/* 276 */,
-/* 277 */,
-/* 278 */,
-/* 279 */,
-/* 280 */,
-/* 281 */,
-/* 282 */,
-/* 283 */,
-/* 284 */,
-/* 285 */,
-/* 286 */,
-/* 287 */,
-/* 288 */,
-/* 289 */,
-/* 290 */,
-/* 291 */,
-/* 292 */,
-/* 293 */,
-/* 294 */,
-/* 295 */,
-/* 296 */,
-/* 297 */,
-/* 298 */,
-/* 299 */,
-/* 300 */,
-/* 301 */,
-/* 302 */,
-/* 303 */,
-/* 304 */,
-/* 305 */,
-/* 306 */,
-/* 307 */,
-/* 308 */,
-/* 309 */,
-/* 310 */,
-/* 311 */,
-/* 312 */,
-/* 313 */,
-/* 314 */,
-/* 315 */,
-/* 316 */,
-/* 317 */,
-/* 318 */,
-/* 319 */,
-/* 320 */,
-/* 321 */,
-/* 322 */,
-/* 323 */,
-/* 324 */,
-/* 325 */,
-/* 326 */,
-/* 327 */,
-/* 328 */,
-/* 329 */,
-/* 330 */,
-/* 331 */,
-/* 332 */,
-/* 333 */,
-/* 334 */,
-/* 335 */,
-/* 336 */,
-/* 337 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = Tag;
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function Tag(props) {
-  var tag = props.tag,
-      category = props.category,
-      config = props.config;
-
-  var style = config[category] ? { backgroundColor: config[category] } : {};
-  return _react2.default.createElement(
-    'div',
-    { className: 'tag', style: style },
-    tag
-  );
-}
 
 /***/ })
 /******/ ]);
