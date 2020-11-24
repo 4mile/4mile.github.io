@@ -33660,6 +33660,8 @@ var DISPLAYED = exports.DISPLAYED = 'Displayed';
 var SPECIAL = exports.SPECIAL = 'Special';
 var TAGS = exports.TAGS = 'Tags';
 
+var SHOW = exports.SHOW = 'custom_show_';
+
 /***/ }),
 /* 224 */,
 /* 225 */,
@@ -34189,12 +34191,12 @@ function EnhancedTable(props) {
 
   var displayedFields = function displayedFields() {
     var keys = Object.keys(config).filter(function (k, i) {
-      return k.match('show_');
+      return k.match(_constants.SHOW);
     });
     var fieldNames = [];
     keys.forEach(function (k, i) {
       if (config[k]) {
-        fieldNames.push(k.split('show_')[1]);
+        fieldNames.push(k.split(_constants.SHOW)[1]);
       }
     });
     return fieldNames;
@@ -37634,7 +37636,7 @@ var modifyOptions = function modifyOptions(vis, config, qr, categories) {
 
   [].concat(_toConsumableArray(dimensions), _toConsumableArray(measures)).forEach(function (field, i) {
     i = i + 1;
-    _options.options['show_' + field.name] = {
+    _options.options['' + _constants.SHOW + field.name] = {
       order: i * 3,
       type: 'boolean',
       label: 'Show ' + field.label_short,
