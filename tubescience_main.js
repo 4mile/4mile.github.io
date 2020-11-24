@@ -34156,7 +34156,7 @@ function Tile(props) {
       _adId2 = adIdField.links[0].url.split('ID=')[1];
     }
     // TODO: make this readable and merge with encodeURI / decodeURI
-    drillLink = '/dashboards/' + config.drill_dashboard + '?Ad%20Id%20Filter=' + _adId2;
+    drillLink = 'https://tubescience.cloud.looker.com/dashboards-next/' + config.drill_dashboard + '?Ad%20Id%20Filter=' + _adId2;
   }
 
   // This escapes the sandbox and navigates to a dashboard containing individual drill
@@ -34200,9 +34200,13 @@ function Tile(props) {
         'div',
         { className: 'header' },
         _react2.default.createElement(
-          'div',
-          { className: 'videoLink', onClick: handleDrillClick },
-          _react2.default.createElement(_OpenInNew2.default, { style: iconStyle })
+          'a',
+          { href: drillLink, target: '_blank' },
+          _react2.default.createElement(
+            'div',
+            { className: 'videoLink' },
+            _react2.default.createElement(_OpenInNew2.default, { style: iconStyle })
+          )
         ),
         _react2.default.createElement(
           'div',
