@@ -624,7 +624,7 @@ var _defineProperty2 = __webpack_require__(15);
 
 var _defineProperty3 = _interopRequireDefault(_defineProperty2);
 
-var _responsivePropType = __webpack_require__(59);
+var _responsivePropType = __webpack_require__(60);
 
 var _responsivePropType2 = _interopRequireDefault(_responsivePropType);
 
@@ -857,7 +857,7 @@ var _extends2 = __webpack_require__(2);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _isInBrowser = __webpack_require__(50);
+var _isInBrowser = __webpack_require__(51);
 
 var _isInBrowser2 = _interopRequireDefault(_isInBrowser);
 
@@ -873,7 +873,7 @@ var _inheritsLoose2 = __webpack_require__(19);
 
 var _inheritsLoose3 = _interopRequireDefault(_inheritsLoose2);
 
-var _assertThisInitialized2 = __webpack_require__(51);
+var _assertThisInitialized2 = __webpack_require__(52);
 
 var _assertThisInitialized3 = _interopRequireDefault(_assertThisInitialized2);
 
@@ -3178,7 +3178,7 @@ Object.keys(_createStyles).forEach(function (key) {
   });
 });
 
-var _getThemeProps = __webpack_require__(48);
+var _getThemeProps = __webpack_require__(49);
 
 Object.defineProperty(exports, 'getThemeProps', {
   enumerable: true,
@@ -3196,7 +3196,7 @@ Object.keys(_getThemeProps).forEach(function (key) {
   });
 });
 
-var _jssPreset = __webpack_require__(49);
+var _jssPreset = __webpack_require__(50);
 
 Object.defineProperty(exports, 'jssPreset', {
   enumerable: true,
@@ -3232,7 +3232,7 @@ Object.keys(_makeStyles).forEach(function (key) {
   });
 });
 
-var _mergeClasses = __webpack_require__(54);
+var _mergeClasses = __webpack_require__(55);
 
 Object.defineProperty(exports, 'mergeClasses', {
   enumerable: true,
@@ -3557,7 +3557,7 @@ var _iterableToArray = __webpack_require__(106);
 
 var _iterableToArray2 = _interopRequireDefault(_iterableToArray);
 
-var _unsupportedIterableToArray = __webpack_require__(53);
+var _unsupportedIterableToArray = __webpack_require__(54);
 
 var _unsupportedIterableToArray2 = _interopRequireDefault(_unsupportedIterableToArray);
 
@@ -3696,7 +3696,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _createMuiTheme = __webpack_require__(58);
+var _createMuiTheme = __webpack_require__(59);
 
 var _createMuiTheme2 = _interopRequireDefault(_createMuiTheme);
 
@@ -4544,7 +4544,7 @@ var _iterableToArrayLimit = __webpack_require__(163);
 
 var _iterableToArrayLimit2 = _interopRequireDefault(_iterableToArrayLimit);
 
-var _unsupportedIterableToArray = __webpack_require__(53);
+var _unsupportedIterableToArray = __webpack_require__(54);
 
 var _unsupportedIterableToArray2 = _interopRequireDefault(_unsupportedIterableToArray);
 
@@ -5316,6 +5316,30 @@ function formControlState(_ref) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var DEFAULT_PAGE_SIZE = exports.DEFAULT_PAGE_SIZE = 12;
+var ELEMENT_ID = exports.ELEMENT_ID = 'tube_vis';
+var VIDEO_ICON_COLOR = exports.VIDEO_ICON_COLOR = "#64518A";
+var LOW_HI = exports.LOW_HI = 'low_hi';
+var HI_LOW = exports.HI_LOW = 'hi_low';
+
+var DISPLAYED = exports.DISPLAYED = 'Displayed';
+var SPECIAL = exports.SPECIAL = 'Special';
+var TAGS = exports.TAGS = 'Tags';
+var PAGE = exports.PAGE = 'Page';
+
+var SORT_WHITELIST = exports.SORT_WHITELIST = 'custom_sort_whitelist_';
+var SHOW = exports.SHOW = 'custom_show_';
+
+/***/ }),
+/* 46 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 Object.defineProperty(exports, "__esModule", {
@@ -5362,7 +5386,7 @@ function createSvgIcon(path, displayName) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5384,7 +5408,7 @@ Object.defineProperty(exports, 'default', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5397,7 +5421,7 @@ var hasSymbol = typeof Symbol === 'function' && Symbol.for;
 exports.default = hasSymbol ? Symbol.for('mui.nested') : '__THEME_NESTED__';
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5419,7 +5443,7 @@ Object.defineProperty(exports, 'default', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5441,7 +5465,7 @@ Object.defineProperty(exports, 'default', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5458,7 +5482,7 @@ var isBrowser = (typeof window === "undefined" ? "undefined" : _typeof(window)) 
 /* harmony default export */ __webpack_exports__["default"] = (isBrowser);
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5477,7 +5501,7 @@ function _assertThisInitialized(self) {
 }
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5498,7 +5522,7 @@ function _arrayLikeToArray(arr, len) {
 }
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5509,7 +5533,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _unsupportedIterableToArray;
 
-var _arrayLikeToArray = __webpack_require__(52);
+var _arrayLikeToArray = __webpack_require__(53);
 
 var _arrayLikeToArray2 = _interopRequireDefault(_arrayLikeToArray);
 
@@ -5525,7 +5549,7 @@ function _unsupportedIterableToArray(o, minLen) {
 }
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5547,7 +5571,7 @@ Object.defineProperty(exports, 'default', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5573,7 +5597,7 @@ exports.default = ThemeContext;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5587,7 +5611,7 @@ var noopTheme = {};
 exports.default = noopTheme;
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5604,7 +5628,7 @@ function _classCallCheck(instance, Constructor) {
 }
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5656,7 +5680,7 @@ var _transitions = __webpack_require__(82);
 
 var _transitions2 = _interopRequireDefault(_transitions);
 
-var _zIndex = __webpack_require__(60);
+var _zIndex = __webpack_require__(61);
 
 var _zIndex2 = _interopRequireDefault(_zIndex);
 
@@ -5741,7 +5765,7 @@ exports.default = createMuiTheme;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5762,7 +5786,7 @@ exports.default = responsivePropType;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5783,30 +5807,6 @@ var zIndex = {
   tooltip: 1500
 };
 exports.default = zIndex;
-
-/***/ }),
-/* 61 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var DEFAULT_PAGE_SIZE = exports.DEFAULT_PAGE_SIZE = 12;
-var ELEMENT_ID = exports.ELEMENT_ID = 'tube_vis';
-var VIDEO_ICON_COLOR = exports.VIDEO_ICON_COLOR = "#64518A";
-var LOW_HI = exports.LOW_HI = 'low_hi';
-var HI_LOW = exports.HI_LOW = 'hi_low';
-
-var DISPLAYED = exports.DISPLAYED = 'Displayed';
-var SPECIAL = exports.SPECIAL = 'Special';
-var TAGS = exports.TAGS = 'Tags';
-var PAGE = exports.PAGE = 'Page';
-
-var SORT_WHITELIST = exports.SORT_WHITELIST = 'custom_sort_whitelist_';
-var SHOW = exports.SHOW = 'custom_show_';
 
 /***/ }),
 /* 62 */
@@ -5946,7 +5946,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = undefined;
 exports.ariaHidden = ariaHidden;
 
-var _classCallCheck2 = __webpack_require__(57);
+var _classCallCheck2 = __webpack_require__(58);
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
@@ -6382,7 +6382,7 @@ var _extends2 = __webpack_require__(2);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _assertThisInitialized2 = __webpack_require__(51);
+var _assertThisInitialized2 = __webpack_require__(52);
 
 var _assertThisInitialized3 = _interopRequireDefault(_assertThisInitialized2);
 
@@ -6740,7 +6740,7 @@ var _react = __webpack_require__(1);
 
 var React = _interopRequireWildcard(_react);
 
-var _createSvgIcon = __webpack_require__(45);
+var _createSvgIcon = __webpack_require__(46);
 
 var _createSvgIcon2 = _interopRequireDefault(_createSvgIcon);
 
@@ -10354,7 +10354,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = createGenerateClassName;
 
-var _nested = __webpack_require__(47);
+var _nested = __webpack_require__(48);
 
 var _nested2 = _interopRequireDefault(_nested);
 
@@ -11391,7 +11391,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.supportedValue = exports.supportedProperty = exports.supportedKeyframes = exports.prefix = undefined;
 
-var _isInBrowser = __webpack_require__(50);
+var _isInBrowser = __webpack_require__(51);
 
 var _isInBrowser2 = _interopRequireDefault(_isInBrowser);
 
@@ -11985,7 +11985,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _arrayWithoutHoles;
 
-var _arrayLikeToArray = __webpack_require__(52);
+var _arrayLikeToArray = __webpack_require__(53);
 
 var _arrayLikeToArray2 = _interopRequireDefault(_arrayLikeToArray);
 
@@ -12090,7 +12090,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _jss = __webpack_require__(14);
 
-var _mergeClasses = __webpack_require__(54);
+var _mergeClasses = __webpack_require__(55);
 
 var _mergeClasses2 = _interopRequireDefault(_mergeClasses);
 
@@ -12110,7 +12110,7 @@ var _getStylesCreator = __webpack_require__(124);
 
 var _getStylesCreator2 = _interopRequireDefault(_getStylesCreator);
 
-var _noopTheme = __webpack_require__(56);
+var _noopTheme = __webpack_require__(57);
 
 var _noopTheme2 = _interopRequireDefault(_noopTheme);
 
@@ -12880,7 +12880,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _ThemeContext = __webpack_require__(55);
+var _ThemeContext = __webpack_require__(56);
 
 var _ThemeContext2 = _interopRequireDefault(_ThemeContext);
 
@@ -12935,7 +12935,7 @@ var _createGenerateClassName2 = _interopRequireDefault(_createGenerateClassName)
 
 var _jss = __webpack_require__(14);
 
-var _jssPreset = __webpack_require__(49);
+var _jssPreset = __webpack_require__(50);
 
 var _jssPreset2 = _interopRequireDefault(_jssPreset);
 
@@ -13162,7 +13162,7 @@ var _typeof3 = _interopRequireDefault(_typeof2);
 
 var _utils = __webpack_require__(5);
 
-var _noopTheme = __webpack_require__(56);
+var _noopTheme = __webpack_require__(57);
 
 var _noopTheme2 = _interopRequireDefault(_noopTheme);
 
@@ -13256,7 +13256,7 @@ var _extends2 = __webpack_require__(2);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _classCallCheck2 = __webpack_require__(57);
+var _classCallCheck2 = __webpack_require__(58);
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
 
@@ -13586,7 +13586,7 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _utils = __webpack_require__(5);
 
-var _ThemeContext = __webpack_require__(55);
+var _ThemeContext = __webpack_require__(56);
 
 var _ThemeContext2 = _interopRequireDefault(_ThemeContext);
 
@@ -13594,7 +13594,7 @@ var _useTheme = __webpack_require__(23);
 
 var _useTheme2 = _interopRequireDefault(_useTheme);
 
-var _nested = __webpack_require__(47);
+var _nested = __webpack_require__(48);
 
 var _nested2 = _interopRequireDefault(_nested);
 
@@ -13727,7 +13727,7 @@ var _makeStyles = __webpack_require__(34);
 
 var _makeStyles2 = _interopRequireDefault(_makeStyles);
 
-var _getThemeProps = __webpack_require__(48);
+var _getThemeProps = __webpack_require__(49);
 
 var _getThemeProps2 = _interopRequireDefault(_getThemeProps);
 
@@ -15555,7 +15555,7 @@ var _slicedToArray2 = __webpack_require__(39);
 
 var _slicedToArray3 = _interopRequireDefault(_slicedToArray2);
 
-var _responsivePropType = __webpack_require__(59);
+var _responsivePropType = __webpack_require__(60);
 
 var _responsivePropType2 = _interopRequireDefault(_responsivePropType);
 
@@ -26124,7 +26124,7 @@ var _useEventCallback = __webpack_require__(41);
 
 var _useEventCallback2 = _interopRequireDefault(_useEventCallback);
 
-var _zIndex = __webpack_require__(60);
+var _zIndex = __webpack_require__(61);
 
 var _zIndex2 = _interopRequireDefault(_zIndex);
 
@@ -32057,7 +32057,7 @@ var _withStyles = __webpack_require__(7);
 
 var _withStyles2 = _interopRequireDefault(_withStyles);
 
-var _ButtonBase = __webpack_require__(46);
+var _ButtonBase = __webpack_require__(47);
 
 var _ButtonBase2 = _interopRequireDefault(_ButtonBase);
 
@@ -33684,7 +33684,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.options = undefined;
 
-var _constants = __webpack_require__(61);
+var _constants = __webpack_require__(45);
 
 // https://github.com/looker/custom_visualizations_v2/blob/master/docs/api_reference.md#presenting-configuration-ui
 var options = exports.options = {
@@ -33693,12 +33693,6 @@ var options = exports.options = {
     // This is awful, but if we declare this a number Looker doesn't hide it properly.
     type: 'string',
     default: '0',
-    section: _constants.PAGE
-  },
-  sort_order: {
-    display: 'hidden',
-    type: 'string',
-    default: 'hi_low',
     section: _constants.PAGE
   },
   drill_dashboard: {
@@ -33756,7 +33750,7 @@ var _modifyOptions = __webpack_require__(241);
 
 var _modifyOptions2 = _interopRequireDefault(_modifyOptions);
 
-var _constants = __webpack_require__(61);
+var _constants = __webpack_require__(45);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -33821,10 +33815,6 @@ looker.plugins.visualizations.add({
     // See modifyOptions.js for more info on why you'd want to do this.
     (0, _modifyOptions2.default)(this, config, qr, categories);
 
-    var updateSortConfig = function updateSortConfig(nxt) {
-      _this.trigger("updateConfig", [{ sort_order: nxt }]);
-    };
-
     var updatePageConfig = function updatePageConfig(nxt) {
       _this.trigger('updateConfig', [{ current_page: String(nxt) }]);
     };
@@ -33832,7 +33822,6 @@ looker.plugins.visualizations.add({
     _reactDom2.default.render(_react2.default.createElement(_Main2.default, {
       qr: qr,
       updatePageConfig: updatePageConfig,
-      updateSortConfig: updateSortConfig,
       data: data,
       config: config
     }), this.vis);
@@ -33872,7 +33861,7 @@ var _Pages = __webpack_require__(240);
 
 var _Pages2 = _interopRequireDefault(_Pages);
 
-var _constants = __webpack_require__(61);
+var _constants = __webpack_require__(45);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -33885,8 +33874,7 @@ function Main(props) {
   var qr = props.qr,
       data = props.data,
       config = props.config,
-      updatePageConfig = props.updatePageConfig,
-      updateSortConfig = props.updateSortConfig;
+      updatePageConfig = props.updatePageConfig;
   // We keep these variables in state so that they properly rerender in the dashboard.
   // Leaving it only to the config doesn't work on dashboards, only explores.
 
@@ -33895,7 +33883,7 @@ function Main(props) {
       currentPage = _useState2[0],
       setCurrentPage = _useState2[1];
 
-  var _useState3 = (0, _react.useState)(config.sort_order || _constants.HI_LOW),
+  var _useState3 = (0, _react.useState)(_constants.HI_LOW),
       _useState4 = _slicedToArray(_useState3, 2),
       sortOrder = _useState4[0],
       setSortOrder = _useState4[1];
@@ -33977,7 +33965,6 @@ function Main(props) {
     var curr = sortOrder;
     var nxt = curr === _constants.HI_LOW ? _constants.LOW_HI : _constants.HI_LOW;
     setSortOrder(nxt);
-    updateSortConfig(nxt);
   };
 
   if (config.tag_field) {
@@ -34073,7 +34060,7 @@ var _OpenInNew = __webpack_require__(235);
 
 var _OpenInNew2 = _interopRequireDefault(_OpenInNew);
 
-var _constants = __webpack_require__(61);
+var _constants = __webpack_require__(45);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34092,12 +34079,12 @@ function Tile(props) {
   };
 
   var placement = function placement() {
-    return "Fake placeholder for placement info, Audience Network Banner, Native and Interstitial";
-    // if (config.placement_field) {
-    //   const val = tileData[config.placement_field]
-    //   return val.rendered || val.value
-    // }
-    // return null
+    if (config.placement_field) {
+      var val = tileData[config.placement_field];
+      if (val === undefined) return null;
+      return val.rendered || val.value;
+    }
+    return null;
   };
 
   var genTags = function genTags() {
@@ -34131,13 +34118,22 @@ function Tile(props) {
         ' ',
         tileData[field].rendered || tileData[field].value
       ));
-      spanz.push(_react2.default.createElement(
-        'span',
-        { key: 'fnl' + i, className: 'fieldNameLabel' },
-        '\xA0',
-        config['label_' + field],
-        ' \xB7 '
-      ));
+      if (i === fieldNames.length - 1) {
+        spanz.push(_react2.default.createElement(
+          'span',
+          { key: 'fnl' + i, className: 'fieldNameLabel' },
+          '\xA0',
+          config['label_' + field]
+        ));
+      } else {
+        spanz.push(_react2.default.createElement(
+          'span',
+          { key: 'fnl' + i, className: 'fieldNameLabel' },
+          '\xA0',
+          config['label_' + field],
+          ' \xB7 '
+        ));
+      }
     });
     return spanz;
   };
@@ -34164,7 +34160,7 @@ function Tile(props) {
       _adId2 = adIdField.links[0].url.split('ID=')[1];
     }
     // TODO: make this readable and merge with encodeURI / decodeURI
-    drillLink = 'https://tubescience.cloud.looker.com/dashboards-next/' + config.drill_dashboard + '?Ad%20Id%20Filter=' + _adId2;
+    drillLink = 'https://tubescience.cloud.looker.com/dashboards-next/' + config.drill_dashboard + '?Ad%20ID=' + _adId2;
   }
 
   // This escapes the sandbox and navigates to a dashboard containing individual drill
@@ -34484,7 +34480,7 @@ var _Button = __webpack_require__(225);
 
 var _Button2 = _interopRequireDefault(_Button);
 
-var _constants = __webpack_require__(61);
+var _constants = __webpack_require__(45);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34496,7 +34492,7 @@ function Sorts(props) {
       sortOrder = props.sortOrder,
       changePage = props.changePage;
 
-  var label = sortOrder === _constants.LOW_HI ? 'High -> Low' : 'Low -> High';
+  var label = sortOrder === _constants.LOW_HI ? 'Low -> High' : 'High -> Low';
 
   var setSort = function setSort(i) {
     setSortField(i);
@@ -34569,7 +34565,7 @@ var _withStyles2 = _interopRequireDefault(_withStyles);
 
 var _colorManipulator = __webpack_require__(27);
 
-var _ButtonBase = __webpack_require__(46);
+var _ButtonBase = __webpack_require__(47);
 
 var _ButtonBase2 = _interopRequireDefault(_ButtonBase);
 
@@ -35117,7 +35113,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _options = __webpack_require__(226);
 
-var _constants = __webpack_require__(61);
+var _constants = __webpack_require__(45);
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
@@ -35217,7 +35213,7 @@ var modifyOptions = function modifyOptions(vis, config, qr, categories) {
     type: 'string',
     label: 'Placement',
     section: _constants.SPECIAL,
-    values: dimensions.map(function (field, i) {
+    values: [].concat(_toConsumableArray(dimensions), _toConsumableArray(measures)).map(function (field, i) {
       return _defineProperty({}, field.label_short, field.name);
     })
   };
@@ -35275,7 +35271,7 @@ exports = module.exports = __webpack_require__(79)(false);
 
 
 // module
-exports.push([module.i, "body {\n    font-family: 'Roboto', sans-serif;\n    font-size: 12px;\n}\n\n#tube_vis {\n    max-width: 1400px;\n    margin: 0 auto;\n}\n\n.sorts {\n    margin-right: 4px;\n    display: flex;\n    flex-direction: row;\n    height: 30px;\n}\n\n.sortBtn {\n    margin-left: 4px;\n}\n\n#select {\n    padding-top: 10px;\n    background-color: #fff;\n}\n\n.pages {\n    display: flex;\n    flex-direction: row;\n}\n\n.active {\n    border: 1px solid blue;\n}\n\n.boop {\n    background-color: red;\n}\n\n.tile {\n    background: #fff;\n    display: flex;\n    flex-direction: row;\n    margin: 5px;\n    margin-left: 10px;\n    float: left;\n    -webkit-box-shadow: -1px 1px 5px 0px rgba(100,100,100,0.85);\n    -moz-box-shadow: -1px 1px 5px 0px rgba(100,100,100,0.85);\n    box-shadow: -1px 1px 5px 0px rgba(100,100,100,0.85);\n}\n\n.tileRight {\n    min-height: 180px;\n    width: 260px;\n    position: relative;\n}\n\n.header {\n    align-items: center;\n    height: 42px;\n    display: flex;\n    flex-direction: row;\n    padding: 0 8px;\n}\n.headerRight {\n    display: flex;\n    flex-direction: column;\n}\n.clientName {\n    font-weight: 600;\n    font-size: 15px;\n}\n.adId {\n    font-weight: 200;\n    font-size: 12px;\n}\n.videoLink {\n    cursor: pointer;\n    padding-top: 3px;\n    padding-right: 8px;\n}\n.tags {\n    background-color: #EEF0FA;\n    height: 32px;\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n    overflow: hidden;\n}\n.tag {\n    background-color: #2F80ED;\n    margin-left: 8px;\n    height: 20px;\n    min-width: 52px;\n    color: #fff;\n    border-radius: 25px;\n    display: flex;\n    justify-content: center;\n    text-align: center;\n    font-weight: 100;\n    font-size: 11px;\n    align-items: center;\n}\n.displayedFieldsContainer {\n    padding: 2px 8px;\n    /* display: flex; */\n    height: 80px;\n    /* flex-direction: column; */\n}\n.displayedFieldsRow {\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n}\n.fieldNameContainer {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    width: 58px;\n    overflow: hidden;\n    margin: 0 auto;\n}\n.fieldNameLabel {\n    font-weight: 100;\n    font-size: 12px;\n}\n.fieldNameValue {\n    font-weight: 600;\n    font-size: 12px;\n}\n.footer {\n    padding: 0 8px;\n    font-size: 11px;\n    position: absolute;\n    bottom: 8px;\n}\n\n.videoLoading {\n    height: 250px;\n    width: 200px;\n    background: #000;\n    color: #fff;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    text-align: center;\n    font-size: 14px;\n}\n\n.videoContainer {\n    width: 200px;\n    display: flex;\n    height: 250px;\n    justify-content: center;\n    background: #000;\n}\n\n.topnav {\n    height: 50px;\n}\n\n.totalResults {\n    float: left;\n    font-size: 16px;\n    font-weight: 600;\n}\n\n.sortsNPages {\n    display: flex;\n    flex-direction: row;\n    float: right;\n    align-items: flex-end;\n}\n", ""]);
+exports.push([module.i, "body {\n    font-family: 'Roboto', sans-serif;\n    font-size: 12px;\n}\n\n#tube_vis {\n    max-width: 1400px;\n    margin: 0 auto;\n}\n\n.sorts {\n    margin-right: 4px;\n    display: flex;\n    flex-direction: row;\n    height: 30px;\n}\n\n.sortBtn {\n    margin-left: 4px;\n}\n\n#select {\n    padding-top: 10px;\n    background-color: #fff;\n}\n\n.pages {\n    display: flex;\n    flex-direction: row;\n}\n\n.active {\n    border: 1px solid blue;\n}\n\n.boop {\n    background-color: red;\n}\n\n.tile {\n    background: #fff;\n    display: flex;\n    flex-direction: row;\n    margin: 5px;\n    margin-left: 10px;\n    float: left;\n    -webkit-box-shadow: -1px 1px 5px 0px rgba(100,100,100,0.85);\n    -moz-box-shadow: -1px 1px 5px 0px rgba(100,100,100,0.85);\n    box-shadow: -1px 1px 5px 0px rgba(100,100,100,0.85);\n}\n\n.tileRight {\n    /* min-height: 180px; */\n    width: 260px;\n    position: relative;\n    display: flex;\n    flex-direction: column;\n}\n\n.header {\n    align-items: center;\n    height: 42px;\n    display: flex;\n    flex-direction: row;\n    padding: 0 8px;\n}\n.headerRight {\n    display: flex;\n    flex-direction: column;\n}\n.clientName {\n    font-weight: 600;\n    font-size: 15px;\n}\n.adId {\n    font-weight: 200;\n    font-size: 12px;\n}\n.videoLink {\n    cursor: pointer;\n    padding-top: 3px;\n    padding-right: 8px;\n}\n.tags {\n    background-color: #EEF0FA;\n    height: 32px;\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n    overflow: hidden;\n}\n.tag {\n    background-color: #2F80ED;\n    margin-left: 8px;\n    height: 20px;\n    min-width: 52px;\n    color: #fff;\n    border-radius: 25px;\n    display: flex;\n    justify-content: center;\n    text-align: center;\n    font-weight: 100;\n    font-size: 11px;\n    align-items: center;\n}\n.displayedFieldsContainer {\n    padding: 2px 8px;\n    flex-grow: 1;\n}\n.displayedFieldsRow {\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n}\n.fieldNameContainer {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    width: 58px;\n    overflow: hidden;\n    margin: 0 auto;\n}\n.fieldNameLabel {\n    font-weight: 100;\n    font-size: 12px;\n}\n.fieldNameValue {\n    font-weight: 600;\n    font-size: 12px;\n}\n.footer {\n    padding: 4px 8px;\n    font-size: 11px;\n}\n\n.videoLoading {\n    min-height: 250px;\n    width: 200px;\n    background: #000;\n    color: #fff;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    text-align: center;\n    font-size: 14px;\n}\n\n.videoContainer {\n    width: 200px;\n    display: flex;\n    height: 250px;\n    justify-content: center;\n    background: #000;\n}\n\n.topnav {\n    height: 50px;\n}\n\n.totalResults {\n    float: left;\n    font-size: 16px;\n    font-weight: 600;\n}\n\n.sortsNPages {\n    display: flex;\n    flex-direction: row;\n    float: right;\n    align-items: flex-end;\n}\n", ""]);
 
 // exports
 
