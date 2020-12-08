@@ -34327,6 +34327,7 @@ function Video(props) {
   return _react2.default.createElement(
     'div',
     {
+      key: videoSrc,
       className: 'videoContainer',
       ref: vidContainerEl
     },
