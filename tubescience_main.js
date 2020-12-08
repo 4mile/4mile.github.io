@@ -34281,7 +34281,7 @@ function Video(props) {
     videoImg = tileData[config.video_img_field].value;
   }
 
-  if (!videoSrc || !videoImg) {
+  if (!videoSrc && !videoImg) {
     if (config.video_field && config.video_img_field) {
       // They set it, it's just not available.
       return _react2.default.createElement(
